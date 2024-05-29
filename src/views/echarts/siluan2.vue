@@ -5,23 +5,39 @@
 <script>
 export default {
   name: '',
+  props: ['hehuSLBHDateList', 'hehuSLBHNumList'],
   data() {
     return {
       myChart: null,
+      dateList: [],
       data1: [],
-      data2: [],
       timer: ''
     }
+  },
+  watch: {
+    hehuSLBHDateList(newValue, oldValue) {
+      this.dateList = newValue;
+      this.data1 = this.hehuSLBHNumList;
+      this.setChart();
+    },
+    hehuSLBHNumList(newValue, oldValue) {
+      this.dateList = this.hehuSLBHDateList;
+      this.data1 = this.hehuSLBHNumList;
+      this.setChart();
+    },
+  },
+  mounted() {
+    this.setChart()
   },
   methods: {
     setChart() {
       var that = this;
       let option = {
         grid: {
-          top: "20",
+          top: "40",
           bottom: "30",
-          left: 50,
-          right: 20,
+          left: 56,
+          right: 30,
         },
         tooltip: {
           trigger: 'axis'
@@ -50,15 +66,15 @@ export default {
             axisLabel: {
               color: '#9bc3d4',   // x轴文本颜色
               showMaxLabel: false,
-              fontSize: 14,
+              fontSize: 12,
               interval: 0,// 设置这个强制显示所有标签文字
-              //   rotate: '-45',// 旋转度数
+              rotate: '25',// 旋转度数
               //                 formatter:function(value){  
               //     return value.split("").join("\n");  
               // },
             },
             boundaryGap: false,
-            data: ['2023-11', '2023-12', '2024-1', '2024-2', '2024-3', '2024-4',]
+            data: that.dateList
           }
         ],
         yAxis: [
@@ -97,12 +113,21 @@ export default {
             type: 'line',
             data: that.data1,
             smooth: true,   // 弧度显示
-            showSymbol: false,   // 不显示乖点
+            showSymbol: true,   // 不显示乖点
             lineStyle: {
               color: '#FE7C2F',
             },
             itemStyle: {
               color: '#FE7C2F'
+            },
+            label: {
+              show: true,
+              normal: {
+                color: '#61B9C8',
+                fontSize: 14,
+                show: true,
+                "position": "top"
+              }
             },
             areaStyle: {
               color: {
@@ -122,52 +147,14 @@ export default {
               origin: 'start'
             }
           },
-          // {
-          //   name: '投资基金（百W）',
-          //   type: 'line',
-          //   smooth: true,
-          //   showSymbol: false,
-          //   data: that.data2,
-          //   lineStyle: {
-          //     color: '#026eed',
-          //   },
-          //   itemStyle: {
-          //     color: '#026eed'
-          //   },
-          // },
         ]
       };
-      if (!this.myChart) this.myChart = this.$echarts.init(this.$el);
+      if (!this.myChart) this.myChart = this.$echarts.init(this.$el, null, {devicePixelRatio: 3});
 
       // this.myChart.clear();
       // this.myChart.resize()
       this.myChart.setOption(option);
     },
-    generateRandomArray(min, max) {
-      // 生成一个5位的随机数组
-      var randomArray = Array.from({ length: 6 }, () => this.generateRandomNumber(min, max));
-      return randomArray;
-    },
-    generateRandomNumber(min, max) {
-      // 生成一个随机数
-      min = Math.ceil(min); // 确保min是整数
-      max = Math.floor(max); // 确保max是整数
-      return Math.floor(Math.random() * (max - min + 1)) + min; // 返回介于min和max之间的整数
-    },
-    changeData(){
-      this.data1 = this.generateRandomArray(10, 20);
-      this.data2 = this.generateRandomArray(30, 60);
-      this.setChart()
-    }
-  },
-  mounted() {
-    this.data1 = this.generateRandomArray(30, 200);
-    this.data2 = this.generateRandomArray(20, 60);
-    this.setChart()
-    this.timer && clearInterval(this.timer)
-    this.timer = setInterval(()=>{
-      this.changeData();
-    }, 3000)
   },
 }
 </script>

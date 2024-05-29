@@ -252,7 +252,7 @@ export default {
         legend: {
           orient: 'vertical',
           // x: 'left',o
-          right: 40,
+          right: 26,
           top: 30,
           align: 'right',
           textStyle: {
@@ -365,7 +365,7 @@ export default {
         },
         series: series
       }
-      if (!this.myChart) this.myChart = this.$echarts.init(this.$el);
+      if (!this.myChart) this.myChart = this.$echarts.init(this.$el, null, {devicePixelRatio: 3});
 
       this.myChart.clear();
       this.myChart.resize(

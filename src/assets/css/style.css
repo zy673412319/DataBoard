@@ -57,6 +57,9 @@ p {
   align-items: flex-start;
   align-content: flex-start;
 }
+.alBetween {
+  align-content: space-between;
+}
 .title36 {
   font-size: 36px;
 }
@@ -123,11 +126,13 @@ html {
   font-size: 36px;
   color: white;
   align-items: start; 
-  background: url("../images/headBg.png") center bottom no-repeat;
-  background-size: 110% 86% !important;
   justify-content: center;
   font-size: 78px;
   letter-spacing: 12px;
+}
+.indexHeaderBg {
+  background: url("../images/headBg.png") center bottom no-repeat;
+  background-size: 110% 86% !important;
 }
 .moduleParent {
   width: 30%;
@@ -185,10 +190,6 @@ html {
   width: 22px;
   margin-right: 4px;
 }
-.contentLeft {
-  width: 1140px;
-  height:100%;
-}
 .modelBg01 {
   background: linear-gradient( 90deg, #000000 0%, #0A1225 74%, rgba(10,18,37,0.3) 100%) !important;
 }
@@ -210,15 +211,42 @@ html {
 .modelBg07 {
   background: linear-gradient( 270deg, #000000 0%, #0A1225 74%, rgba(10,18,37,0.3) 100%) !important;
 }
-.contentCenter {
-  width: calc(100% - 4650px);
+.rightFloatItem1,
+.rightFloatItem2,
+.rightFloatItem4,
+.rightFloatItem5 {
+  width: 16.5%;
   height:100%;
   overflow: hidden;
 }
-.contentRight02 {
-  width: 1150px;
+.rightFloatItem3 {
+  width: 33%;
   height:100%;
+  overflow: hidden;
+}
+.contentLeft {
+  width: 100%;
+  height:100%;
+}
+.contentCenter {
+  /* width: calc(100% - 4650px);
+  overflow: hidden; */
+  width: 100%;
+  height:100%;
+}
+.contentRight02 {
+  width: 100%;
   align-content: space-between;
+}
+.newModule {
+  width: 100%;
+  height: auto;
+  min-height: 170px;
+  /* background: rgba(46,51,56,0.8); */
+  background: rgba(119,170,200,0.1);
+  /* background: rgba(19,33,78,0.36); */
+  border-radius: 8px;
+  box-shadow: 2px 2px 1px 0px rgba(111,132,142,0.4);
 }
 .contentRight02 > .newModule {
   justify-content: space-between;
@@ -230,6 +258,22 @@ html {
 .contentRight {
   width: 580px;
 }
+.allLook {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 304;
+}
+.zhezhao {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: #011246;
+  z-index: 300;
+  top: 0;
+  left: 0;
+}
 .dv-border-box-10 svg,
 .dv-border-box-1 svg,
 .dv-border-box-11 svg,
@@ -240,20 +284,19 @@ html {
 .dv-border-box-1 > svg{
   /* display: none !important; */
 }
+.dv-border-box-1 .border-box-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 200;
+}
 .conetntDiv {
   padding: 20px;
-  height: 100%;
-  overflow-x: hidden;
-}
-.newModule {
   width: 100%;
-  height: auto;
-  min-height: 170px;
-  /* background: rgba(46,51,56,0.8); */
-  background: rgba(119,170,200,0.1);
-  /* background: rgba(19,33,78,0.36); */
-  border-radius: 8px;
-  box-shadow: 2px 2px 1px 0px rgba(111,132,142,0.4);
+  height: 100%;
+}
+.rightFloatItem {
+  height: 100%;
 }
 .border-box-content {
   -webkit-box-sizing: border-box;
@@ -298,6 +341,35 @@ html {
 .newModuleTitle07 {
   background: url('../images/titleImg/kuangshanHitleBg.png') left center no-repeat !important;
   background-size: 100% auto !important;
+}
+.lookIconmap,
+.exchangeIcon,
+.newModuleTitle .lookIcon {
+  width: 34px;
+  position: absolute;
+  top: 3px;
+  right: 14px;
+  z-index: 5;
+  cursor: pointer;
+}
+.lookIcon, .lookIconmap {
+  display: none;
+}
+.lookIconmap {
+  right: 11%;
+}
+/* .exchangeIcon {
+  right: 54px
+} */
+.daoxu {
+  flex-direction: column-reverse;
+  justify-content: space-between;
+}
+.exchangeIcon img,
+.lookIconmap img,
+.newModuleTitle .lookIcon img {
+  width: 100%;
+  height: auto;
 }
 .blueColor {
   color: #7EBCFD;
@@ -627,6 +699,9 @@ html {
 .mapDiv02 {
   z-index: 2;
 }
+.mapDiv02 canvas {
+  display: none;
+}
 .mapData {
   left: 240px;
   top: 50px;
@@ -753,4 +828,50 @@ html {
 .newWeifabg {
   background: url('../images/newImg/pinBtm.png') center 70% no-repeat;
   background-size: 42% auto !important;
+}
+
+.child-draggable {
+  pointer-events: none;
+}
+
+@media (min-width: 12000px) {
+  html{
+    transform: scaleX(1.875) scaleY(1.9) translateZ(0);
+  }
+}
+
+.iframeDiv {
+  position: fixed;
+  width: 32%;
+  height: 85%;
+  z-index: 200;
+  bottom: 10px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  align-content: flex-start;
+  align-items: flex-start;
+}
+.iframeDiv > div {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.iframeDiv > div iframe {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+.iframeDiv > div .imfDiv {
+  width: 60px;
+  position: absolute;
+  top: 10px;
+  right: 4%;
+  z-index: 20;
+}
+.iframeDiv > div .imfDiv img {
+  width: 100%;
+  height: auto;
 }

@@ -115,7 +115,6 @@ export default {
           // emphasis: {
           //   label: {
           //     formatter: function (params) {
-          //       // console.log("hover", params);
           //       return params.name
           //     }
           //   },
@@ -444,7 +443,7 @@ export default {
           // }
         ]
       };
-      if (!this.myChart) this.myChart = this.$echarts.init(this.$el);
+      if (!this.myChart) this.myChart = this.$echarts.init(this.$el, null, {devicePixelRatio: 3});
       // 初始化echarts图表
 
       var that = this;

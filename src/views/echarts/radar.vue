@@ -11,124 +11,122 @@
 <script>
 export default {
   name: '',
-  props: {
-    data: Object
-  },
+  props: ['weikaungData'],
   data() {
     return {
-      myChart: null
+      myChart: null,
+      resData: []
     }
+  },
+  watch: {
+    weikaungData(newValue, oldValue) {
+      var data = [];
+      if(newValue.key && newValue.key.length > 0){
+        for(var i=0; i< newValue.key.length; i++){
+          data.push({
+            name: newValue.key[i],
+            value: newValue.values[i]
+          })
+        }
+        this.resData = data;
+        this.setChart();
+      }
+    },
   },
   methods: {
     setChart() {
-      let seriesData = []
-      this.data.data.forEach(item => {
-        seriesData.push(
-          {
-            value: item.value,
-            name: item.name,
-            symbol: 'none',
-            symbolSize: 5,
-            itemStyle: {
-              color: item.color
-            },
-            lineStyle: {
-              color: item.color,
-              width: 1,
-            },
-            emphasis: {
-              lineStyle: {
-                width: 2
-              }
-            }
-          }
-        )
-      })
-      let option = {
-        tooltip: {
-          trigger: 'item',
-          axisPointer: {            // 坐标轴指示器，坐标轴触发有效
-            type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
-          },
-        },
-        title: {
-          text: this.data.title,
-          top: "5%",
-          left: this.data.position[0],
-          textStyle: {
-            color: '#fff',
-            fontSize: 16,
-          }
-        },
-        legend: {
-          tooltip: {
-            show: true,
-          },
-          orient: 'vertical',
-          data: this.data.data.map(item => {
-            return { name: item.name, icon: 'circle' }
-          }),
-          top: 'center',
-          itemGap: 14,
-          itemHeight: 12,
-          itemWidth: 20,
-          right: '6%',
-          textStyle: {
-            color: '#fff',
-            fontSize: 14,
-          },
-        },
+      var that =this;
+      const options = {
+        // 雷达图坐标系配置
         radar: {
-          indicator: this.data.indicator,
-          center: this.data.center,
-          radius: "74%",
-          startAngle: 90,
-          splitNumber: 4,
-          shape: 'circle',
-          axisName: {
+          name: {
             textStyle: {
-              color: '#fff',
-              fontSize: 14,
+              color: "#05D5FF",
+              fontSize: 14
             }
           },
-          axisNameGap: 3,
-          splitArea: {
-            areaStyle: {
-              color: ['#3be5cc', '#1c6877',
-                '#0d5d85', '#094362',],
-            }
-          },
+          shape: 'polygon',
+          center: ['50%', '50%'],
+          radius: '80%',
+          startAngle: 120,
+          // 轴线
           axisLine: {
             lineStyle: {
-              color: '#fff'
-            }
-          }
-        },
-        series: {
-          name: '雷达图',
-          type: 'radar',
-          emphasis: {
-            // color: 各异,
-            lineStyle: {
-              width: 4
+              color: 'rgba(2,213,255,.8)'
             }
           },
-          data: seriesData
+          // 网格线
+          splitLine: {
+            show: true,
+            lineStyle: {
+              with: 1,
+              color: 'rgba(5,213,255,.8)'
+            }
+          },
+          // 指示器名称
+          indicator: that.resData.map(item => ({
+            name: item.name
+          })),
+          splitArea: {
+            show: false
+          }
+        },
+        // 位置、极点
+        polar: {
+          center: ['50%', '50%'],
+          radius: '0%'
+        },
+        // 坐标角度
+        angleAxis: {
+          min: 0,
+          interval: 5,
+          clockwise: false,//刻度逆时针
+        },
+        // 径向轴
+        radiusAxis: {
+          min: 0,
+          interval: 20,
+          splitLine: {
+            show: true
+          }
+        },
+        // 图表核心配置
+        series: {
+          type: 'radar',
+          symbol: 'circle',
+          symbolSize: 10,
+          itemStyle: {
+            normal: {
+              color: '#05D5FF'
+            }
+          },
+          areaStyle: {
+            normal: {
+              color: '#05D5FF',
+              opacity: 0.5
+            }
+          },
+          lineStyle: {
+            with: 2,
+            color: '#05D5FF'
+          },
+          label: {
+            normal: {
+              show: true,
+              color: '#05D5FF',
+            }
+          },
+          data: [
+            {
+              value: that.resData.map(item => item.value)
+            }
+          ]
         }
-      };
-      if (this.id == 'bottom_1_2') {
-        option.legend.left = '5%';
       }
-      if (!this.myChart) this.myChart = this.$echarts.init(this.$el);
+      if (!this.myChart) this.myChart = this.$echarts.init(this.$el, null, { devicePixelRatio: 3 });
 
-      this.myChart.clear();
-      this.myChart.resize(
-        {
-          width: this.$el.offsetWidth,
-          height: this.$el.offsetHeight
-        }
-      )
-      this.myChart.setOption(option);
+
+      this.myChart.setOption(options);
     }
   },
   mounted() {

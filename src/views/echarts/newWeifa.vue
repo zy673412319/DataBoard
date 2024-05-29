@@ -3,42 +3,55 @@
 </template>
  
 <script>
-import * as echarts from 'echarts'
-import 'echarts-gl'
-import { onMounted, toRefs, ref, reactive } from 'vue'
 export default {
+  name: '',
+  props: ['liangweiParData'],
   data() {
     return {
       myChart: null,
       charts: '',
       timer: '',
-      optionsData: [
+      optionsData: []
+    }
+  },
+  watch: {
+    liangweiParData(newValue, oldValue) {
+      var cropsNum = 0;
+      var woodlandNum = 0;
+      for(var i = 0; i<newValue.length; i++){
+        if(newValue[i].name == 'crops'){
+          cropsNum = newValue[i].count;
+        }
+        if(newValue[i].name == 'woodland'){
+          woodlandNum = newValue[i].count;
+        }
+      }
+      this.optionsData = [
         {
-          name: '违法占地',
-          value: 4256,
+          name: '耕地',
+          value: cropsNum,
           itemStyle: {
             color: '#4fdeec',
           },
         },
-
         {
-          name: '违法建筑',
-          value: 2356,
+          name: '林地',
+          value: woodlandNum,
           itemStyle: {
             color: '#56c4ff',
           },
         },
-      ]
-    }
+      ];
+      this.echartInit();
+    },
   },
   mounted() {
     this.echartInit()
-    // this.updataChart();
   },
   
   methods: {
     echartInit() {
-      if (!this.myChart) this.myChart = this.$echarts.init(this.$el);
+      if (!this.myChart) this.myChart = this.$echarts.init(this.$el, null, {devicePixelRatio: 3});
       var that = this;
       const series = that.getPie3D(this.optionsData, 0.8, 240, 28, 26, 0.5);
       series.push({
@@ -102,7 +115,7 @@ export default {
             show: true,
           },
           orient: 'vertical',
-          data: ['违法占地', '违法建筑'],
+          data: ['耕地', '林地'],
           top: 'center',
           itemGap: 8,
           itemHeight: 8,
@@ -120,25 +133,6 @@ export default {
           right: 20,
         },
         animation: true,
-        tooltip: {
-          formatter: (params) => {
-            if (
-              params.seriesName !== 'mouseoutSeries' &&
-              params.seriesName !== 'pie2d'
-            ) {
-              return `${
-                params.seriesName
-                }<br/><span style="display:inline-block;margin-right:5px;border-radius:10px;width:10px;height:10px;background-color:${
-                params.color
-                };"></span>${
-                option.series[params.seriesIndex].pieData.value + '人'
-                }`
-            }
-          },
-          textStyle: {
-            fontSize: 14,
-          },
-        },
         title: {
           x: 'center',
           top: '20',
@@ -200,6 +194,8 @@ export default {
             beta: 60,
             // autoRotate: true, // 自动旋转
             autoRotateSpeed: 36, // 转速  物体自转的速度。单位为角度 / 秒，默认为10 ，也就是36秒转一圈。
+            rotateSensitivity: 0, // 禁止旋转
+            zoomSensitivity: 0, // 禁止缩放
           },
         },
         series: series,
@@ -364,31 +360,6 @@ export default {
       max = Math.floor(max); // 确保max是整数
       return Math.floor(Math.random() * (max - min + 1)) + min; // 返回介于min和max之间的整数
     },
-    updataChart() {
-      var that = this;
-      // 每次执行前清楚定时器
-      this.timer && clearInterval(this.timer)
-      this.timer = setInterval(() => {
-        that.optionsData = [
-          {
-            name: '违法占地',
-            value: that.generateRandomNumber(2000, 3000),
-            itemStyle: {
-              color: '#4fdeec',
-            },
-          },
-
-          {
-            name: '违法建筑',
-            value: that.generateRandomNumber(2000, 5000),
-            itemStyle: {
-              color: '#56c4ff',
-            },
-          },
-        ]
-        that.echartInit()
-      }, 5000)
-    }
   }
 }
 </script>

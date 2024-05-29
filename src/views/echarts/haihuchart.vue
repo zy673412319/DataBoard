@@ -129,7 +129,7 @@ export default {
           data: this.setTrenchData('d')
         }]
       };
-      if (!this.myChart) this.myChart = this.$echarts.init(this.$el);
+      if (!this.myChart) this.myChart = this.$echarts.init(this.$el, null, {devicePixelRatio: 3});
 
       this.myChart.clear();
       // this.myChart.resize();

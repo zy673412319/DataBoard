@@ -20,7 +20,7 @@
 
     methods: {
       init(id) {
-        if (!this.myChart) this.myChart = this.$echarts.init(this.$el);
+        if (!this.myChart) this.myChart = this.$echarts.init(this.$el, null, {devicePixelRatio: 3});
 
         this.angle = 0;//角度，用来做简单的动画效果的
         this.value = 55.33;

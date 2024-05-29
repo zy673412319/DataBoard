@@ -5,29 +5,31 @@
 <script>
 export default {
   name: 'redPocket',
+  props: ['hehuSiLDetailData'],
   data() {
     return {
-      myChart: null
+      myChart: null,
+      huddleList: [],
+      occupyList: [],
+      exploitList: [],
+      constructList: [],
     }
   },
+  watch: {
+    hehuSiLDetailData(newValue, oldValue) {
+      this.huddleList = newValue['乱堆'];
+      this.occupyList = newValue['乱占'];
+      this.exploitList = newValue['乱采'];
+      this.constructList = newValue['乱建'];
+      this.setPocket();
+    },
+  },
+  mounted() {
+    this.setPocket();
+  },
   methods: {
-    // 红包装账
     setPocket() {
-      const fillStr = (val) => (`${val}`.length < 2 ? `0${val}` : val);
-      const data = [
-        ['2024-04-01', 4],
-        ['2024-04-05', 4],
-        ['2024-04-10', 4],
-        ['2024-04-15', 4],
-        ['2024-04-20', 4],
-        ['2024-04-25', 4],
-        ['2024-04-30', 4]
-      ].map(function (item) {
-        const date = new Date(item[0]);
-        const h = date.getHours();
-        const m = date.getMinutes();
-        return [item[0], h * 60 + m, item[1]];
-      });
+      var that = this;
       let option = {
         tooltip: {
           trigger: 'axis',
@@ -51,7 +53,6 @@ export default {
           },
           orient: 'vertical',
           // 乱堆   乱占  乱采  乱建
-          // data: ['乱堆', '乱占', '乱采', '乱建'],
           top: 'center',
           itemGap: 14,
           itemHeight: 8,
@@ -125,15 +126,7 @@ export default {
             itemStyle: {
               color: '#2A71FF'
             },
-            data: [
-              ['2024-04-01', 58],
-              ['2024-04-06', 150],
-              ['2024-04-11', 36],
-              ['2024-04-15', 398],
-              ['2024-04-22', 56],
-              ['2024-04-26', 189],
-              ['2024-04-29', 69],
-            ],
+            data: that.occupyList,
           },
           {
             name: '乱堆',
@@ -141,15 +134,7 @@ export default {
             itemStyle: {
               color: '#FE7C2F'
             },
-            data: [
-              ['2024-04-03', 75],
-              ['2024-04-07', 96],
-              ['2024-04-13', 86],
-              ['2024-04-15', 150],
-              ['2024-04-24', 146],
-              ['2024-04-26', 97],
-              ['2024-04-30', 140]
-            ],
+            data: that.huddleList,
           },
           {
             name: '乱采',
@@ -157,17 +142,7 @@ export default {
             itemStyle: {
               color: '#00EDFE'
             },
-            data: [
-              ['2024-04-01', 260],
-              ['2024-04-06', 174],
-              ['2024-04-11', 156],
-              ['2024-04-15', 69],
-              ['2024-04-22', 120],
-              ['2024-04-24', 157],
-              ['2024-04-26', 98],
-              ['2024-04-29', 100],
-              ['2024-04-30', 78],
-            ],
+            data: that.exploitList,
           },
           {
             name: '乱建',
@@ -175,29 +150,17 @@ export default {
             itemStyle: {
               color: '#FEDB4B'
             },
-            data: [
-              ['2024-04-02', 75],
-              ['2024-04-06', 96],
-              ['2024-04-09', 86],
-              ['2024-04-12', 150],
-              ['2024-04-16', 146],
-              ['2024-04-19', 257],
-              ['2024-04-23', 56],
-              ['2024-04-26', 97],
-              ['2024-04-30', 140]
-            ],
+            data: that.constructList,
           },
         ]
       };
-      if (!this.myChart) this.myChart = this.$echarts.init(this.$el);
+      if (!this.myChart) this.myChart = this.$echarts.init(this.$el, null, {devicePixelRatio: 3});
 
-      this.myChart.clear();
+      // this.myChart.clear();
       // this.myChart.resize();
       this.myChart.setOption(option);
     },
-  }, mounted() {
-    this.setPocket();
-  },
+  }, 
 }
 </script>
 

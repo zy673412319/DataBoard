@@ -1,0 +1,513 @@
+.affairAllPage {
+  height: 100%;
+  width: 100%;
+  background: #011246 url("../affairImg/bg.png") center center no-repeat;
+  background-size: auto 100% !important;
+  margin: 0 auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.affairHeaderBg {
+  background: url("../affairImg/header.png") center top no-repeat;
+  background-size: 100% 100% !important;
+  align-content: center !important;
+  align-items: center !important;
+  padding-bottom: 24px;
+}
+.affairHeaderBg img {
+  width: 11%;
+}
+.affairConetntDiv {
+  padding: 0 80px 30px 80px;
+  width: 100%;
+  height: 100%;
+}
+.affairDragg1, .affairDragg3 {
+  width: 32%;
+  height:100%;
+  overflow: hidden;
+}
+.affairDragg2 {
+  width: 34%;
+  height:100%;
+  overflow: hidden;
+}
+.affairConterItem {
+  width: 100%;
+  height: 100%;
+}
+.affBotCOn {
+  height: calc(100% - 70px);
+  margin-top: 10px;
+}
+.affairConHead {
+  width: 100%;
+  height: 50px;
+  font-family: PingFangSC, PingFang SC;
+  font-weight: 600;
+  font-size: 35px;
+  color: #FFFFFF;
+  padding-top: 2px;
+}
+.affairConHead img {
+  width: 44px;
+  /* max-height: 44px; */
+  margin-right: 8px;
+}
+.affairConLeft,
+.affairConRight {
+  align-content: space-between;
+  justify-content: space-between;
+}
+/* 中心概况 */
+.zxgk {
+  width: 49.4%;
+  height: 38%; 
+  background: url("../affairImg/zxgkbg.png") center center no-repeat;
+  background-size: 100% 100% !important;
+}
+/* 企业动态 */
+.qydt {
+  width: 49.4%;
+  height: 38%; 
+  background: url("../affairImg/qydtBg.png") center center no-repeat;
+  background-size: 100% 100% !important;
+}
+/* 入驻事项 */
+.rzsx {
+  width: 100%;
+  height: 30%; 
+  background: url("../affairImg/rzsxBg.png") center center no-repeat;
+  background-size: 100% 100% !important;
+}
+/* 规章制度 */
+.gzzd {
+  width: 100%;
+  height: 30%; 
+  background: url("../affairImg/gzzdBg.png") center center no-repeat;
+  background-size: 100% 100% !important;
+}
+/* 教育服务 */
+.jyfw {
+  width: 100%;
+  height: 38%; 
+  background: url("../affairImg/jyfwBg.png") center center no-repeat;
+  background-size: 100% 100% !important;
+}
+/* 就业服务 jiuyefw */
+.jiuyefw {
+  width: 49.4%;
+  height: 32%; 
+  background: url("../affairImg/jiuyefwBg.png") center center no-repeat;
+  background-size: 100% 100% !important;
+}
+/* 住房服务 */
+.zfFw {
+  width: 49.4%;
+  height: 32%; 
+  background: url("../affairImg/zfFwBg.png") center center no-repeat;
+  background-size: 100% 100% !important;
+}
+/* 交通服务 */
+.jtFw {
+  width: 100%;
+  height: 28%; 
+  background: url("../affairImg/jtFwBg.png") center center no-repeat;
+  background-size: 100% 100% !important;
+}
+
+.affairConCenter {
+  background: url("../affairImg/centerBg.png") center 96% no-repeat;
+  background-size: 48% auto !important;
+  padding: 0 100px;
+  position: relative;
+  justify-content: center;
+  align-items: flex-start;
+  align-content: flex-start;
+}
+.affairConCenter::after,
+.affairConCenter::before {
+  content: '';
+  width: 140px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+}
+.affairConCenter::after {
+  left: 100px;
+  background: url("../affairImg/centerLeft.png") center center no-repeat;
+  background-size: 100% auto !important;
+}
+.affairConCenter::before {
+  right: 100px;
+  background: url("../affairImg/centerRight.png") center center no-repeat;
+  background-size: 100% auto !important;
+}
+
+.centerNumOne {
+  width: 100%;
+}
+.numTitle {
+  font-family: PingFangSC, PingFang SC;
+  font-weight: 600;
+  font-size: 42px;
+  color: #FFFFFF;
+  padding-bottom: 14px;
+  text-align: center;
+  margin-bottom: 10px;
+  margin-top: 56px;
+}
+.numTitle01 {
+  text-align: center;
+  background: url("../affairImg/numTitleBg.png") center bottom no-repeat;
+  background-size: 280px auto !important;
+
+}
+.numTitle02 {
+  text-align: left !important;
+  background: url("../affairImg/numTitleBg.png") left bottom no-repeat;
+  background-size: 280px auto !important;
+  padding-left: 40px;
+}
+.numTitle03{
+  text-align: right !important;
+  background: url("../affairImg/numTitleBg.png") right bottom no-repeat;
+  background-size: 280px auto !important;
+  padding-right: 40px;
+}
+.numCOn {
+  width: 100%;
+  height: 92px;
+  justify-content: center;
+}
+.numCOn > div {
+  width: 78px;
+  height: 92px;
+  text-align: center;
+  line-height: 92px;
+  font-family: zcoolqingkehuangyouti, zcoolqingkehuangyouti;
+  font-weight: 400;
+  font-size: 74px;
+  color: #FFFFFF;
+  background: url("../affairImg/numBg.png") center bottom no-repeat;
+  background-size: 100% auto !important;
+  margin-right: 6px;
+}
+.centerNumTwo {
+  width: 80%;
+  height: auto;
+  margin-top: 8%;
+  justify-content: space-between;
+}
+.centerNumTwo > div {
+  width: 40%;
+}
+.juCenterLeft {
+  justify-content: flex-start;
+}
+.juCenterRight {
+  justify-content: flex-end;
+}
+
+/* 中心概况 */
+.zxgkNumCon {
+  width: 46%;
+  padding: 20px 0 20px 30px;
+  background: url("../affairImg/bkBg.png") center center no-repeat;
+  background-size: 100% 100% !important;
+}
+.zxgkNumCon img {
+  width: 141px;
+  margin-right: 20px;
+}
+.zxgkNumCon p {
+  margin: 0;
+}
+.zgNumCls {
+  font-family: DINAlternate, DINAlternate;
+  font-weight: bold;
+  font-size: 48px;
+  color: #C0FEFF;
+}
+.zgTextCls {
+  font-family: PingFangSC, PingFang SC;
+  font-weight: 400;
+  font-size: 25px;
+  color: #FFFFFF;
+}
+
+/* 入驻事项 */
+.rzPointCls {
+  font-size: 14px;
+}
+.rzPointCls .header {
+  height: 38px;
+  font-family: MicrosoftYaHei;
+  font-size: 16px;
+  color: #FFFFFF !important;
+  background-image: none !important;
+  background-color: transparent !important;
+  position: relative;
+}
+.rzPointCls .header::after {
+  content: '';
+  width: 100%;
+  height: 1px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-image: rgba(151,249,255,0.3);
+}
+.rzPointCls .header-item {
+  text-align: center;
+  font-size: 16px !important;
+  font-family: MicrosoftYaHei;
+  color: #FFFFFF;
+  
+}
+.rzPointCls .row-item div {
+  text-align: center !important;
+  font-size: 14px !important;
+  color: #97F9FF !important;
+}
+/* 企业动态 */
+.qydtCon {
+  margin-top: 46px;
+}
+.qydtCon .qydtConItem {
+  width: 30%;
+  text-align: center;
+}
+.qydtCon .qydtConItem p {
+  text-align: center;
+  width: 100%;
+  font-family: PingFangSC, PingFang SC;
+  font-weight: 400;
+  font-size: 25px;
+  color: #FFFFFF;
+  margin: 8px 0;
+}
+.qydtCon .dzBarOne p,
+.qydtCon .dzBarTwo p,
+.qydtCon .dzBarThree p{
+  font-family: PingFangSC, PingFang SC;
+  font-weight: 400;
+  font-size: 20px !important;
+  color: #FFFFFF;
+  margin: 0 0 6px 0;
+}
+.dzBarOne,
+.dzBarTwo,
+.dzBarThree{
+  width: 46px;
+  height: 204px;
+  margin: 0 auto;
+  align-items: flex-end;
+  align-content: flex-end;
+  padding: 0 1px;
+  position: relative;
+}
+.dzBarOne::after,
+.dzBarTwo::after,
+.dzBarThree::after {
+  content: '';
+  position: absolute;
+  width: 92%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border: 0.5px solid;
+}
+.dzBarOne::after{
+  border-image: linear-gradient(360deg, rgba(138, 189, 250, 0), rgba(138, 189, 250, 1), rgba(138, 189, 250, 0)) 1 1;
+}
+.dzBarTwo::after{
+  border-image: linear-gradient(360deg, rgba(250, 217, 138, 0), rgba(250, 217, 138, 1), rgba(250, 217, 138, 0)) 1 1;
+}
+.dzBarThree::after {
+  border-image: linear-gradient(360deg, rgba(151, 249, 255, 0), rgba(151, 249, 255, 1), rgba(151, 249, 255, 0)) 1 1;
+}
+.dzBarOneCon {
+  position: relative;
+  width: 44px;
+  height: 40%;
+}
+.dzBarOneCon::after,
+.dzBarOneCon::before {
+  content: '';
+  position: absolute;
+  width: 44px;
+  height: 12px;
+  border-radius: 50%;
+}
+.dzBarOneCon::after {
+  top: -6px;
+}
+.dzBarOneCon::before {
+  bottom: -6px;
+}
+.dzBarOne {
+  background: linear-gradient( 90deg, rgba(37,110,187,0) 0%, #256EBB 75%, rgba(37,110,187,0) 100%);
+}
+.dzBarOne .dzBarOneCon{
+  background: rgba(138, 189, 250, 0.5);
+}
+.dzBarOne .dzBarOneCon::after,
+.dzBarOne .dzBarOneCon::before{
+  background: rgba(138, 189, 250, 1);
+}
+.dzBarTwo {
+  background: linear-gradient( 90deg, rgba(187,138,37,0) 0%, rgba(187,138,37,0.6) 75%, rgba(187,138,37,0) 100%);
+}
+.dzBarTwo .dzBarOneCon{
+  background: rgba(250, 217, 138, 0.5);
+}
+.dzBarTwo .dzBarOneCon::after,
+.dzBarTwo .dzBarOneCon::before{
+  background: rgba(250, 217, 138, 1);
+}
+.dzBarThree {
+  background: linear-gradient( 90deg, rgba(151,249,255,0) 0%, rgba(151,249,255,0.53) 75%, rgba(151,249,255,0) 100%);
+}
+.dzBarThree .dzBarOneCon{
+  background: rgba(151, 249, 255, 0.5);
+}
+.dzBarThree .dzBarOneCon::after,
+.dzBarThree .dzBarOneCon::before{
+  background: rgba(151, 249, 255, 1);
+}
+
+/* 人口数量 */
+.gzzdCon {
+  padding: 24px 54px;
+}
+.rkslCon {
+  width: 40%;
+  height: 220px;
+}
+.rkslCon p,
+.rfwrcCon p {
+  margin: 10px 0;
+}
+.rkslEchart,
+.rfwrcEchart {
+  width: 100%;
+  height: 180px;
+  margin-bottom: 20px;
+  background: url('../affairImg/fwrcBg.png') center center no-repeat;
+  background-size: 100% 100% !important;
+  padding: 2px 12px 12px;
+}
+.rfwrcCon {
+  /* background: transparent; */
+  width: 58%;
+  height: 220px;
+}
+/* 中心概况 */
+.zxgkEchart {
+  background: url('../affairImg/jyPerBg.png') center 95% no-repeat;
+  background-size: 54% auto !important;
+}
+
+/* 教育服务 */
+.zxxNumCon {
+  width: 20%;
+  height: 320px;
+}
+.zxxNumEchart {
+  width: 100%;
+  height: 264px;
+  background: url('../affairImg/jyPerBg.png') center 69% no-repeat;
+  background-size: 54% auto !important;
+}
+.jyfwRiDataCon {
+  width: 78%;
+  height: 320px;
+}
+.jyfwRiDataEchart {
+  width: 100%;
+  height: 264px;
+  background: url('../affairImg/fwrcBg.png') center center no-repeat;
+  background-size: 100% 100% !important;
+  padding: 2px 12px 12px;
+}
+
+.imgTextThree {
+  padding: 0 30px;
+  margin-top: 5%;
+}
+.imgTextThree > div {
+  width: 33%;
+}
+.imgTextThree img {
+  width: 112px;
+  margin: 4px auto;
+  display: block;
+  animation:  scalI infinite 3s both ease-in;
+}
+@keyframes scalI {
+  0%, 100%{
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+.imgTextThree .textCls2,
+.imgTextThree .textCls {
+  font-family: PingFangSC, PingFang SC;
+  font-weight: 400;
+  font-size: 25px;
+  color: #FFFFFF;
+  width: 100%;
+  text-align: center;
+}
+.imgTextThree .textCls {
+  margin: -16px 0 2px 0;
+}
+.imgTextThree .textCls2 {
+  margin: 6px 0 2px 0;
+}
+.imgTextThree .numCls {
+  font-family: DINAlternate, DINAlternate;
+  font-weight: bold;
+  font-size: 36px;
+  color: #C0FEFF;
+  width: 100%;
+  margin: 0;
+  text-align: center;
+}
+.imgwid93 {
+  width: 94px !important;
+}
+
+/* 交通服务 */
+/* 办证 */
+.modelConBtn {
+  width: 100%;
+  height: calc(100% - 54px);
+}
+.banzCon {
+  width: 12%;
+  height: 200px;
+}
+.banzCon img {
+  width: 170px;
+}
+.banZtext .zgNumCls,
+.banZtext .zgTextCls {
+  margin: 4px 0;
+}
+.jiaotongZC {
+  width: 30%;
+}
+.jiaotonRf {
+  width: 55%;
+}
+.jiaotongZCEchart,.jiaotonRfEchart {
+  width: 100%;
+  height: 170px;
+  background: url('../affairImg/fwrcBg.png') center center no-repeat;
+  background-size: 100% 100% !important;
+  padding: 2px 12px 12px;
+}

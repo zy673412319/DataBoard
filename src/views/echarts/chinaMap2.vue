@@ -67,7 +67,7 @@ export default {
   methods: {
     // 地图
     getCityMap() {
-      this.cityChart = this.$echarts.init(this.$refs.cityMap);
+      this.cityChart = this.$echarts.init(this.$refs.cityMap, null, {devicePixelRatio: 3});
       this.$echarts.registerMap("zigong", this.geoJson);
 
       let option = {
@@ -80,8 +80,13 @@ export default {
           map: "zigong", //注册地图的名字
           regionHeight: 6, //修改整个地图的三维高度
           roam: false, //开启鼠标缩放和平移漫游。默认不开启
+          // 禁用缩放
+          zoom: false,
+          // 禁用旋转
+          rotateEnable: false,
           //鼠标放入高亮时地图板块的样式
           emphasis: {
+            color: 'transparent',
             label: {
               show: false //是否显示
             }
@@ -94,6 +99,10 @@ export default {
             borderWidth: 4,
             // borderColor: "#fff",
             borderColor: 'transparent',
+            emphasis: {
+              areaColor: 'transparent', // 鼠标悬浮时区域颜色
+              color: 'transparent' // 鼠标悬浮时区域颜色
+            }
           },
           //地图单个板块标签样式
           label: {
@@ -104,7 +113,7 @@ export default {
             },
           },
           //光照阴影
-          shading: "lambert",
+          // shading: "lambert",
           realisticMaterial: {
             detailTexture: 'https://cdn.polyhaven.com/asset_img/primary/painted_concrete.png?height=780', // 纹理贴图
             textureTiling: 1, // 纹理平铺，1是拉伸，数字表示纹理平铺次数
@@ -129,9 +138,9 @@ export default {
             autoRotateSpeed: 5, // 地图自动旋转的速度
             autoRotateAfterStill: 3, // 鼠标离开后多少秒自动开启旋转
             damping: 0, // 鼠标进行旋转，缩放等操作时延迟时间
-            rotateSensitivity: 10, // 旋转操作的灵敏度
-            zoomSensitivity: 10, // 缩放操作的灵敏度
-            panSensitivity: 10, // 平移操作的灵敏度
+            rotateSensitivity: 0, // 旋转操作的灵敏度
+            zoomSensitivity: 0, // 缩放操作的灵敏度  禁止
+            panSensitivity: 0, // 平移操作的灵敏度
             panMouseButton: "left", // 平移操作使用的鼠标按键
             rotateMouseButton: "right", // 旋转操作使用的鼠标按键
             distance:140, // 默认视角距离主体的距离
@@ -151,77 +160,76 @@ export default {
           silent: false,
         },
         // 3d柱状图实现
-        visualMap: {
-          // max: 20,
-          inRange: {
-            color: ['#97ccf6', '#61b6f9','#3271b0', '#2f519b', '#245ce9'
-            ]
-          }
-        },
+        // visualMap: {
+        //   // max: 20,
+        //   inRange: {
+        //     color: ['#97ccf6', '#61b6f9','#3271b0', '#2f519b', '#245ce9' ]
+        //   }
+        // },
         series: [
-          {
-            type: 'scatter3D',
-            coordinateSystem: 'geo3D',
-            symbol: require('../../assets/images/huo.png'),
-            data: [
-              {name: '凤凰城街道', value: [124.07432, 40.46582, 100], symbolSize: 14},
-              {name: '石城镇', value: [124.320498, 40.646548, 92], symbolSize: 10},
-              {name: '爱阳镇', value: [124.456199, 40.90916, 24], symbolSize: 5},
-              {name: '弟兄山镇', value: [124.090107, 40.804709, 39], symbolSize: 7},
-              {name: '鸡冠山镇', value: [123.9325, 40.530225, 56], symbolSize: 9},
-              {name: '刘家河镇', value: [124.054142, 40.624711, 120], symbolSize: 15},
-              {name: '四门子镇', value: [123.81998, 40.741332, 45], symbolSize: 8},
-              {name: '大兴镇', value: [124.267571,40.741548, 178], symbolSize: 18},
-              {name: '沙里寨镇', value: [123.672949,40.17495, 28], symbolSize: 6},
-            ],
-            symbolSize: 10,
-            rippleEffect: {
-              period: 3,
-              scale: 10, // 波纹的最大缩放比例
-              brushType: "fill", // 波纹的绘制方式 stroke
-            },
-            // hoverAnimation: true,
-            label: {
-              //图形上的文本标签
-              show: true,
-              formatter: "{b}",
-              position: "right",
-              fontWeight: 500,
-              fontSize: 10,
-            },
-            //默认样式
-            itemStyle: {
-              shadowBlur: 10,
-              shadowColor: "#333",
-              color: function(params) {
-                return {
-                  type: 'linear',
-                  // x=0,y=1,柱子的颜色在垂直方向渐变
-                  x: 0,
-                  y: 1,
-                  colorStops: [
-                    {
-                    offset: 0,
-                    color: "3ff0000",
-                  },
-                  {
-                    offset: 1,
-                    color: '#00ff00'
-                  },
-                  ],
-                }
-              }
-            },
-            animationDelay: function(idx) {
-              return idx * 5;
-            },
-            label: {
-              formatter: '{b}',
-              position: 'right',
-              color: '#fff',
-              show: false
-            },
-          },
+          // {
+          //   type: 'scatter3D',
+          //   coordinateSystem: 'geo3D',
+          //   symbol: require('../../assets/images/huo.png'),
+          //   data: [
+          //     {name: '凤凰城街道', value: [124.07432, 40.46582, 100], symbolSize: 14},
+          //     {name: '石城镇', value: [124.320498, 40.646548, 92], symbolSize: 10},
+          //     {name: '爱阳镇', value: [124.456199, 40.90916, 24], symbolSize: 5},
+          //     {name: '弟兄山镇', value: [124.090107, 40.804709, 39], symbolSize: 7},
+          //     {name: '鸡冠山镇', value: [123.9325, 40.530225, 56], symbolSize: 9},
+          //     {name: '刘家河镇', value: [124.054142, 40.624711, 120], symbolSize: 15},
+          //     {name: '四门子镇', value: [123.81998, 40.741332, 45], symbolSize: 8},
+          //     {name: '大兴镇', value: [124.267571,40.741548, 178], symbolSize: 18},
+          //     {name: '沙里寨镇', value: [123.672949,40.17495, 28], symbolSize: 6},
+          //   ],
+          //   symbolSize: 10,
+          //   rippleEffect: {
+          //     period: 3,
+          //     scale: 10, // 波纹的最大缩放比例
+          //     brushType: "fill", // 波纹的绘制方式 stroke
+          //   },
+          //   // hoverAnimation: true,
+          //   label: {
+          //     //图形上的文本标签
+          //     show: true,
+          //     formatter: "{b}",
+          //     position: "right",
+          //     fontWeight: 500,
+          //     fontSize: 10,
+          //   },
+          //   //默认样式
+          //   itemStyle: {
+          //     shadowBlur: 10,
+          //     shadowColor: "#333",
+          //     color: function(params) {
+          //       return {
+          //         type: 'linear',
+          //         // x=0,y=1,柱子的颜色在垂直方向渐变
+          //         x: 0,
+          //         y: 1,
+          //         colorStops: [
+          //           {
+          //           offset: 0,
+          //           color: "3ff0000",
+          //         },
+          //         {
+          //           offset: 1,
+          //           color: '#00ff00'
+          //         },
+          //         ],
+          //       }
+          //     }
+          //   },
+          //   animationDelay: function(idx) {
+          //     return idx * 5;
+          //   },
+          //   label: {
+          //     formatter: '{b}',
+          //     position: 'right',
+          //     color: '#fff',
+          //     show: false
+          //   },
+          // },
           // {
           //   name: 'bar3D',
           //   type: 'bar3D',

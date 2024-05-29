@@ -6,6 +6,7 @@ import iView from 'iview';
 import * as echarts from 'echarts';
 import utils from "./lib/utils";
 import "@/assets/css/style.css"
+import "@/assets/css/affairStyle.css"
 
 // datav 组件
 import dataV from '@jiaminghi/data-view'

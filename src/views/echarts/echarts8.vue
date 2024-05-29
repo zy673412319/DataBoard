@@ -11,20 +11,33 @@
 
 <script>
 export default {
-  props: {
-    title: String,
-    data: Array,
-  },
+  props: ['siluanDataSend'],
   name: '',
   data() {
     return {
-      myChart: null
+      myChart: null,
+      siluanData: [],
+      // [
+      //   { value: 65, name: '乱堆', },
+      //   { value: 48, name: '乱占' },
+      //   { value: 98, name: '乱采' },
+      //   { value: 32, name: '乱建' }
+      // ]
     }
   },
+  watch: {
+    siluanDataSend(newValue, oldValue) {
+      this.siluanData = newValue;
+      this.setChart();
+    },
+  },
+  mounted() {
+    this.setChart();
+  },
   methods: {
-
     // 渠道分析
     setChart() {
+      var that = this;
       var centerImg = "https://easyv.assets.dtstack.com/data/assets/ye0x8u2o6e_1630499352687_3ubg4uvuje.png";
       let option = {
         tooltip: {
@@ -167,26 +180,18 @@ export default {
               }
             },
             color: ['#00F0FF', '#00FFD8', '#00FF78', '#0083FE', '#00BFFF'],// 色块填充颜色
-            data: [
-              { value: 65, name: '乱堆', },
-              { value: 48, name: '乱占' },
-              { value: 98, name: '乱采' },
-              { value: 32, name: '乱建' }
-            ],
+            data: that.siluanData,
           }
         ]
       }
 
-      if (!this.myChart) this.myChart = this.$echarts.init(this.$el);
+      if (!this.myChart) this.myChart = this.$echarts.init(this.$el, null, {devicePixelRatio: 3});
 
-      this.myChart.clear();
+      // this.myChart.clear();
       // this.myChart.resize();
       this.myChart.setOption(option);
     },
 
-  },
-  mounted() {
-    this.setChart();
   },
 }
 </script>

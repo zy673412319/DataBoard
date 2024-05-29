@@ -4,19 +4,34 @@
 <script>
 import echarts from 'echarts'
 export default {
-
+  props: ['lkfdDateList', 'lkfdCountList'],
   data() {
     return {
       myChart: null,
       charts: '',
-      barVal: [235, 274, 156, 500, 450, 125],
+      barVal: [],
+      dateList: [],
       lineVal: [368, 125, 254, 178, 369, 398]
     }
   },
-
+  watch: {
+    lkfdDateList(newValue, oldValue) {
+      // this.myChart.clear();
+      this.dateList = this.lkfdDateList;
+      this.lineVal = this.lkfdCountList;
+      this.init();
+    },
+    lkfdCountList(newValue, oldValue) {
+      // this.myChart.clear();
+      this.dateList = this.lkfdDateList;
+      this.lineVal = this.lkfdCountList;
+      this.init();
+    },
+  },
   mounted() {
+    this.dateList = this.lkfdDateList;
+    this.lineVal = this.lkfdCountList;
     this.init()
-    this.uodateData()
   },
 
   methods: {
@@ -32,18 +47,8 @@ export default {
       return randomArray;
     },
 
-    uodateData(){
-      var that = this;
-      this.timer && clearInterval(this.timer)
-      this.timer = setInterval(() => {
-        this.barVal = this.generateRandomArray();
-        this.lineVal = this.generateRandomArray();
-        this.init();
-      }, 3000);
-    },
-
     init() {
-      if (!this.myChart) this.myChart = this.$echarts.init(this.$el);
+      if (!this.myChart) this.myChart = this.$echarts.init(this.$el, null, {devicePixelRatio: 3});
       var that = this;
       let option = {
         title: {
@@ -93,7 +98,7 @@ export default {
             //     return value.split("").join("\n");  
             // },
           },
-          data: ['2023-11', '2023-12', '2024-1', '2024-2', '2024-3', '2024-4',]
+          data: that.dateList
         },
         yAxis: {
           type: 'value',
@@ -129,7 +134,7 @@ export default {
         },
         series: [
           {
-            name: '偷盗',
+            name: '乱坎盗伐',
             type: "line", // 设置图表类型为柱状
             data: that.lineVal,
             smooth: true,
@@ -137,11 +142,6 @@ export default {
             lineStyle: {
               color: '#ffe000',
             },
-            // 
-            // itemStyle: {
-            //   color: '#ffe000'
-            // },
-
             symbol: "circle",
             symbolSize: 10,
             smooth: true,
@@ -182,43 +182,41 @@ export default {
               },
             },
           },
-          {
-            name: '砍伐',
-            type: "bar", // 设置图表类型为柱状
-            data: that.barVal,
-            barWidth: "12",
-            itemStyle: {
-              normal: {
-                barBorderRadius: [8, 8, 0, 0],
-              },
-            },
-            color: {
-              type: 'linear',
-              // x=0,y=1,柱子的颜色在垂直方向渐变
-              x: 0,
-              y: 1,
-              colorStops: [
-                {
-                  offset: 0, //offset表示位置【0,1】范围，0表示起始位置，1表示结束位置
-                  color: 'rgba(11,42,84,.3)' // 起始位置设置此颜色，终止位置设置下面的颜色
-                },
-                {
-                  offset: 0.5, //offset表示位置【0,1】范围，0表示起始位置，1表示结束位置
-                  color: 'rgba(0, 108, 237,.6)' // 起始位置设置此颜色，终止位置设置下面的颜色
-                },
-                {
-                  offset: 1,
-                  color: '#00cfff'
-                }
-              ],
-              // global: false // 缺省为 false
-            }
-          }
+          // {
+          //   name: '乱坎盗伐',
+          //   type: "bar", // 设置图表类型为柱状
+          //   data: that.barVal,
+          //   barWidth: "12",
+          //   itemStyle: {
+          //     normal: {
+          //       barBorderRadius: [8, 8, 0, 0],
+          //     },
+          //   },
+          //   color: {
+          //     type: 'linear',
+          //     // x=0,y=1,柱子的颜色在垂直方向渐变
+          //     x: 0,
+          //     y: 1,
+          //     colorStops: [
+          //       {
+          //         offset: 0, //offset表示位置【0,1】范围，0表示起始位置，1表示结束位置
+          //         color: 'rgba(11,42,84,.3)' // 起始位置设置此颜色，终止位置设置下面的颜色
+          //       },
+          //       {
+          //         offset: 0.5, //offset表示位置【0,1】范围，0表示起始位置，1表示结束位置
+          //         color: 'rgba(0, 108, 237,.6)' // 起始位置设置此颜色，终止位置设置下面的颜色
+          //       },
+          //       {
+          //         offset: 1,
+          //         color: '#00cfff'
+          //       }
+          //     ],
+          //   }
+          // }
         ]
       };
 
       // 使用刚指定的配置项和数据显示图表。
-      // this.myChart.clear();
       // this.myChart.resize()
       this.myChart.setOption(option);
     }

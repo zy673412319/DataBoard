@@ -53,7 +53,7 @@ export default {
       }
       let echarts = require('echarts/lib/echarts')
       const name = '西安市'
-      if (!this.myChart) this.myChart = this.$echarts.init(this.$el);
+      if (!this.myChart) this.myChart = this.$echarts.init(this.$el, null, {devicePixelRatio: 3});
       this.myChart.registerMap(name, this.mapData)
       let mapOption = {
         tooltip: {

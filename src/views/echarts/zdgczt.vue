@@ -169,6 +169,8 @@ export default {
             beta: 60,
             // autoRotate: true, // 自动旋转
             autoRotateSpeed: 36, // 转速  物体自转的速度。单位为角度 / 秒，默认为10 ，也就是36秒转一圈。
+            rotateSensitivity: 0, // 禁止旋转
+            zoomSensitivity: 0, // 禁止缩放
           },
         },
         series: series,

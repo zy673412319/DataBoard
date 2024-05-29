@@ -9,43 +9,41 @@ export default {
     return {
       myChart: null,
       charts: '',
-      barVal: [],
-      lineVal: []
+      lwBarDateList: [],
+      lwBarJianzhuList: [],
+      lwBarZhandiList: [],
     }
   },
-
+  props: ['liangweiBarData'],
+  watch: {
+    liangweiBarData(newValue, oldValue) {
+      var lwBarDateList = [];
+      var lwBarJianzhuList = [];
+      var lwBarZhandiList = [];
+      for(var key in newValue){
+        lwBarDateList.push(key);
+        for(var i =0; i<newValue[key].length; i++){
+          if(newValue[key][i].type == '违法建筑'){
+            lwBarJianzhuList.push(newValue[key][i].count);
+          }
+          if(newValue[key][i].type == '违法占地'){
+            lwBarZhandiList.push(newValue[key][i].count);
+          }
+        }
+      }
+      this.lwBarDateList = lwBarDateList;
+      this.lwBarJianzhuList = lwBarJianzhuList;
+      this.lwBarZhandiList = lwBarZhandiList;
+      this.echartInit();
+    },
+  },
   mounted() {
-    this.barVal = this.generateRandomArray();
-    this.lineVal = this.generateRandomArray();
-    this.init()
-    this.uodateData()
+    this.echartInit()
   },
 
   methods: {
-    generateRandomNumber() {
-      var min = 100,max = 401;
-      min = Math.ceil(min); // 确保min是整数
-      max = Math.floor(max); // 确保max是整数
-      return Math.floor(Math.random() * (max - min + 1)) + min; // 返回介于min和max之间的整数
-    },
-    generateRandomArray() {
-      // 生成一个5位的随机数组
-      var randomArray = Array.from({ length: 21 }, () => this.generateRandomNumber());
-      return randomArray;
-    },
-
-    uodateData(){
-      var that = this;
-      this.timer && clearInterval(this.timer)
-      this.timer = setInterval(() => {
-        this.barVal = this.generateRandomArray();
-        this.lineVal = this.generateRandomArray();
-        this.init();
-      }, 3000);
-    },
-
-    init() {
-      if (!this.myChart) this.myChart = this.$echarts.init(this.$el);
+    echartInit() {
+      if (!this.myChart) this.myChart = this.$echarts.init(this.$el, null, {devicePixelRatio: 3});
       var that = this;
       let option = {
         tooltip: {
@@ -105,9 +103,7 @@ export default {
             },
           },
           // data: ['2023-11', '2023-12', '2024-1', '2024-2', '2024-3', '2024-4',]
-          data: ['凤凰城街道','凤山街道','草河街道', '宝山镇', '白旗镇','沙里寨镇','蓝旗镇',
-          '大堡蒙古族乡','石城镇','大兴镇','赛马镇','通远堡镇','四门子镇','青城子镇',
-          '弟兄山镇', '刘家河镇', '鸡冠山镇', '边门镇', '爱阳镇', '红旗镇', '东汤镇'],
+          data: that.lwBarDateList,
         },
         yAxis: {
           // 3个街道分别为：凤凰城街道、凤山街道、草河街道；18个乡镇分别为：宝山镇、白旗镇、沙里寨镇、红旗镇、蓝旗镇、边门镇、
@@ -152,7 +148,7 @@ export default {
             name: '违法建筑',
             type: "bar", // 设置图表类型为柱状
             stack: '总量',
-            data: that.lineVal,
+            data: that.lwBarJianzhuList,
             itemStyle: {
               // color: '#00EDFE',
             },
@@ -188,7 +184,7 @@ export default {
             name: '违法占地',
             type: "bar", // 设置图表类型为柱状
             stack: '总量',
-            data: that.barVal,
+            data: that.lwBarZhandiList,
             itemStyle: {
               // color: '#2A71FF',
             },
