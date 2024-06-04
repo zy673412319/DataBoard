@@ -11,24 +11,35 @@
 <script>
 export default {
   name: '',
-  props: {
-    data: Object
-  },
+  props: ['lajipiData'],
   data() {
     return {
-      myChart: null
+      myChart: null,
+      // 传入数据生成 option
+      optionsData: []
+    }
+  },
+  watch: {
+    lajipiData(newValue, oldValue) {
+      var data = [];
+      if(newValue && newValue.length > 0){
+        for(var key in newValue){
+          newValue[key].itemStyle = {};
+        }
+        this.optionsData = newValue;
+        this.initChartR2();
+      }
+    },
+  },
+  mounted() {
+    if(this.optionsData.length > 0){
+      this.initChartR2();
     }
   },
   methods: {
     initChartR2() {
-      function getParametricEquation(
-        startRatio,
-        endRatio,
-        isSelected,
-        isHovered,
-        k,
-        height
-      ) {
+      var that = this;
+      function getParametricEquation(startRatio,endRatio,isSelected,isHovered, k, height ) {
         // 计算
         const midRatio = (startRatio + endRatio) / 2
 
@@ -121,6 +132,7 @@ export default {
             : 1 / 3
 
         // 为每一个饼图数据，生成一个 series-surface 配置
+        var colorList = ['#2A71FF', '#00EDFE', '#FEDB4B', '#FE7C2F', '#fc8251', '#5470c6', '#9A60B4', '#ef6567', '#f9c956'];
         for (let i = 0; i < pieData.length; i++) {
           sumValue += pieData[i].value
 
@@ -130,6 +142,22 @@ export default {
                 ? `series${i}`
                 : pieData[i].name,
             type: 'surface',
+            label: {
+              opacity: 1,
+              position: 'outside',
+              fontSize: 12,
+              fontFamily: 'MyFont',
+              lineHeight: 20,
+              textStyle: {
+                fontSize: 12,
+                color: '#fff',
+                fontFamily: 'MyFont',
+              }
+            },
+            labelLine: {
+              length: 30,
+              length2: 30
+            },
             parametric: true,
             wireframe: {
               show: false
@@ -142,19 +170,9 @@ export default {
             },
             center: ["10%", "50%"],
           }
-
-          if (typeof pieData[i].itemStyle !== 'undefined') {
             const itemStyle = {}
-
-            typeof pieData[i].itemStyle.color !== 'undefined'
-              ? (itemStyle.color = pieData[i].itemStyle.color)
-              : null
-            typeof pieData[i].itemStyle.opacity !== 'undefined'
-              ? (itemStyle.opacity = pieData[i].itemStyle.opacity)
-              : null
-
-            seriesItem.itemStyle = itemStyle
-          }
+          itemStyle.color = colorList[i];
+            seriesItem.itemStyle = itemStyle;
           series.push(seriesItem)
         }
 
@@ -172,49 +190,15 @@ export default {
             k,
             2000
           )
-
           startValue = endValue
 
           legendData.push(series[i].name)
         }
         return series
       }
-      // 传入数据生成 option
-      const optionsData = [
-        {
-          name: '建筑垃圾',
-          value: 26,
-          itemStyle: {
-            color: '#2A71FF',
-          },
-        },
-
-        {
-          name: '生活垃圾',
-          value: 32,
-          itemStyle: {
-            //   opacity: 0.5,
-            color: '#00EDFE',
-          },
-        },
-        {
-          name: '其他',
-          value: 28,
-          itemStyle: {
-            //   opacity: 0.5,
-            color: '#FEDB4B',
-          },
-        },
-        {
-          name: '工业垃圾',
-          value: 24,
-          itemStyle: {
-            //   opacity: 0.5,
-            color: '#FE7C2F',
-          },
-        },
-      ]
-      const series = getPie3D(optionsData.map(item => {
+      const series = getPie3D(that.optionsData.map(item => {
+        item.name = item.garbageName;
+        item.value = item.count;
         if (item.value < 5) {
           item.value = 5
         }
@@ -227,10 +211,12 @@ export default {
           opacity: 1,
           position: 'outside',
           fontSize: 12,
+          fontFamily: 'MyFont',
           lineHeight: 20,
           textStyle: {
             fontSize: 12,
-            color: '#fff'
+            color: '#fff',
+            fontFamily: 'MyFont',
           }
         },
         labelLine: {
@@ -242,8 +228,13 @@ export default {
         clockwise: false, // 饼图的扇区是否是顺时针排布。上述这两项配置主要是为了对齐3d的样式
         radius: ['0', '35%'],
         center: ['50%', '50%'],
-        data: optionsData.map(item => {
-          item.itemStyle.opacity = 0
+        itemStyle: {
+          normal: {
+            // color: 'rgba(0, 0, 0, 0)' // 设置透明色
+          }
+        },
+        data: that.optionsData.map(item => {
+          item.itemStyle.opacity = 0;
           return item
         })
       })
@@ -263,7 +254,8 @@ export default {
           itemHeight: 12,
           textStyle: {
             color: '#fff',
-            fontSize: 12
+            fontSize: 12,
+            fontFamily: 'MyFont',
           }
         },
         animation: true,
@@ -283,7 +275,8 @@ export default {
             }
           },
           textStyle: {
-            fontSize: 14
+            fontSize: 14,
+            fontFamily: 'MyFont',
           }
         },
         title: {
@@ -291,7 +284,8 @@ export default {
           top: '20',
           textStyle: {
             color: '#fff',
-            fontSize: 22
+            fontSize: 22,
+            fontFamily: 'MyFont',
           }
         },
         // backgroundColor: '#0E3567',
@@ -307,10 +301,12 @@ export default {
           // 线
           opacity: 1,
           fontSize: 12,
+          fontFamily: 'MyFont',
           lineHeight: 20,
           textStyle: {
             fontSize: 12,
             color: '#fff',
+            fontFamily: 'MyFont',
           },
           formatter: (item) => {
             return '{top|' + item.percent + '%}' + '\n' + '{bottom| ' + item.name + '} '
@@ -320,6 +316,7 @@ export default {
               verticalAlign: 'bottom',
               align: 'center',
               fontSize: 12,
+              fontFamily: 'MyFont',
               color: 'inherit',
               padding: [0, 0, 3, 0]
             },
@@ -334,6 +331,7 @@ export default {
               verticalAlign: 'top',
               align: 'center',
               fontSize: 12,
+              fontFamily: 'MyFont',
               color: '#ffffff',
             }
           }
@@ -377,9 +375,6 @@ export default {
       this.myChart.setOption(option);
     },
 
-  },
-  mounted() {
-    this.initChartR2();
   },
 }
 </script>

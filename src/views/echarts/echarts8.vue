@@ -58,7 +58,8 @@ export default {
           itemHeight: 16,
           textStyle: {
             color: '#fff',
-            fontSize: 12
+            fontSize: 12,
+            fontFamily: 'MyFont',
           }
         },
         //中心图片配置(关键代码)
@@ -132,6 +133,7 @@ export default {
               label: {
                 show: true,
                 fontSize: '40',
+                fontFamily: 'MyFont',
                 fontWeight: 'bold'
               }
             },
@@ -152,6 +154,7 @@ export default {
               textStyle: {
                 color: '#fff',
                 fontSize: '14px',
+                fontFamily: 'MyFont',
               },
               formatter: (item) => {
                 return '{top|' + item.percent + '%}' + '\n' + '{bottom| ' + item.name + '} '
@@ -161,6 +164,7 @@ export default {
                   verticalAlign: 'bottom',
                   align: 'center',
                   fontSize: 12,
+                  fontFamily: 'MyFont',
                   color: 'inherit',
                   padding: [0, 0, 3, 0]
                 },
@@ -175,6 +179,7 @@ export default {
                   verticalAlign: 'top',
                   align: 'center',
                   fontSize: 12,
+                  fontFamily: 'MyFont',
                   color: '#ffffff',
                 }
               }

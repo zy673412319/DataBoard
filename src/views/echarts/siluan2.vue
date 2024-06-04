@@ -35,7 +35,7 @@ export default {
       let option = {
         grid: {
           top: "40",
-          bottom: "30",
+          bottom: "36",
           left: 56,
           right: 30,
         },
@@ -49,7 +49,8 @@ export default {
           itemHeight: 7,
           textStyle: {
             color: '#9bc3d4',
-            fontSize: 14
+            fontSize: 14,
+            fontFamily: 'MyFont',
           }
         },
         calculable: true,
@@ -67,6 +68,7 @@ export default {
               color: '#9bc3d4',   // x轴文本颜色
               showMaxLabel: false,
               fontSize: 12,
+              fontFamily: 'MyFont',
               interval: 0,// 设置这个强制显示所有标签文字
               rotate: '25',// 旋转度数
               //                 formatter:function(value){  
@@ -94,7 +96,8 @@ export default {
             axisLabel: {
               color: '#9bc3d4',    // y轴文本颜色
               showMaxLabel: false,
-              fontSize: 14
+              fontSize: 14,
+              fontFamily: 'MyFont',
             },
             splitLine: {
               show: false,
@@ -102,6 +105,7 @@ export default {
             nameTextStyle: {
               color: '#61B9C8',
               fontSize: 14,
+              fontFamily: 'MyFont',
               align: 'right',
               padding: [0, 6, 0, 0]
             }
@@ -125,6 +129,7 @@ export default {
               normal: {
                 color: '#61B9C8',
                 fontSize: 14,
+                fontFamily: 'MyFont',
                 show: true,
                 "position": "top"
               }

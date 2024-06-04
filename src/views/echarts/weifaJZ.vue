@@ -119,7 +119,8 @@ export default {
           itemHeight: 7,
           textStyle: {
             color: '#9bc3d4',
-            fontSize: 10
+            fontSize: 10,
+            fontFamily: 'MyFont',
           }
         },
         //调整图表距边框的距离
@@ -141,6 +142,7 @@ export default {
               showMaxLabel: false,
               color: "#9bc3d4",
               fontSize: 10,
+              fontFamily: 'MyFont',
               interval: 0,
               rotate: '-45',// 旋转度数
             },
@@ -166,7 +168,8 @@ export default {
             },
             color: '#9bc3d4',    // y轴文本颜色
             showMaxLabel: false,
-            fontSize: 10
+            fontSize: 10,
+            fontFamily: 'MyFont',
           },
           axisLabel: {
             show: false,
@@ -185,6 +188,7 @@ export default {
           nameTextStyle: {
             color: '#61B9C8',
             fontSize: 9,
+            fontFamily: 'MyFont',
             align: 'right',
             padding: [0, 6, 0, 0]
           }
@@ -270,6 +274,7 @@ export default {
                   textStyle: {
                     fontWeight: 400,
                     fontSize: "13",
+                    fontFamily: 'MyFont',
                     color: "#F2F7FA",
                     lineHeight: 20,
                   },

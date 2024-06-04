@@ -75,6 +75,7 @@ export default {
               verticalAlign: 'bottom',
               align: 'center',
               fontSize: 14,
+              fontFamily: 'MyFont',
               color: 'inherit',
               padding: [0, 0, 3, 0]
             },
@@ -124,6 +125,7 @@ export default {
           textStyle: {
             color: '#fff',
             fontSize: 14,
+            fontFamily: 'MyFont',
           },
         },
         grid: {
@@ -139,6 +141,7 @@ export default {
           textStyle: {
             color: '#fff',
             fontSize: 22,
+            fontFamily: 'MyFont',
           },
         },
         // backgroundColor: '#0E3567',
@@ -162,6 +165,7 @@ export default {
           textStyle: {
             color: '#fff',
             fontSize: '14px',
+            fontFamily: 'MyFont',
           },
         },
         xAxis3D: {

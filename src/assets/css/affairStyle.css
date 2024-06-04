@@ -1,3 +1,9 @@
+@font-face {
+  font-family: 'MyFont';
+  src: url('../fonts/AlimamaShuHeiTi-Bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 .affairAllPage {
   height: 100%;
   width: 100%;
@@ -12,10 +18,10 @@
   background-size: 100% 100% !important;
   align-content: center !important;
   align-items: center !important;
-  padding-bottom: 24px;
+  padding-bottom: 28px;
 }
 .affairHeaderBg img {
-  width: 11%;
+  width: 14%;
 }
 .affairConetntDiv {
   padding: 0 80px 30px 80px;
@@ -43,7 +49,7 @@
 .affairConHead {
   width: 100%;
   height: 50px;
-  font-family: PingFangSC, PingFang SC;
+  font-family: MyFont, PingFangSC, PingFang SC;
   font-weight: 600;
   font-size: 35px;
   color: #FFFFFF;
@@ -148,7 +154,7 @@
   width: 100%;
 }
 .numTitle {
-  font-family: PingFangSC, PingFang SC;
+  font-family: MyFont, PingFangSC, PingFang SC;
   font-weight: 600;
   font-size: 42px;
   color: #FFFFFF;
@@ -185,7 +191,7 @@
   height: 92px;
   text-align: center;
   line-height: 92px;
-  font-family: zcoolqingkehuangyouti, zcoolqingkehuangyouti;
+  font-family: MyFont;
   font-weight: 400;
   font-size: 74px;
   color: #FFFFFF;
@@ -224,13 +230,13 @@
   margin: 0;
 }
 .zgNumCls {
-  font-family: DINAlternate, DINAlternate;
+  font-family: MyFont;
   font-weight: bold;
   font-size: 48px;
   color: #C0FEFF;
 }
 .zgTextCls {
-  font-family: PingFangSC, PingFang SC;
+  font-family: MyFont;
   font-weight: 400;
   font-size: 25px;
   color: #FFFFFF;
@@ -242,7 +248,7 @@
 }
 .rzPointCls .header {
   height: 38px;
-  font-family: MicrosoftYaHei;
+  font-family: MyFont;
   font-size: 16px;
   color: #FFFFFF !important;
   background-image: none !important;
@@ -261,7 +267,7 @@
 .rzPointCls .header-item {
   text-align: center;
   font-size: 16px !important;
-  font-family: MicrosoftYaHei;
+  font-family: MyFont;
   color: #FFFFFF;
   
 }
@@ -281,7 +287,7 @@
 .qydtCon .qydtConItem p {
   text-align: center;
   width: 100%;
-  font-family: PingFangSC, PingFang SC;
+  font-family: MyFont;
   font-weight: 400;
   font-size: 25px;
   color: #FFFFFF;
@@ -290,7 +296,7 @@
 .qydtCon .dzBarOne p,
 .qydtCon .dzBarTwo p,
 .qydtCon .dzBarThree p{
-  font-family: PingFangSC, PingFang SC;
+  font-family: MyFont;
   font-weight: 400;
   font-size: 20px !important;
   color: #FFFFFF;
@@ -455,7 +461,7 @@
 }
 .imgTextThree .textCls2,
 .imgTextThree .textCls {
-  font-family: PingFangSC, PingFang SC;
+  font-family: MyFont;
   font-weight: 400;
   font-size: 25px;
   color: #FFFFFF;
@@ -469,7 +475,7 @@
   margin: 6px 0 2px 0;
 }
 .imgTextThree .numCls {
-  font-family: DINAlternate, DINAlternate;
+  font-family: MyFont;
   font-weight: bold;
   font-size: 36px;
   color: #C0FEFF;

@@ -115,6 +115,7 @@
             textStyle: {
               color: '#fff',
               fontSize: 12,
+              fontFamily: 'MyFont',
               fontWeight: '400'
             }
           },
@@ -158,7 +159,8 @@
             itemHeight: 7,
             textStyle: {
               color: '#9bc3d4',
-              fontSize: 10
+              fontSize: 10,
+              fontFamily: 'MyFont',
             }
           },
           toolbox: {

@@ -59,6 +59,7 @@ export default {
               color: '#fff',   // x轴文本颜色
               showMaxLabel: false,
               fontSize: 14,
+              fontFamily: 'MyFont',
               interval: 1,// 设置这个强制显示所有标签文字  中间间隔几个 显示X轴坐标内容
               // rotate: '25',// 旋转度数
               // formatter:function(value){  
@@ -89,6 +90,7 @@ export default {
               show: true,
               color: '#fff',   // x轴文本颜色
               fontSize: 14,
+              fontFamily: 'MyFont',
               formatter: '{value}',
               color: '#c8e1f7',
             },

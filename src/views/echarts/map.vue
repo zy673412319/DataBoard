@@ -92,6 +92,7 @@ export default {
               show: false,
               color: "#ffffff",
               fontSize: 12,
+              fontFamily: 'MyFont',
               fontWeight: "normal",
               fontStyle: "normal"
             },
@@ -107,6 +108,7 @@ export default {
                 show: false,
                 color: "#ffffff",
                 fontSize: 12,
+                fontFamily: 'MyFont',
                 fontWeight: "normal",
                 fontStyle: "normal"
               },

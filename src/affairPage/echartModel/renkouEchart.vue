@@ -51,7 +51,8 @@ export default {
           itemHeight: 8,
           textStyle: {
             color: '#ffffff',
-            fontSize: 14
+            fontSize: 14,
+            fontFamily: 'MyFont',
           }
         },
         calculable: true,
@@ -69,6 +70,7 @@ export default {
               color: '#9bc3d4',   // x轴文本颜色
               showMaxLabel: false,
               fontSize: 12,
+              fontFamily: 'MyFont',
               interval: 0,// 设置这个强制显示所有标签文字
               // rotate: '25',// 旋转度数
               //                 formatter:function(value){  
@@ -95,7 +97,8 @@ export default {
               show: false,
               color: '#9bc3d4',    // y轴文本颜色
               showMaxLabel: false,
-              fontSize: 14
+              fontSize: 14,
+              fontFamily: 'MyFont',
             },
             splitLine: {
               show: false,
@@ -103,6 +106,7 @@ export default {
             nameTextStyle: {
               color: '#61B9C8',
               fontSize: 14,
+              fontFamily: 'MyFont',
               align: 'right',
               padding: [0, 6, 0, 0]
             }
@@ -126,6 +130,7 @@ export default {
               normal: {
                 color: '#61B9C8',
                 fontSize: 14,
+                fontFamily: 'MyFont',
                 show: true,
                 "position": "top"
               }

@@ -50,6 +50,7 @@ export default {
             color: '#fff',   // x轴文本颜色
             showMaxLabel: false,
             fontSize: 14,
+            fontFamily: 'MyFont',
             interval: 2,// 设置这个强制显示所有标签文字  中间间隔几个 显示X轴坐标内容
             // rotate: '25',// 旋转度数
             // formatter:function(value){  
@@ -67,7 +68,8 @@ export default {
           },
           axisLabel: { // 坐标轴刻度标签相关配置
             color: '#ffffff',
-            fontSize: 14
+            fontSize: 14,
+            fontFamily: 'MyFont',
           },
           splitLine: { // 坐标轴在 grid 区域中的分隔线
             lineStyle: { // 分割线配置
@@ -83,7 +85,8 @@ export default {
               show: true, //是否显示标签
               position: 'top', // 标签的位置(可以是绝对的像素值或者百分比['50%','50%',也可以是top,left等])
               color: '#fff',
-              fontSize: 14
+              fontSize: 14,
+              fontFamily: 'MyFont',
             },
 						symbol: "diamond",//底部组件形状，不写默认为椭圆
 						symbolOffset: [0, "50%"],//与柱子的偏移角度

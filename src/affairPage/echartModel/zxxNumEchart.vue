@@ -62,9 +62,11 @@ export default {
           // 线
           opacity: 1,
           fontSize: 14,
+          fontFamily: 'MyFont',
           lineHeight: 20,
           textStyle: {
             fontSize: 14,
+            fontFamily: 'MyFont',
             color: '#fff',
           },
           formatter: (item) => {
@@ -75,6 +77,7 @@ export default {
               verticalAlign: 'bottom',
               align: 'center',
               fontSize: 14,
+              fontFamily: 'MyFont',
               color: 'inherit',
               padding: [0, 0, 3, 0]
             },
@@ -89,6 +92,7 @@ export default {
               verticalAlign: 'top',
               align: 'center',
               fontSize: 14,
+              fontFamily: 'MyFont',
               color: '#ffffff',
             }
           }
@@ -124,6 +128,7 @@ export default {
           textStyle: {
             color: '#fff',
             fontSize: 14,
+            fontFamily: 'MyFont',
           },
         },
         grid: {
@@ -139,6 +144,7 @@ export default {
           textStyle: {
             color: '#fff',
             fontSize: 22,
+            fontFamily: 'MyFont',
           },
         },
         // backgroundColor: '#0E3567',
@@ -162,6 +168,7 @@ export default {
           textStyle: {
             color: '#fff',
             fontSize: '14px',
+            fontFamily: 'MyFont',
           },
         },
         tooltip: {

@@ -43,7 +43,7 @@
                               </div>
                             </div>
                           </div>
-                          <div class="" style="width:68%;" v-if="showgdList">
+                          <div class="" style="width:68%;">
                             <dv-scroll-board :config="firePointconfig" style="width:100%;height:190px" class="firePointCls" ref="scrollBoard"/>
                           </div>
                         </div>
@@ -106,33 +106,33 @@
                             </div>
                             <div>
                               <p class="textCenter">监测设备总数</p>
-                              <p class="textCenter title24 colorBlue">26</p>
+                              <p class="textCenter title24 colorBlue">{{wormGrassFacility.total}}</p>
                             </div>
                             <div>
                               <p>运行设备</p>
-                              <p class="textCenter title24 colorBlue">23</p>
+                              <p class="textCenter title24 colorBlue">{{wormGrassFacility.runTotal}}</p>
                             </div>
                             <div>
                               <p>监测到设备</p>
-                              <p class="textCenter title24 colorBlue" style="color:#f3cd6c">6</p>
+                              <p class="textCenter title24 colorBlue" style="color:#f3cd6c">{{wormGrassFacility.detectTotal}}</p>
                             </div>
                           </div>
                           <div style="width:100%;">
                             <div class="flexDiv text12 youhaiList" style="color:#9bc3d4;">
-                              <p style="width: 25%" class="flexDiv juCenter"><img src="../assets/images/shengwu.png" style="width:22px;">有害生物</p>
-                              <p style="width: 24%" class="flexDiv juCenter"><img src="../assets/images/diqu.png" style="width:18px;">责任区</p>
-                              <p style="width: 24%" class="flexDiv juCenter"><img src="../assets/images/time.png" style="width:18px;">发现时间</p>
-                              <p style="width: 25%" class="flexDiv juCenter"><img src="../assets/images/diqu.png" style="width:18px;">位置</p>
+                              <p style="width: 13%;line-height:1;" class="flexDiv juCenter"><img src="../assets/images/shengwu.png" style="width:22px;">种类</p>
+                              <p style="width: 13%;line-height:1;" class="flexDiv juCenter"><img src="../assets/images/shengwu.png" style="width:22px;">虫态</p>
+                              <p style="width: 18%;line-height:1;" class="flexDiv juCenter"><img src="../assets/images/diqu.png" style="width:18px;">责任区</p>
+                              <p style="width: 18%;line-height:1;" class="flexDiv juCenter"><img src="../assets/images/time.png" style="width:18px;">发现时间</p>
+                              <p style="width: 38%;line-height:1;" class="flexDiv juCenter"><img src="../assets/images/diqu.png" style="width:18px;">位置</p>
                             </div>
                             <div style="width:100%;height:136px;overflow: hidden;">
-                              <vue-seamless-scroll :data="regionConfig.data" class="seamless-warp new-listCon" :class-option="classOption">
-                                <div class="flexDiv text12 youhaiList" v-for="(rd,index) in regionConfig.data" :key="index" style="padding:4px 0;color:#9bc3d4;">
-                                  <p style="width:25%" class="textCenter">{{rd.name}}</p>
-                                  <p style="width: 24%" class="textCenter">{{rd.value}}</p>
-                                  <p style="width: 24%" class="textCenter">{{rd.value}}</p>
-                                  <p style="width: 25%" class="textCenter">
-                                    <img src="../assets/images/diqu.png" style="width:20px;">
-                                  </p>
+                              <vue-seamless-scroll :data="wormGrassList" class="seamless-warp new-listCon" :class-option="classOption">
+                                <div class="flexDiv text12 youhaiList" v-for="(rd,index) in wormGrassList" :key="index" style="padding:4px 0;color:#9bc3d4;">
+                                  <p style="width: 13%" class="textCenter">{{rd.pestName}}</p>
+                                  <p style="width: 13%" class="textCenter">{{rd.wormState}}</p>
+                                  <p style="width: 18%" class="textCenter">{{rd.district}}</p>
+                                  <p style="width: 18%" class="textCenter">{{rd.findTime}}</p>
+                                  <p style="width: 38%" class="textCenter">{{rd.location}}</p>
                                 </div>
                               </vue-seamless-scroll>
                             </div>
@@ -357,7 +357,7 @@
                             <dv-decoration-3 style="width:80px;height:16px;" />
                           </div>
                           <div style="width:100%;height:184px;margin:4px 0;">
-                            <pie></pie>
+                            <pie :lajipiData="lajipiData"></pie>
                             <!-- 3个街道分别为：凤凰城街道、凤山街道、草河街道；18个乡镇分别为：宝山镇、白旗镇、沙里寨镇、红旗镇、蓝旗镇、
                             边门镇、大堡蒙古族乡、东汤镇、石城镇、大兴镇、爱阳镇、赛马镇、弟兄山镇、鸡冠山镇、刘家河镇、通远堡镇、四门子镇、青城子镇。  -->
                           </div>
@@ -372,19 +372,19 @@
                             <div style="width:32%">
                               <img src="../assets/images/newImg/oneLevelImg.png" style="width:90px;margin:0 auto;display:block;">
                               <p style="color:white;text-align:center;margin:-12px 0 0;">
-                                <CountTo :startVal='200' :endVal='1200' :duration='300' class="title34"/>
+                                <CountTo :startVal='startLast3monthsData[0].tonnage' :endVal='Last3monthsData[0].tonnage' :duration='300' class="title34"/>
                               </p>
                             </div>
                             <div style="width:32%">
                               <img src="../assets/images/newImg/twoLevelImg.png" style="width:90px;margin:0 auto;display:block;">
                               <p style="color:white;text-align:center;margin:-12px 0 0;">
-                                <CountTo :startVal='200' :endVal='1026' :duration='300' class="title34"/>
+                                <CountTo :startVal='startLast3monthsData[1].tonnage' :endVal='Last3monthsData[1].tonnage' :duration='300' class="title34"/>
                               </p>
                             </div>
                             <div style="width:32%">
                               <img src="../assets/images/newImg/threeLevelImg.png" style="width:90px;margin:0 auto;display:block;">
                               <p style="color:white;text-align:center;margin:-12px 0 0;">
-                                <CountTo :startVal='200' :endVal='1523' :duration='300' class="title34"/>
+                                <CountTo :startVal='startLast3monthsData[2].tonnage' :endVal='Last3monthsData[2].tonnage' :duration='300' class="title34"/>
                               </p>
                             </div>
                           </div>
@@ -411,10 +411,10 @@
                       <div class="flexDiv" style="width:100%;">
                         <div class="zdCls flexDiv title28" style="">
                           重大工程总数：
-                          <CountTo :startVal='startVal' :endVal='endVal' :duration='duration' style="font-size:44px;color:#f3cd6c" />
+                          <CountTo :startVal='startGcNum' :endVal='endGcNum' :duration='2000' style="font-size:44px;color:#f3cd6c" />
                         </div>
                         <div class="three-levelCon widAll" style="margin-top: 14px;height: 162px">
-                          <siluan ref="siluan" id="bottom_3"></siluan>
+                          <siluan ref="siluan" id="bottom_3" :gcLineData="gcLineData"></siluan>
                         </div>
                         <div class="three-levelCon widAll" style="margin-top: 14px;">
                           <div class="three-levelTitle flexDiv" style="">
@@ -605,8 +605,6 @@ export default {
       itemDra3: [1,2],
       itemDra4: [1,2],
       resizeFn: null,
-      startVal: 0,
-      endVal: 1200,
       duration: 3000,
       
       // <!--  乱砍盗伐监管图斑   lkfdCountList  -->
@@ -656,12 +654,33 @@ export default {
       weikaungKuNum: 0,
       quanshiKuNum: 0,
       yinhuanKuNum: 0,
-      // // 矿山治理  尾矿库数量    {"data":{"values":[6,16,15,17],"key":["拟闭库","停产","在建","生产"]}}}
-      weikaungData: [],
-
+      // // 矿山治理  尾矿库数量
+      weikaungData:  {
+        values:[],
+        key:[]
+      },
+      // 重大工程数量
+      startGcNum: 0,
+      endGcNum: 0,
+      gcLineData: [],
+      // 垃圾统计信息
+      lajipiData: [],
+      // 近三月处理数量
+      startLast3monthsData: [
+        {tonnage: 0},
+        {tonnage: 0},
+        {tonnage: 0},
+      ],
+      Last3monthsData: [
+        {tonnage: 0},
+        {tonnage: 0},
+        {tonnage: 0},
+      ],
+      // 虫草信息
+      startwormGrassFacility: {detectTotal: 0, runTotal: 0, total: 0},
+      wormGrassFacility: {detectTotal: 0, runTotal: 0, total: 0},
+      wormGrassList: [],
       // 经纬度、行政区划负责人、时间
-      gdList: [],
-      showgdList: true,
       firePointconfig: {
         // '可信度',  , '地表类型'
         header: ['经纬度', '行政区划', '火灾等级', '观测时间'],
@@ -673,43 +692,17 @@ export default {
         evenRowBGC: 'transparent',   // 偶数行背景色
         waitTime: 2000,    // 轮播时间间隔(ms)
       },
-      // 区域违章
-      regionConfig: {
-        // activeRadius	环半径（动态）	String|Number	'55%'|110	'55%'
-        // data	环数据	Array<Object>	data属性	[]
-        // activeTimeGap	切换间隔(ms)	Number	---	3000
-        // color	环颜色	Array<String>	[1]	[]
-        // digitalFlopToFixed	数字翻牌器小数位数	Number	---	0
-        // animationCurve	动效曲线	String	Transition(opens new window)	'easeOutCubic'
-        // animationFrame	动效帧数	Number	[3]	50
-        // #config注释
-        radius: 54,   // 环半径
-        lineWidth: 14,   // 环线条宽度
-        digitalFlopStyle: {   // 数字翻牌器样式
-          fontSize: 14,
-          fill: '#9bc3d4'
-        },
-        digitalFlopUnit: '',    // 数字翻牌器单位
-        showOriginValue: true,  // 显示原始值
-        data: [
-          { name: '周口', value: 55 },
-          { name: '南阳', value: 120 },
-          { name: '西峡', value: 78 },
-          { name: '驻马店', value: 66 },
-          { name: '新乡', value: 80 }
-        ]
-      },
       // 重点工程 
       MajorConfig: {
         data: [
-          { name: '学校', value: 55 },
-          { name: '机场', value: 120 },
-          { name: '地铁', value: 71 },
-          { name: '桥梁', value: 66 },
-          { name: '公路', value: 80 },
-          { name: '乡村', value: 35 },
-          { name: '游泳馆', value: 15 },
-          { name: '水库', value: 35 },
+          // { name: '学校', value: 55 },
+          // { name: '机场', value: 120 },
+          // { name: '地铁', value: 71 },
+          // { name: '桥梁', value: 66 },
+          // { name: '公路', value: 80 },
+          // { name: '乡村', value: 35 },
+          // { name: '游泳馆', value: 15 },
+          // { name: '水库', value: 35 },
         ],
         img: [
           require('../assets/images/xuexiao.png'),
@@ -727,8 +720,6 @@ export default {
         // imgSideLength	图片边长	Number	---	30
         // showValue	显示数值	Boolean	---	false
       },
-      timer: '',
-      timer1: '',
       // 矿
       kuangConfig01: {
         data: [55],
@@ -803,31 +794,6 @@ export default {
         this.webSocket.send('');
       }
     }, 5000);
-    this.timer && clearInterval(this.timer)
-    this.timer = setInterval(() => {
-      this.startVal = this.endVal;
-      this.endVal = this.endVal + this.generateRandomNumber(100, 200);
-    }, 8000)
-
-    this.timer1 && clearInterval(this.timer1)
-    this.timer1 = setInterval(() => {
-      const { MajorConfig } = this
-      this.MajorConfig.data = [
-        { name: '学校', value: that.generateRandomNumber(50, 110) },
-        { name: '机场', value: that.generateRandomNumber(80, 200) },
-        { name: '地铁', value: that.generateRandomNumber(120, 160) },
-        { name: '桥梁', value: that.generateRandomNumber(40, 100) },
-        { name: '公路', value: that.generateRandomNumber(30, 200) },
-        { name: '乡村', value: that.generateRandomNumber(50, 120) },
-        { name: '游泳馆', value: that.generateRandomNumber(60, 100) },
-        { name: '水库', value: that.generateRandomNumber(50, 120) },
-      ]
-      /**
-       * 使用ES6拓展运算符生成新的props对象
-       * 组件侦知数据变化 自动刷新状态
-       */
-      this.MajorConfig = { ...this.MajorConfig }
-    }, 3000)
   },
   methods: {
     connectWebSocket() {
@@ -938,11 +904,10 @@ export default {
               // item.push(fireListD[key].surfaceType);
               data.push(item);
             }
-            this.showgdList = false;
+            const { firePointconfig } = this;
+            console.log('dfirePointconfig.data25')
             this.firePointconfig.data = data;
-            this.$nextTick(()=>{
-              this.showgdList = true;
-            }, 500);
+            this.firePointconfig = { ...this.firePointconfig }
           }
         }
       }
@@ -995,13 +960,70 @@ export default {
           }
         }
       }
-      // 矿山治理  尾矿库数量
+      // 矿山治理  尾矿库数量     {"data":{"values":[6,16,15,17],"key":["拟闭库","停产","在建","生产"]}}}
       if(data.num == 12){
         if(data.data.code == 200){
           this.weikaungData = data.data.data;
         }
       }
-
+      // 重大工程数量   13
+      if(data.num == 13){
+        if(data.data.code == 200){
+          this.startGcNum = this.endGcNum;
+          this.endGcNum = data.data.data;
+        }
+      }
+      // 重大工项目数，投资基金   14
+      if(data.num == 14){
+        if(data.data.code == 200){
+          this.gcLineData = data.data.data.monthBooks;
+        }
+      }
+      // 重大工工程类分析   15
+      if(data.num == 15){
+        if(data.data.code == 200){
+          var dataH = [];
+          for(var i = 0; i<data.data.data.length; i++){
+            dataH.push({
+              name: data.data.data[i].itemTypeName,
+              value: data.data.data[i].typeCount,
+            })
+          }
+          const { MajorConfig } = this
+          this.MajorConfig.data = dataH
+          /**
+           * 使用ES6拓展运算符生成新的props对象
+           * 组件侦知数据变化 自动刷新状态
+           */
+          this.MajorConfig = { ...this.MajorConfig }
+        }
+      }
+      // 垃圾类型和占比
+      if(data.num == 16){
+        if(data.data.code == 200){
+          this.lajipiData= data.data.data;
+        }
+      }
+      // 近三月处理数量
+      if(data.num == 17){
+        if(data.data.code == 200){
+          this.startLast3monthsData = this.Last3monthsData;
+          this.Last3monthsData = data.data.data
+        }
+      }
+      // 虫情站统计   18
+      if(data.num == 18){
+        if(data.data.code == 200){
+          this.startwormGrassFacility = this.wormGrassFacility;
+          this.wormGrassFacility = data.data.data;
+        }
+      }
+      // 虫情站统计列表   19
+      if(data.num == 19){
+        if(data.data.code == 200){
+          this.wormGrassList = data.data.data;
+        }
+      }
     },
     reconnect(){
       setTimeout(() => {

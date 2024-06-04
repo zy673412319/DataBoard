@@ -57,6 +57,7 @@ export default {
           textStyle: {
             color: "pink", // 标题颜色
             fontSize: 14, // 默认值：18
+            fontFamily: 'MyFont',
             fontStyle: "italic", // normal:正常风格（默认值）,italic:倾斜体
             fontWeight: "bold" // normal:正常粗细（默认值）,bold/bolder:粗体,lighter:正常粗细
           },
@@ -69,7 +70,8 @@ export default {
           itemHeight: 7,
           textStyle: {
             color: '#9bc3d4',
-            fontSize: 14
+            fontSize: 14,
+            fontFamily: 'MyFont',
           }
         },
         grid: {
@@ -92,6 +94,7 @@ export default {
             color: '#9bc3d4',   // x轴文本颜色
             showMaxLabel: false,
             fontSize: 14,
+            fontFamily: 'MyFont',
             interval: 0,// 设置这个强制显示所有标签文字
             //   rotate: '-45',// 旋转度数
             //                 formatter:function(value){  
@@ -113,7 +116,8 @@ export default {
           axisLabel: {
             color: '#9bc3d4',    // y轴文本颜色
             showMaxLabel: false,
-            fontSize: 14
+            fontSize: 14,
+            fontFamily: 'MyFont',
           },
           splitLine: {
             // 'solid'，实线。 'dotted'，点型虚线。 'dashed'，线性虚线。
@@ -128,6 +132,7 @@ export default {
           nameTextStyle: {
             color: '#61B9C8',
             fontSize: 14,
+            fontFamily: 'MyFont',
             align: 'right',
             padding: [0, 6, 0, 0]
           }

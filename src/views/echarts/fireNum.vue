@@ -34,11 +34,13 @@
               rich: {
                 a: {
                   fontSize: 48,
+                  fontFamily: 'MyFont',
                   color: '#29EEF3'
                 },
 
                 c: {
                   fontSize: 20,
+                  fontFamily: 'MyFont',
                   color: '#ffffff',
                   // padding: [5,0]
                 }
@@ -67,6 +69,7 @@
             textStyle: {
               color: "white",
               fontSize: 16,
+              fontFamily: 'MyFont',
               padding: [10, 1, 10, 0]
             },
             selectedMode: false

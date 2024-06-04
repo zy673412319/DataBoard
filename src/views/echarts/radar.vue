@@ -33,6 +33,11 @@ export default {
       }
     },
   },
+  mounted() {
+    if(this.resData && this.resData.key && this.resData.key.length > 0){
+      this.setChart();
+    }
+  },
   methods: {
     setChart() {
       var that =this;
@@ -42,7 +47,8 @@ export default {
           name: {
             textStyle: {
               color: "#05D5FF",
-              fontSize: 14
+              fontSize: 14,
+              fontFamily: 'MyFont',
             }
           },
           shape: 'polygon',
@@ -128,9 +134,6 @@ export default {
 
       this.myChart.setOption(options);
     }
-  },
-  mounted() {
-    this.setChart();
   },
 }
 </script>

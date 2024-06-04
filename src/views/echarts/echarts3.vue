@@ -43,6 +43,7 @@ export default {
           left: '2%',
           textStyle: {
             color: '#fff',
+            fontFamily: 'MyFont',
             fontSize: 14
           }
         },
@@ -61,6 +62,7 @@ export default {
           textStyle: {
             color: '#fff',
             fontSize: 14,
+            fontFamily: 'MyFont',
           },
         },
         grid: {
@@ -74,13 +76,15 @@ export default {
           axisLabel: {
             color: '#0FB9CD',
             fontSize: 14,
+            fontFamily: 'MyFont',
             formatter: '{yyyy}-{MM}-{dd}'
           },
           scale: true,
           // name: '次数',
           nameTextStyle: {
             color: "#0FB9CD",
-            fontSize: 14
+            fontSize: 14,
+            fontFamily: 'MyFont',
           },
           axisLine: {
             show: false
@@ -101,12 +105,14 @@ export default {
           nameTextStyle: {
             color: "#0FB9CD",
             fontSize: 14,
+            fontFamily: 'MyFont',
             padding: [0, 65, -10, 0]
           },
           axisTick: { show: false },
           axisLabel: {
             color: '#0FB9CD',
-            fontSize: 14
+            fontSize: 14,
+            fontFamily: 'MyFont',
           },
           axisLine: {
             lineStyle: {

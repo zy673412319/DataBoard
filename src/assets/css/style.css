@@ -1,7 +1,16 @@
+@font-face {
+  font-family: 'MyFont';
+  src: url('../fonts/AlimamaShuHeiTi-Bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 * {
   box-sizing: border-box;
   text-align: left;
+  font-family: MyFont, MicrosoftYaHei, PingFangSC-Medium, PingFang SC;
 }
+
 
 [v-cloak] {
   display: none !important;
@@ -33,7 +42,7 @@ p {
 }
 #app {
   color: #2F2F2F;
-  font-family: PingFangSC-Medium, PingFang SC;
+  font-family: MyFont, PingFangSC-Medium, PingFang SC;
   padding-bottom: 0;
   height: 100%;
   width: 100%;

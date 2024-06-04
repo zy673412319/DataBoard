@@ -57,7 +57,8 @@ export default {
           left: '5%',
           textStyle: {
             color: '#fff',
-            fontSize: 12
+            fontSize: 12,
+            fontFamily: 'MyFont',
           }
         });
       }
@@ -114,6 +115,7 @@ export default {
             color: "#fff",
             offset: [0, 1],
             fontSize: 14,
+            fontFamily: 'MyFont',
             formatter: function (params) {
               return params.name
             },

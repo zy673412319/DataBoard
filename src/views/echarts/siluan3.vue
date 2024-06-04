@@ -33,6 +33,7 @@ export default {
           itemHeight: 7,
           textStyle: {
             color: '#9bc3d4',
+            fontFamily: 'MyFont',
             fontSize: 10
           }
         },
@@ -51,6 +52,7 @@ export default {
               color: '#9bc3d4',   // x轴文本颜色
               showMaxLabel: false,
               fontSize: 10,
+              fontFamily: 'MyFont',
               interval: 0,// 设置这个强制显示所有标签文字
               //   rotate: '-45',// 旋转度数
               //                 formatter:function(value){  
@@ -77,7 +79,8 @@ export default {
             axisLabel: {
               color: '#9bc3d4',    // y轴文本颜色
               showMaxLabel: false,
-              fontSize: 10
+              fontSize: 10,
+              fontFamily: 'MyFont',
             },
             splitLine: {
               show: false,
@@ -85,6 +88,7 @@ export default {
             nameTextStyle: {
               color: '#61B9C8',
               fontSize: 9,
+              fontFamily: 'MyFont',
               align: 'right',
               padding: [0, 6, 0, 0]
             }

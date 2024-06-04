@@ -117,6 +117,7 @@ export default {
           textStyle: {
             color: '#fff',
             fontSize: 12,
+            fontFamily: 'MyFont',
             fontWeight: '400'
           }
         },
@@ -172,6 +173,7 @@ export default {
           itemHeight: 7,
           textStyle: {
             color: '#9bc3d4',
+            fontFamily: 'MyFont',
             fontSize: 10
           }
         },

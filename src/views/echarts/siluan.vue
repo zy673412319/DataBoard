@@ -5,23 +5,44 @@
 <script>
 export default {
   name: '',
+  props: ['gcLineData'],
   data() {
     return {
       myChart: null,
-      data1: [],
+      data1: [],  // 个数
       data2: [],
+      dateList: [],
       timer: ''
     }
+  },
+  watch: {
+    gcLineData(newValue, oldValue) {
+      // monthBooks 【dataTime: '2024-01', itemCount: 1, itemAmount: 70000】
+      var dataTime = [];
+      var itemCount = [];
+      var itemAmount = [];
+      if(newValue.length > 0){
+        for(var i = 0; i<newValue.length; i++){
+          dataTime.push(newValue[i].dataTime);
+          itemCount.push(newValue[i].itemCount);
+          itemAmount.push(parseInt(Number(newValue[i].itemAmount) / 100));
+        }
+        this.dateList = dataTime;
+        this.data1 = itemCount;
+        this.data2 = itemAmount;
+        this.setChart();
+      }
+    },
   },
   methods: {
     setChart() {
       var that = this;
       let option = {
         grid: {
-          top: "20",
+          top: "26",
           bottom: "20",
           left: 35,
-          right: 20,
+          right: 80,
         },
         tooltip: {
           trigger: 'axis'
@@ -33,7 +54,8 @@ export default {
           itemHeight: 7,
           textStyle: {
             color: '#9bc3d4',
-            fontSize: 14
+            fontSize: 14,
+            fontFamily: 'MyFont',
           }
         },
         calculable: true,
@@ -51,22 +73,22 @@ export default {
               color: '#9bc3d4',   // x轴文本颜色
               showMaxLabel: false,
               fontSize: 14,
+              fontFamily: 'MyFont',
               interval: 0,// 设置这个强制显示所有标签文字
               //   rotate: '-45',// 旋转度数
               //                 formatter:function(value){  
               //     return value.split("").join("\n");  
               // },
             },
-            data: ['2023-10','2023-11', '2023-12', '2024-1', '2024-2', '2024-3', '2024-4','2024-5',]
+            data: that.dateList
           }
         ],
         yAxis: [
           {
+            position: 'left',
             type: 'value',
-            interval: 50,
-            // min: 0,
-            // max: 400,
-            // splitNumber: 7,
+            // interval: 50,
+            scale: true, //自适应
             axisLine: {
               symbol: ['none', 'arrow'],
               symbolSize: [6, 6],
@@ -77,7 +99,8 @@ export default {
             axisLabel: {
               color: '#9bc3d4',    // y轴文本颜色
               showMaxLabel: false,
-              fontSize: 14
+              fontSize: 14,
+              fontFamily: 'MyFont',
             },
             splitLine: {
               show: false,
@@ -85,6 +108,36 @@ export default {
             nameTextStyle: {
               color: '#61B9C8',
               fontSize: 14,
+              fontFamily: 'MyFont',
+              align: 'right',
+              padding: [0, 6, 0, 0]
+            }
+          },
+          {
+            position: 'right',
+            type: 'value',
+            interval: 200,
+            scale: true, //自适应
+            axisLine: {
+              symbol: ['none', 'arrow'],
+              symbolSize: [6, 6],
+              lineStyle: {
+                color: '#34445d'    // y轴线颜色
+              }
+            },
+            axisLabel: {
+              color: '#9bc3d4',    // y轴文本颜色
+              showMaxLabel: false,
+              fontSize: 14,
+              fontFamily: 'MyFont',
+            },
+            splitLine: {
+              show: false,
+            },
+            nameTextStyle: {
+              color: '#61B9C8',
+              fontSize: 14,
+              fontFamily: 'MyFont',
               align: 'right',
               padding: [0, 6, 0, 0]
             }
@@ -96,10 +149,12 @@ export default {
             type: 'line',
             data: that.data1,
             smooth: true,   // 弧度显示
-            showSymbol: false,   // 不显示乖点
             lineStyle: {
               color: '#2efff3',
             },
+            symbol: "circle",
+            symbolSize: 10,
+            yAxisIndex: 0,  //指定需要使用的Y轴
             itemStyle: {
               color: '#2efff3'
             },
@@ -108,7 +163,9 @@ export default {
             name: '投资基金（百W）',
             type: 'line',
             smooth: true,
-            showSymbol: false,
+            // showSymbol: false, 
+            symbol: "circle",
+            symbolSize: 10,
             data: that.data2,
             lineStyle: {
               color: '#026eed',
@@ -116,6 +173,7 @@ export default {
             itemStyle: {
               color: '#026eed'
             },
+            yAxisIndex: 1,  //指定需要使用的Y轴
             areaStyle: {
               color: {
                 type: 'linear',
@@ -153,20 +211,9 @@ export default {
       max = Math.floor(max); // 确保max是整数
       return Math.floor(Math.random() * (max - min + 1)) + min; // 返回介于min和max之间的整数
     },
-    changeData(){
-      this.data1 = this.generateRandomArray(10, 20);
-      this.data2 = this.generateRandomArray(30, 60);
-      this.setChart()
-    }
   },
   mounted() {
-    this.data1 = this.generateRandomArray(10, 20);
-    this.data2 = this.generateRandomArray(20, 60);
     this.setChart()
-    this.timer && clearInterval(this.timer)
-    this.timer = setInterval(()=>{
-      this.changeData();
-    }, 3000)
   },
 }
 </script>

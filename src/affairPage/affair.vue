@@ -1,7 +1,7 @@
 <template>
   <div class="affairAllPage">
     <div class="headerCls affairHeaderBg flexDiv" @click="closeIframeFun()">
-      <!-- <img src="../assets/affairImg/headerTitle.png"> -->
+      <img src="../assets/affairImg/headerTitle.png">
     </div>
     <div style="height: calc(100% - 160px);width:100%;">
       <div class="flexDiv affairConetntDiv juspace" style="align-items: self-start;">
@@ -269,8 +269,8 @@ export default {
     return {
       // 中心概况
       centerGaikuangData: {
-        rzbmNum: 28,
-        kbckNum: 8,
+        rzbmNum: 33,
+        kbckNum: 30,
       },
       // 企业动态
       shenpiNum: 458,

@@ -75,6 +75,7 @@ export default {
         textStyle: {
           color: '#fff', // 高亮时标签颜色变为 白色
           fontSize: 16, // 高亮时标签字体 变大
+          fontFamily: 'MyFont',
         },
         geo3D: {
           map: "zigong", //注册地图的名字
