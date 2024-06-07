@@ -197,7 +197,7 @@ export default {
         },
         grid3D: {
           show: false,
-          boxHeight: 0.8,
+          boxHeight: 1,
           bottom: '40%',
           // environment: "rgba(255,255,255,0)",
           viewControl: {

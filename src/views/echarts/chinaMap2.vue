@@ -1,55 +1,72 @@
 <template>
   <div style="width:100%;height:100%;position: relative;">
     <div class="chinaMap" ref="cityMap"></div>
-    <div class="tooplie tooplie01">
-      <p class="tooplietitle">青城子镇</p>
-      <P>近1月来未来发生火灾</P>
-      <p>所在地区存在3个违规建筑</p>
+    <div class="tooplie tooplie01" v-if="city0 && city0.length>0">
+      <div class="tooplietitle flexDiv"><img src="../../assets/images/huo2.png" style="width:30px">{{city0[city0.length - 1].tfpTime}}</div>
+      <P>{{city0[city0.length - 1].tfpPlace}}</P>
+      <p>火灾等级：<span class="threeLevel">{{city0[city0.length - 1].checkStatus}}</span></p>
     </div>
-    <div class="tooplie tooplie02">
-      <p class="tooplietitle">刘家河镇</p>
-      <P>近1月来发生<span class="orgColor">2次火灾</span></P>
-      <p>所在地区存在3个违规建筑</p>
+    <div class="tooplie tooplie02" v-if="city1 && city1.length>0">
+      <div class="tooplietitle flexDiv"><img src="../../assets/images/huo2.png" style="width:30px">{{city1[city1.length - 1].tfpTime}}</div>
+      <P>{{city1[city1.length - 1].tfpPlace}}</P>
+      <p>火灾等级：<span class="threeLevel">{{city1[city1.length - 1].checkStatus}}</span></p>
     </div>
-    <div class="tooplie tooplie03">
-      <p class="tooplietitle">沙里寨镇</p>
-      <P>近1月来发生<span class="orgColor">2次火灾</span></P>
-      <p>所在地区存在3个违规建筑</p>
-      <p>近一个月最高降雨达到120km</p>
+    <div class="tooplie tooplie03" v-if="city2 && city2.length>0">
+      <div class="tooplietitle flexDiv"><img src="../../assets/images/huo2.png" style="width:30px">{{city2[city2.length - 1].tfpTime}}</div>
+      <P>{{city2[city2.length - 1].tfpPlace}}</P>
+      <p>火灾等级：<span class="threeLevel">{{city2[city2.length - 1].checkStatus}}</span></p>
     </div>
-    <div class="tooplie tooplie04">
-      <p class="tooplietitle">鸡冠山镇</p>
-      <P>近1月来未来发生火灾</P>
-      <p>所在地区存在3个违规建筑</p>
-      <p>近一个月最高降雨达到120km</p>
+    <div class="tooplie tooplie04" v-if="city3 && city3.length>0">
+      <div class="tooplietitle flexDiv"><img src="../../assets/images/huo2.png" style="width:30px">{{city3[city3.length - 1].tfpTime}}</div>
+      <P>{{city3[city3.length - 1].tfpPlace}}</P>
+      <p>火灾等级：<span class="threeLevel">{{city3[city3.length - 1].checkStatus}}</span></p>
     </div>
-    <div class="tooplie tooplie05">
-      <p class="tooplietitle">赛马镇</p>
-      <P>近1月来未来发生火灾</P>
-      <p>所在地区存在3个违规建筑</p>
-      <p>近一个月最高降雨达到120km</p>
+    <div class="tooplie tooplie05" v-if="city4 && city4.length>0">
+      <div class="tooplietitle flexDiv"><img src="../../assets/images/huo2.png" style="width:30px">{{city4[city4.length - 1].tfpTime}}</div>
+      <P>{{city4[city4.length - 1].tfpPlace}}</P>
+      <p>火灾等级：<span class="threeLevel">{{city4[city4.length - 1].checkStatus}}</span></p>
     </div>
-    <div class="tooplie tooplie06">
-      <p class="tooplietitle">大兴镇</p>
-      <P>近1月来未来发生火灾</P>
-      <p>所在地区存在3个违规建筑</p>
-      <p>近一个月最高降雨达到120km</p>
+    <div class="tooplie tooplie06" v-if="city5 && city5.length>0">
+      <div class="tooplietitle flexDiv"><img src="../../assets/images/huo2.png" style="width:30px">{{city5[city5.length - 1].tfpTime}}</div>
+      <P>{{city5[city5.length - 1].tfpPlace}}</P>
+      <p>火灾等级：<span class="threeLevel">{{city5[city5.length - 1].checkStatus}}</span></p>
     </div>
-    <div class="tooplie tooplie07">
-      <p class="tooplietitle">东汤镇</p>
-      <P>近1月来未来发生火灾</P>
-      <p>所在地区存在3个违规建筑</p>
-      <p>近一个月最高降雨达到120km</p>
+    <div class="tooplie tooplie07" v-if="city6 && city6.length>0">
+      <div class="tooplietitle flexDiv"><img src="../../assets/images/huo2.png" style="width:30px">{{city6[city6.length - 1].tfpTime}}</div>
+      <P>{{city6[city6.length - 1].tfpPlace}}</P>
+      <p>火灾等级：<span class="threeLevel">{{city6[city6.length - 1].checkStatus}}</span></p>
     </div>
-    <div class="tooplie tooplie08">
-      <p class="tooplietitle">石城镇</p>
-      <P>近1月来未来发生火灾</P>
-      <p>所在地区存在3个违规建筑</p>
-      <p>近一个月最高降雨达到120km</p>
+    <div class="tooplie tooplie08" v-if="city7 && city7.length>0">
+      <div class="tooplietitle flexDiv"><img src="../../assets/images/huo2.png" style="width:30px">{{city7[city7.length - 1].tfpTime}}</div>
+      <P>{{city7[city7.length - 1].tfpPlace}}</P>
+      <p>火灾等级：<span class="threeLevel">{{city7[city7.length - 1].checkStatus}}</span></p>
+    </div>
+    <!-- 四门子镇 -->
+    <div class="tooplie tooplie09" v-if="city8 && city8.length>0">
+      <div class="tooplietitle flexDiv"><img src="../../assets/images/huo2.png" style="width:30px">{{city8[city8.length - 1].tfpTime}}</div>
+      <P>{{city8[city8.length - 1].tfpPlace}}</P>
+      <p>火灾等级：<span class="threeLevel">{{city8[city8.length - 1].checkStatus}}</span></p>
+    </div>
+    <!-- 红旗镇 -->
+    <div class="tooplie tooplie10" v-if="city9 && city9.length>0">
+      <div class="tooplietitle flexDiv"><img src="../../assets/images/huo2.png" style="width:30px">{{city9[city9.length - 1].tfpTime}}</div>
+      <P>{{city9[city9.length - 1].tfpPlace}}</P>
+      <p>火灾等级：<span class="threeLevel">{{city9[city9.length - 1].checkStatus}}</span></p>
+    </div>
+    <!-- 边门镇 -->
+    <div class="tooplie tooplie11" v-if="city10 && city10.length>0">
+      <div class="tooplietitle flexDiv"><img src="../../assets/images/huo2.png" style="width:30px">{{city10[city10.length - 1].tfpTime}}</div>
+      <P>{{city10[city10.length - 1].tfpPlace}}</P>
+      <p>火灾等级：<span class="threeLevel">{{city10[city10.length - 1].checkStatus}}</span></p>
+    </div>
+    <!-- 蓝旗镇 -->
+    <div class="tooplie tooplie12" v-if="city11 && city11.length>0">
+      <div class="tooplietitle flexDiv"><img src="../../assets/images/huo2.png" style="width:30px">{{city11[city11.length - 1].tfpTime}}</div>
+      <P>{{city11[city11.length - 1].tfpPlace}}</P>
+      <p>火灾等级：<span class="threeLevel">{{city11[city11.length - 1].checkStatus}}</span></p>
     </div>
   </div>
 </template>
-
 <script>
 import "@/lib/china.js"
 import echarts from 'echarts'
@@ -58,10 +75,87 @@ import 'echarts-extension-amap'
 
 export default {
   name: '',
+  props: ['mapFdData'],
   data() {
     return {
       geoJson: require('./map.json'),
-      myChart: null
+      myChart: null,
+      showCity: ['青城子镇', '刘家河镇', '沙里寨镇', '鸡冠山镇', '赛马镇', '大兴镇', '东汤镇', '石城镇', '四门子镇', '红旗镇', '边门镇', '蓝旗镇'],
+      showEd: [],
+       // 草河区、凤山街道、鸡冠山镇、刘家河镇、凤凰城街道、石城镇、赛马镇、石城镇、通远堡镇、沙里寨镇、
+      //  边门镇、蓝旗镇、爱阳镇、弟兄山镇、、爱阳镇、草河街道、四门子镇、大堡蒙古族乡、
+      city0: [],
+      city1: [],
+      city2: [],
+      city3: [],
+      city4: [],
+      city5: [],
+      city6: [],
+      city7: [],
+      city8: [],
+      city9: [],
+      city10: [],
+      city11: [],
+      city12: [],
+      city13: [],
+      city14: [],
+    }
+  },
+  watch: {
+    mapFdData(newValue, oldValue) {
+      if(newValue && newValue.length > 0){
+        for(var key in newValue) {
+          var str = newValue[key].tfpAdministrativeName.split('/');
+          // 青城子镇
+          if(str[1] == this.showCity[0]){
+            this.city0.push(newValue[key]);
+          }
+          // 刘家河镇
+          if(str[1] == this.showCity[1]){
+            this.city1.push(newValue[key]);
+          }
+          // 沙里寨镇
+          if(str[1] == this.showCity[2]){
+            this.city2.push(newValue[key]);
+          }
+          // 鸡冠山镇
+          if(str[1] == this.showCity[3]){
+            this.city3.push(newValue[key]);
+          }
+          // 赛马镇
+          if(str[1] == this.showCity[4]){
+            this.city4.push(newValue[key]);
+          }
+          // 大兴镇
+          if(str[1] == this.showCity[5]){
+            this.city5.push(newValue[key]);
+          }
+          // 东汤镇
+          if(str[1] == this.showCity[6]){
+            this.city6.push(newValue[key]);
+          }
+          // 石城镇
+          if(str[1] == this.showCity[7]){
+            this.city7.push(newValue[key]);
+          }
+          // 四门子镇
+          if(str[1] == this.showCity[8]){
+            this.city8.push(newValue[key]);
+          }
+          // 红旗镇
+          if(str[1] == this.showCity[9]){
+            this.city9.push(newValue[key]);
+          }
+          // 边门镇
+          if(str[1] == this.showCity[10]){
+            this.city10.push(newValue[key]);
+          }
+          // 蓝旗镇
+          if(str[1] == this.showCity[11]){
+            this.city11.push(newValue[key]);
+          }
+        } 
+      }
     }
   },
   methods: {
@@ -354,5 +448,8 @@ export default {
 <style  scoped>
 .chinaMap {
   height: 100%;
+}
+.noneCity {
+  display: none !important;
 }
 </style>

@@ -31,14 +31,14 @@ export default {
           name: '耕地',
           value: cropsNum,
           itemStyle: {
-            color: '#4fdeec',
+            color: '#FEAF3C',
           },
         },
         {
           name: '林地',
           value: woodlandNum,
           itemStyle: {
-            color: '#56c4ff',
+            color: '#0275CB',
           },
         },
       ];
@@ -189,7 +189,7 @@ export default {
         },
         grid3D: {
           show: false,
-          boxHeight: 0.01,
+          boxHeight: 0.3,
           bottom: '40%',
           // environment: "rgba(255,255,255,0)",
           viewControl: {

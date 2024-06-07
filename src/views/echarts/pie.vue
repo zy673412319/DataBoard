@@ -132,7 +132,8 @@ export default {
             : 1 / 3
 
         // 为每一个饼图数据，生成一个 series-surface 配置
-        var colorList = ['#2A71FF', '#00EDFE', '#FEDB4B', '#FE7C2F', '#fc8251', '#5470c6', '#9A60B4', '#ef6567', '#f9c956'];
+        // var colorList = ['#2A71FF', '#00EDFE', '#FEDB4B', '#FE7C2F', '#fc8251', '#5470c6', '#9A60B4', '#ef6567', '#f9c956'];
+        var colorList = ['#FFD86F', '#0275CB', '#15D4E4', '#FE7C2F', '#fc8251', '#5470c6', '#9A60B4', '#ef6567', '#f9c956'];
         for (let i = 0; i < pieData.length; i++) {
           sumValue += pieData[i].value
 

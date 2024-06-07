@@ -31,16 +31,21 @@ export default {
           name: '初中',
           value: woodlandNum,
           itemStyle: {
-            color: '#09A9C5',
+            color: '#FFF2A6',  
           },
         },
         {
           name: '高中',
           value: gz,
           itemStyle: {
-            color: '#FDE06D',
+            color: '#14FCE2',
           },
         },
+        // 黄色    #FDE06D  #FFF2A6
+        // 蓝绿色  #2DFEF3   #14FCE2
+        // #15D4E4   #09A9C5
+        // 蓝色    #53DBFF   #29B5FD
+        // 粉色    #FFA9D8   #FF70B0
       ];
       this.echartInit();
     },
@@ -53,7 +58,7 @@ export default {
     echartInit() {
       if (!this.myChart) this.myChart = this.$echarts.init(this.$el, null, {devicePixelRatio: 3});
       var that = this;
-      const series = that.getPie3D(this.optionsData, 0.8);
+      const series = that.getPie3D(this.optionsData, 0.7);
       series.push({
         name: 'pie2d',
         type: 'pie',
@@ -205,11 +210,11 @@ export default {
         },
         grid3D: {
           show: false,
-          boxHeight: 0.1,
+          boxHeight: 0.04,
           bottom: '40%',
           // environment: "rgba(255,255,255,0)",
           viewControl: {
-            distance: 180,
+            distance: 146,
             alpha: 25,   // //角度(这个很重要 调节角度的)
             beta: 60,
             // autoRotate: true, // 自动旋转

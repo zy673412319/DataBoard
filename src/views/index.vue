@@ -9,7 +9,7 @@
           <draggable v-model="draggablelist"  handle=".rightFloatItem"  animation="300" 
                 style="width:100%;height:100%;" class="flexDiv juspace">
             <div class="rightFloatItem " v-for="(dl,index) in draggablelist" :key="index" :class="'rightFloatItem'+dl">
-              <div class="contentLeft flexDiv" style="height: 100%;align-content: space-between;" v-if="dl==1" @click="showIframeFun(dl)">
+              <div class="contentLeft flexDiv" style="height: 100%;align-content: space-between;" v-if="dl==1" @click="showIframeFun('31')">
                 <!-- 林草治理 -->
                 <div class="newModule flexDiv modelBg01" style="height: 100%;">
                   <div class="newModuleTitle newModuleTitle01">
@@ -93,7 +93,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="three-levelCon widAll" v-if="fourDl==2">
+                      <div class="three-levelCon widAll" v-if="fourDl==2" @click="showIframeFun('33')">
                         <div class="three-levelTitle flexDiv">
                           <img src="../assets/images/titleImg/subYouhai.png">
                           有害生物检测线索列信息
@@ -148,9 +148,9 @@
                 <!-- <draggable v-model="itemDra3"  handle=".dragareaThree"  animation="300" style="width:100%;height:100%;" class="flexDiv juspace alBetween">
                   <div class="dragareaThree widAll" v-for="(threeDl,index) in itemDra3" :key="index+'threeDl'"> -->
                     <!-- 乱砍盗伐监管图斑  v-if="threeDl==1" -->
-                    <div class="newModule modelBg02" @click="showIframeFun(dl)">
+                    <div class="newModule modelBg02" @click="showIframeFun('32')">
                       <div class="newModuleTitle newModuleTitle02">
-                        林草治理--乱砍盗伐
+                        林草治理--乱砍乱伐
                         <div class="exchangeIcon" @click="moduleTwo = !moduleTwo">
                           <img src="../assets/images/exchange.png">
                         </div>
@@ -170,7 +170,7 @@
                       </div>
                     </div>
                     <!-- 两违治理  v-if="threeDl==2" -->
-                    <div class="newModule modelBg03" @click="showIframeFun(dl)">
+                    <div class="newModule modelBg03" @click="showIframeFun('34')">
                       <div class="newModuleTitle newModuleTitle03">
                         两违治理
                         <div class="exchangeIcon" @click="moduleTwo = !moduleTwo">
@@ -226,8 +226,9 @@
                   <div class="mapDiv01">
                     <img src="../assets/images/map.png" />
                   </div>
-                  <div class="mapDiv02" @click="showIframeFun(dl)">
-                    <chinaMap2 ref="map_chartsN"></chinaMap2>
+                   <!-- @click="showIframeFun(dl)" -->
+                  <div class="mapDiv02">
+                    <chinaMap2 ref="map_chartsN" :mapFdData="mapFdData"></chinaMap2>
                   </div>
                   <div class="lookIconmap">
                     <img src="../assets/images/lookIcon.png">
@@ -263,7 +264,7 @@
                 <!-- <draggable v-model="itemDra"  handle=".dragareaOne"  animation="300" style="width:100%;height:100%;" class="flexDiv juspace alBetween">
                   <div class="dragareaOne widAll" v-for="(oneDl,index) in itemDra" :key="index+'oneDl'"> -->
                     <!--  v-if="oneDl==1" -->
-                    <div class="newModule modelBg04" @click="showIframeFun(dl)">
+                    <div class="newModule modelBg04" @click="showIframeFun('35')">
                       <div class="newModuleTitle newModuleTitle04">
                         河湖治理
                         <div class="exchangeIcon" @click="moduleThree = !moduleThree">
@@ -309,7 +310,7 @@
                       </div>
                     </div>
                     <!--  v-if="oneDl==2" -->
-                    <div class="newModule modelBg05" @click="showIframeFun(dl)">
+                    <div class="newModule modelBg05" @click="showIframeFun('36')">
                       <div class="newModuleTitle newModuleTitle05">
                         垃圾治理
                         <div class="exchangeIcon" @click="moduleThree = !moduleThree">
@@ -398,7 +399,7 @@
                 :class="moduleFour?'daoxu':''">
                 <!-- <draggable v-model="itemDra2"  handle=".dragareaTwo"  animation="300" style="width:100%;height:100%;" class="flexDiv juspace alBetween">
                   <div class="dragareaTwo widAll" v-for="(twoDl,index) in itemDra2" :key="index+'twoDl'"> -->
-                    <div class="newModule modelBg06" @click="showIframeFun(dl)">
+                    <div class="newModule modelBg06" @click="showIframeFun('37')">
                       <div class="newModuleTitle newModuleTitle06">
                         重大工程治理
                         <div class="exchangeIcon" @click="moduleFour = !moduleFour">
@@ -428,7 +429,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="newModule modelBg07" @click="showIframeFun(dl)">
+                    <div class="newModule modelBg07" @click="showIframeFun('38')">
                       <div class="newModuleTitle newModuleTitle07">
                         矿山治理
                         <div class="exchangeIcon" @click="moduleFour = !moduleFour">
@@ -692,6 +693,7 @@ export default {
         evenRowBGC: 'transparent',   // 偶数行背景色
         waitTime: 2000,    // 轮播时间间隔(ms)
       },
+      mapFdData: [],
       // 重点工程 
       MajorConfig: {
         data: [
@@ -789,11 +791,11 @@ export default {
     // window.addEventListener('resize', this.resizeFn);
     this.connectWebSocket();
     // 每5秒发送一个空消息到WebSocket服务器
-    setInterval(() => {
-      if (this.webSocket && this.webSocket.readyState === WebSocket.OPEN) {
-        this.webSocket.send('');
-      }
-    }, 5000);
+    // setInterval(() => {
+    //   if (this.webSocket && this.webSocket.readyState === WebSocket.OPEN) {
+    //     this.webSocket.send('');
+    //   }
+    // }, 5000);
   },
   methods: {
     connectWebSocket() {
@@ -893,6 +895,7 @@ export default {
           if(data.data.rows && data.data.rows.length > 0){
             var fireListD = data.data.rows;
             var data = [];
+            var mapFdData = [];
             for(var key in fireListD){
               var item = [];
               var oneData = fireListD[key].tfpLongitude+'/'+fireListD[key].tfpLatitude;
@@ -900,14 +903,21 @@ export default {
               item.push(fireListD[key].tfpAdministrativeName);
               item.push(fireListD[key].checkStatus);
               item.push(fireListD[key].tfpTime);
+              mapFdData.push({
+                tfpAdministrativeName: fireListD[key].tfpAdministrativeName,
+                tfpPlace: fireListD[key].tfpPlace,
+                checkStatus: fireListD[key].checkStatus,
+                tfpTime: fireListD[key].tfpTime
+              })
               // item.push(fireListD[key].tfpReliability);
               // item.push(fireListD[key].surfaceType);
               data.push(item);
             }
             const { firePointconfig } = this;
-            console.log('dfirePointconfig.data25')
             this.firePointconfig.data = data;
-            this.firePointconfig = { ...this.firePointconfig }
+            this.firePointconfig = { ...this.firePointconfig };
+
+            this.mapFdData = mapFdData;
           }
         }
       }
@@ -946,16 +956,16 @@ export default {
         if(data.data.code == 200){
           for(var key in data.data.data){
             if(data.data.data[key].label == '历史灾害点'){
-              this.lishizaihaidian = data.data.data[key].count
+              this.lishizaihaidian = data.data.data[key].data.count
             }
             if(data.data.data[key].label == '尾矿库'){
-              this.weikaungKuNum = data.data.data[key].count
+              this.weikaungKuNum = data.data.data[key].data.count
             }
             if(data.data.data[key].label == '全市矿山'){
-              this.quanshiKuNum = data.data.data[key].count
+              this.quanshiKuNum = data.data.data[key].data.count
             }
             if(data.data.data[key].label == '地质隐患点'){
-              this.yinhuanKuNum = data.data.data[key].count
+              this.yinhuanKuNum = data.data.data[key].data.count
             }
           }
         }
@@ -1024,6 +1034,18 @@ export default {
           this.wormGrassList = data.data.data;
         }
       }
+      // 林草治理	31	跳转的url
+      // 乱砍乱伐	32	跳转的url
+      // 有害生物	33	跳转的url
+      // 两违治理	34	跳转的url
+      // 河湖治理	35	跳转的url
+      // 垃圾治理	36	跳转的url
+      // 重大工程	37	跳转的url
+      // 矿山治理	38	跳转的url
+      if(data.num == 31 || data.num == 32 || data.num == 33 || data.num == 34 || data.num == 35 || data.num == 36 || data.num == 37 || data.num == 38){
+        this.iframeSrc = data.data.url;
+        this.showIframe = true;
+      }
     },
     reconnect(){
       setTimeout(() => {
@@ -1039,12 +1061,14 @@ export default {
       this.moduleFour = !this.moduleFour;
     },
     showIframeFun(type){
-      // this.iframeSrc = '';
-      this.showIframe = true;
+      if (this.webSocket && this.webSocket.readyState === WebSocket.OPEN) {
+        console.log('showIframeFunshowIframeFun')
+        this.webSocket.send(
+          JSON.stringify({num: Number(type)})
+        );
+      }
     },
     closeIframeFun(){
-      console.log('showIframe')
-      
       this.showIframe = false;
     },
     generateRandomNumber(min, max) {

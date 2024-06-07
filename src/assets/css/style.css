@@ -821,6 +821,22 @@ html {
   top: 40%;
   left: 62%;
 }
+.tooplie09 {
+  top: 11%;
+  left: 42%;
+}
+.tooplie10 {
+  bottom: 7%;
+  left: 24%;
+}
+.tooplie11 {
+  top: 62%;
+  left: 41%;
+}
+.tooplie12 {
+  bottom: 8%;
+  left: 10%;
+}
 
 .liangweiData {
   width: 300px;
@@ -851,6 +867,8 @@ html {
 
 .iframeDiv {
   position: fixed;
+  background: url('../images/iframeBg2.png') center center no-repeat;
+  background-size: 100% 100% !important;
   width: 32%;
   height: 85%;
   z-index: 200;
@@ -859,6 +877,7 @@ html {
   transform: translate(-50%, 0);
   align-content: flex-start;
   align-items: flex-start;
+  padding: 4px 6px;
 }
 .iframeDiv > div {
   width: 100%;
@@ -883,4 +902,7 @@ html {
 .iframeDiv > div .imfDiv img {
   width: 100%;
   height: auto;
+}
+iframe {
+  border: none;
 }

@@ -336,7 +336,6 @@
 .dzBarOneCon {
   position: relative;
   width: 44px;
-  height: 40%;
 }
 .dzBarOneCon::after,
 .dzBarOneCon::before {
@@ -356,6 +355,7 @@
   background: linear-gradient( 90deg, rgba(37,110,187,0) 0%, #256EBB 75%, rgba(37,110,187,0) 100%);
 }
 .dzBarOne .dzBarOneCon{
+  height: 80%;
   background: rgba(138, 189, 250, 0.5);
 }
 .dzBarOne .dzBarOneCon::after,
@@ -366,6 +366,7 @@
   background: linear-gradient( 90deg, rgba(187,138,37,0) 0%, rgba(187,138,37,0.6) 75%, rgba(187,138,37,0) 100%);
 }
 .dzBarTwo .dzBarOneCon{
+  height: 70%;
   background: rgba(250, 217, 138, 0.5);
 }
 .dzBarTwo .dzBarOneCon::after,
@@ -376,6 +377,7 @@
   background: linear-gradient( 90deg, rgba(151,249,255,0) 0%, rgba(151,249,255,0.53) 75%, rgba(151,249,255,0) 100%);
 }
 .dzBarThree .dzBarOneCon{
+  height: 90%;
   background: rgba(151, 249, 255, 0.5);
 }
 .dzBarThree .dzBarOneCon::after,
@@ -390,6 +392,21 @@
 .rkslCon {
   width: 40%;
   height: 220px;
+}
+.rkslCon01 {
+  width: 20%;
+  height: 220px;
+}
+.rfwrcCon01 {
+  width: 78%;
+  height: 220px;
+}
+.rkslCon01 img {
+  width: 36%;
+}
+.rkslCon01 p {
+  line-height: 1.1;
+  margin: 4px 0;
 }
 .rkslCon p,
 .rfwrcCon p {
@@ -417,17 +434,17 @@
 
 /* 教育服务 */
 .zxxNumCon {
-  width: 20%;
+  width: 30%;
   height: 320px;
 }
 .zxxNumEchart {
   width: 100%;
   height: 264px;
-  background: url('../affairImg/jyPerBg.png') center 69% no-repeat;
-  background-size: 54% auto !important;
+  background: url('../affairImg/jyPerBg.png') center 86% no-repeat;
+  background-size: 48% auto !important;
 }
 .jyfwRiDataCon {
-  width: 78%;
+  width: 68%;
   height: 320px;
 }
 .jyfwRiDataEchart {
