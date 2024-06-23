@@ -38,6 +38,7 @@ export default {
     setChart() {
       var that = this;
       let option = {
+        animationDuration: 3000,
         grid: {
           top: "26",
           bottom: "20",
@@ -116,7 +117,7 @@ export default {
           {
             position: 'right',
             type: 'value',
-            interval: 200,
+            // interval: 200,
             scale: true, //自适应
             axisLine: {
               symbol: ['none', 'arrow'],
@@ -196,8 +197,8 @@ export default {
       };
       if (!this.myChart) this.myChart = this.$echarts.init(this.$el, null, {devicePixelRatio: 3});
 
-      // this.myChart.clear();
-      // this.myChart.resize()
+      this.myChart.clear();
+      this.myChart.resize()
       this.myChart.setOption(option);
     },
     generateRandomArray(min, max) {

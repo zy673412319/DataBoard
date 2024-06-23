@@ -31,6 +31,7 @@ export default {
     setPocket() {
       var that = this;
       let option = {
+        animationDuration: 3000,
         tooltip: {
           trigger: 'axis',
           axisPointer: {            // 坐标轴指示器，坐标轴触发有效
@@ -162,8 +163,8 @@ export default {
       };
       if (!this.myChart) this.myChart = this.$echarts.init(this.$el, null, {devicePixelRatio: 3});
 
-      // this.myChart.clear();
-      // this.myChart.resize();
+      this.myChart.clear();
+      this.myChart.resize();
       this.myChart.setOption(option);
     },
   }, 

@@ -33,6 +33,7 @@ export default {
     setChart() {
       var that = this;
       let option = {
+        animationDuration: 3000,
         grid: {
           top: "40",
           bottom: "36",
@@ -156,7 +157,7 @@ export default {
       };
       if (!this.myChart) this.myChart = this.$echarts.init(this.$el, null, {devicePixelRatio: 3});
 
-      // this.myChart.clear();
+      this.myChart.clear();
       // this.myChart.resize()
       this.myChart.setOption(option);
     },

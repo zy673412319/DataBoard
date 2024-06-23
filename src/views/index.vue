@@ -3,9 +3,9 @@
     <div class="headerCls indexHeaderBg flexDiv" @click="closeIframeFun()">
       凤城市数据可视化系统
     </div>
-    <div style="height: calc(100% - 160px)">
+    <div style="height: calc(100% - 130px)">
       <dv-border-box-1>
-        <div class="flexDiv conetntDiv juspace" style="align-items: self-start;">
+        <div class="flexDiv numBg01 conetntDiv juspace" style="align-items: self-start;">
           <draggable v-model="draggablelist"  handle=".rightFloatItem"  animation="300" 
                 style="width:100%;height:100%;" class="flexDiv juspace">
             <div class="rightFloatItem " v-for="(dl,index) in draggablelist" :key="index" :class="'rightFloatItem'+dl">
@@ -27,7 +27,7 @@
                           <dv-decoration-3 style="width:130px;height:20x;" />
                         </div>
                         <div class="flexDiv">
-                          <div class="flexDiv" style="width: 26%;margin: 14px 0">
+                          <div class="flexDiv" style="width: 28%;margin: 14px 0">
                             <div class="numBig flexDiv" style="">
                               <img src="../assets/images/fire01.png" style="width: 98px">
                               <div>
@@ -43,7 +43,7 @@
                               </div>
                             </div>
                           </div>
-                          <div class="" style="width:68%;">
+                          <div class="" style="width:66%;">
                             <dv-scroll-board :config="firePointconfig" style="width:100%;height:190px" class="firePointCls" ref="scrollBoard"/>
                           </div>
                         </div>
@@ -78,7 +78,7 @@
                                 <div>可信度：{{fl.tfpReliability}}</div>
                               </div>
                             </div>
-                            <dv-decoration-10 style="width:100%;height:5px;" />
+                            <!-- <dv-decoration-10 style="width:100%;height:5px;" />
                             <div class="fireInfoQh">
                               <div class="flexDiv">
                                 行政区划：{{fl.tfpAdministrativeName}}
@@ -89,7 +89,7 @@
                               <div class="flexDiv">
                                 处置时同：{{fl.checkRequireTime}}
                               </div>
-                            </div>
+                            </div> -->
                           </div>
                         </div>
                       </div>
@@ -125,7 +125,7 @@
                               <p style="width: 18%;line-height:1;" class="flexDiv juCenter"><img src="../assets/images/time.png" style="width:18px;">发现时间</p>
                               <p style="width: 38%;line-height:1;" class="flexDiv juCenter"><img src="../assets/images/diqu.png" style="width:18px;">位置</p>
                             </div>
-                            <div style="width:100%;height:136px;overflow: hidden;">
+                            <div style="width:100%;height:82px;overflow: hidden;">
                               <vue-seamless-scroll :data="wormGrassList" class="seamless-warp new-listCon" :class-option="classOption">
                                 <div class="flexDiv text12 youhaiList" v-for="(rd,index) in wormGrassList" :key="index" style="padding:4px 0;color:#9bc3d4;">
                                   <p style="width: 13%" class="textCenter">{{rd.pestName}}</p>
@@ -164,7 +164,7 @@
                           乱砍盗伐监管图斑
                           <dv-decoration-3 style="width:130px;height:20x;" />
                         </div>
-                        <div style="width:100%;height: 180px">
+                        <div style="width:100%;height: 160px">
                           <echarts4 :lkfdDateList="lkfdDateList" :lkfdCountList="lkfdCountList"></echarts4>
                         </div>
                       </div>
@@ -186,8 +186,8 @@
                           两违统计
                           <dv-decoration-3 style="width:130px;height:20x;" />
                         </div>
-                        <div style="width:100%;height: 160px;margin:6px 0;" class="flexDiv jusAround">
-                          <div style="width: 360px;height: 160px;" class="newWeifabg">
+                        <div style="width:100%;height: 140px;margin:6px 0;" class="flexDiv jusAround">
+                          <div style="width: 300px;height: 140px;" class="newWeifabg">
                             <newWeifa :liangweiParData="liangweiParData"></newWeifa>
                           </div>
                           <div class="liangweiData flexDiv">
@@ -212,7 +212,7 @@
                           违法区域统计
                           <dv-decoration-3 style="width:130px;height:20x;" />
                         </div>
-                        <div style="width:100%;height:428px;">
+                        <div style="width:100%;height:324px;">
                           <newWeifa2 :liangweiBarData="liangweiBarData"></newWeifa2>
                         </div>
                       </div>
@@ -234,6 +234,14 @@
                     <img src="../assets/images/lookIcon.png">
                   </div>
                   <!-- <chinaMap ref="map_chartsN"></chinaMap> -->
+                  <div class="iframeDiv flexDiv" v-if="showIframe">
+                  <div>
+                    <iframe :src="iframeSrc" style="width:100%;height:100%;"></iframe>
+                    <div class="imfDiv" @click="closeIframeFun()">
+                      <img src="../assets/images/closeIframe.png">
+                    </div>
+                  </div>
+                </div>
                 </div>
                 <div class="mapData flexDiv" style="display:none;">
                   <div class="mapDataCon">
@@ -281,7 +289,7 @@
                             四乱类型分析
                             <dv-decoration-3 style="width:130px;height:20x;" />
                           </div>
-                          <div style="width:100%;height:160px;margin-top:14px;">
+                          <div style="width:100%;height:140px;margin-top:8px;">
                             <!-- siluanDataSend -->
                             <echarts8 :siluanDataSend="siluanDataSend"></echarts8>
                           </div>
@@ -292,7 +300,7 @@
                             四乱变化监测
                             <dv-decoration-3 style="width:130px;height:20x;" />
                           </div>
-                          <div style="width:100%;height:180px;margin-top:14px;">
+                          <div style="width:100%;height:150px;margin-top:8px;">
                             <!-- 河湖治理   四乱变化分析（所有使时间按年，月份）  -->
                             <siluan2 :hehuSLBHDateList="hehuSLBHDateList" :hehuSLBHNumList="hehuSLBHNumList"></siluan2>
                           </div>
@@ -304,7 +312,7 @@
                           四乱详细分析
                           <dv-decoration-3 style="width:130px;height:20x;" />
                         </div>
-                        <div style="width:100%;height:180px;">
+                        <div style="width:100%;height:130px;">
                           <echarts3 :hehuSiLDetailData="hehuSiLDetailData"></echarts3>
                         </div>
                       </div>
@@ -326,7 +334,7 @@
                           垃圾信息
                           <dv-decoration-3 style="width:130px;height:20x;" />
                         </div>
-                        <div class="flexDiv jusAround" style="margin: 12px 0 8px 0;">
+                        <div class="flexDiv jusAround" style="margin: 4px 0 8px 0;">
                           <div class="lajiNum flexDiv">
                             <img src="../assets/images/newImg/cunzhuang.png">
                             <div class="normalList">
@@ -344,20 +352,20 @@
                           <div class="lajiNum flexDiv" style="width:40%">
                             <img src="../assets/images/newImg/rongliang.png">
                             <div class="normalList">
-                              <p><CountTo class="mainColor title34" :startVal='saveLajiZhiliData.totalLoad' :endVal='lajiZhiliData.totalLoad' :duration='2000' />万升</p>
+                              <p><CountTo class="mainColor title34" :startVal='saveLajiZhiliData.totalLoad' :decimals="2" :endVal='lajiZhiliData.totalLoad' :duration='2000' />万升</p>
                               <p>容量</p>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="flexDiv" style="margin-top: 26px;align-items: flex-start;">
+                      <div class="flexDiv" style="margin-top: 6px;align-items: flex-start;">
                         <div class="three-levelCon" style="width:50%">
                           <div class="three-levelTitle flexDiv" style="">
                             <img src="../assets/images/titleImg/subLaji02.png">
                             垃圾处置信息
                             <dv-decoration-3 style="width:80px;height:16px;" />
                           </div>
-                          <div style="width:100%;height:184px;margin:4px 0;">
+                          <div style="width:100%;height:144px;margin:4px 0;">
                             <pie :lajipiData="lajipiData"></pie>
                             <!-- 3个街道分别为：凤凰城街道、凤山街道、草河街道；18个乡镇分别为：宝山镇、白旗镇、沙里寨镇、红旗镇、蓝旗镇、
                             边门镇、大堡蒙古族乡、东汤镇、石城镇、大兴镇、爱阳镇、赛马镇、弟兄山镇、鸡冠山镇、刘家河镇、通远堡镇、四门子镇、青城子镇。  -->
@@ -373,19 +381,19 @@
                             <div style="width:32%">
                               <img src="../assets/images/newImg/oneLevelImg.png" style="width:90px;margin:0 auto;display:block;">
                               <p style="color:white;text-align:center;margin:-12px 0 0;">
-                                <CountTo :startVal='startLast3monthsData[0].tonnage' :endVal='Last3monthsData[0].tonnage' :duration='300' class="title34"/>
+                                <CountTo :startVal='startLast3monthsData[0].tonnage' :endVal='Last3monthsData[0].tonnage' :duration='3000' class="title34"/>
                               </p>
                             </div>
                             <div style="width:32%">
                               <img src="../assets/images/newImg/twoLevelImg.png" style="width:90px;margin:0 auto;display:block;">
                               <p style="color:white;text-align:center;margin:-12px 0 0;">
-                                <CountTo :startVal='startLast3monthsData[1].tonnage' :endVal='Last3monthsData[1].tonnage' :duration='300' class="title34"/>
+                                <CountTo :startVal='startLast3monthsData[1].tonnage' :endVal='Last3monthsData[1].tonnage' :duration='3000' class="title34"/>
                               </p>
                             </div>
                             <div style="width:32%">
                               <img src="../assets/images/newImg/threeLevelImg.png" style="width:90px;margin:0 auto;display:block;">
                               <p style="color:white;text-align:center;margin:-12px 0 0;">
-                                <CountTo :startVal='startLast3monthsData[2].tonnage' :endVal='Last3monthsData[2].tonnage' :duration='300' class="title34"/>
+                                <CountTo :startVal='startLast3monthsData[2].tonnage' :endVal='Last3monthsData[2].tonnage' :duration='3000' class="title34"/>
                               </p>
                             </div>
                           </div>
@@ -412,9 +420,9 @@
                       <div class="flexDiv" style="width:100%;">
                         <div class="zdCls flexDiv title28" style="">
                           重大工程总数：
-                          <CountTo :startVal='startGcNum' :endVal='endGcNum' :duration='2000' style="font-size:44px;color:#f3cd6c" />
+                          <CountTo :startVal='startGcNum' :endVal='endGcNum' :duration='3000' style="font-size:44px;color:#f3cd6c" />
                         </div>
-                        <div class="three-levelCon widAll" style="margin-top: 14px;height: 162px">
+                        <div class="three-levelCon widAll" style="margin-top: 14px;height: 142px">
                           <siluan ref="siluan" id="bottom_3" :gcLineData="gcLineData"></siluan>
                         </div>
                         <div class="three-levelCon widAll" style="margin-top: 14px;">
@@ -424,7 +432,7 @@
                             <dv-decoration-3 style="width:80px;height:16px;" />
                           </div>
                           <div style="width:100%;padding:14px;">
-                            <dv-conical-column-chart :config="MajorConfig" style="width:100%;height:156px;" />
+                            <dv-conical-column-chart :config="MajorConfig" style="width:100%;height:126px;" />
                           </div>
                         </div>
                       </div>
@@ -443,28 +451,29 @@
                         <div class="flexDiv kfNum">
                           <img src="../assets/images/newImg/kuangshan01.png">
                           <div class="normalList">
-                            <p class="title34 mainColor">{{quanshiKuNum}}</p>
+                            <CountTo :startVal='0' :endVal='quanshiKuNum' :duration='3000' class="title34 mainColor"/>
                             <p class="">全市矿山</p>
                           </div>
                         </div>
                         <div class="flexDiv kfNum">
                           <img src="../assets/images/newImg/kuangshan02.png">
                           <div class="normalList">
-                            <p class="title34 mainColor">{{weikaungKuNum}}</p>
+                            <!-- <p class="title34 mainColor">{{weikaungKuNum}}</p> -->
+                            <CountTo :startVal='0' :endVal='weikaungKuNum' :duration='3000' class="title34 mainColor"/>
                             <p class="">尾矿山</p>
                           </div>
                         </div>
                         <div class="flexDiv kfNum">
                           <img src="../assets/images/newImg/kuangshan03.png">
                           <div class="normalList">
-                            <p class="title34 mainColor">{{yinhuanKuNum}}</p>
+                            <CountTo :startVal='0' :endVal='yinhuanKuNum' :duration='3000' class="title34 mainColor"/>
                             <p class="">地质隐患点</p>
                           </div>
                         </div>
                         <div class="flexDiv kfNum">
                           <img src="../assets/images/newImg/kuangshan04.png">
                           <div class="normalList">
-                            <p class="title34 mainColor">{{lishizaihaidian}}</p>
+                            <CountTo :startVal='0' :endVal='lishizaihaidian' :duration='3000' class="title34 mainColor"/>
                             <p class="">历史灾害点</p>
                           </div>
                         </div>
@@ -514,7 +523,7 @@
                           尾矿库数量
                           <dv-decoration-3 style="width:80px;height:16px;" />
                         </div>
-                        <div style="width:100%;height:214px;" class="flexDiv">
+                        <div style="width:100%;height:180px;" class="flexDiv">
                           <div style="width: 50%;height:100%">
                             <radar-chart ref="chart4" id="left_4" :weikaungData="weikaungData"></radar-chart>
                           </div>
@@ -535,14 +544,7 @@
         </div>
       </dv-border-box-1>
     </div>
-    <div class="iframeDiv flexDiv" v-if="showIframe">
-      <div>
-        <iframe :src="iframeSrc" style="width:100%;height:100%;"></iframe>
-        <div class="imfDiv" @click="closeIframeFun()">
-          <img src="../assets/images/closeIframe.png">
-        </div>
-      </div>
-    </div>
+    
   </div>
 </template>
 
@@ -623,11 +625,13 @@ export default {
         villageNum: 0,
         siteNum: 0,
         totalLoad: 0,
+        isdayu: false,
       },
       saveLajiZhiliData: {
         villageNum: 0,
         siteNum: 0,
         totalLoad: 0,
+        isdayu: false,
       },
       // 林草治理 火点数  saveFireData   "today":0,"yesterday":1
       fireData: {
@@ -876,8 +880,15 @@ export default {
       if(data.num == 5){
         // 操作成功  "data":{"villageNum":238,"siteNum":22,"totalLoad":43204276}
         if(data.data.code == 200){
-          this.saveLajiZhiliData = JSON.parse(JSON.stringify(this.lajiZhiliData))
-          this.lajiZhiliData = data.data.data;
+          this.saveLajiZhiliData = JSON.parse(JSON.stringify(this.lajiZhiliData));
+          // this.lajiZhiliData = JSON.parse(JSON.stringify(this.saveLajiZhiliData));
+          // setTimeout(()=>{
+            var setData = data.data.data;
+            // setData.totalLoad = setData.totalLoad > 10000 ? Number((setData.totalLoad / 10000 ).toFixed(2)) : setData.totalLoad;
+            setData.totalLoad = Number((setData.totalLoad / 10000 ).toFixed(2));
+            setData.isdayu = setData.totalLoad > 10000;
+            this.lajiZhiliData = setData;
+          // }, 8)
         }
       }
       // 林草治理 火点数  saveFireData
@@ -941,8 +952,8 @@ export default {
             }
           }
           var allNum = Number(this.liangweiData.cropsNum) + Number(this.liangweiData.woodlandNum)
-          this.liangweiData.cropsPer = ((this.liangweiData.cropsNum) / allNum).toFixed(2) * 100;
-          this.liangweiData.woodlandPer = ((this.liangweiData.woodlandNum) / allNum).toFixed(2) * 100;
+          this.liangweiData.cropsPer = ((this.liangweiData.cropsNum) / allNum * 100).toFixed(2);
+          this.liangweiData.woodlandPer = ((this.liangweiData.woodlandNum) / allNum * 100).toFixed(2);
         }
       }
       // 两违治理   柱状图  林地、耕地 数量  liangweiBarData
@@ -954,20 +965,26 @@ export default {
       // 矿山治理 矿山、尾矿库、地质隐患点 数量
       if(data.num == 11){
         if(data.data.code == 200){
-          for(var key in data.data.data){
-            if(data.data.data[key].label == '历史灾害点'){
-              this.lishizaihaidian = data.data.data[key].data.count
+          // this.lishizaihaidian = 0;
+          // this.weikaungKuNum = 0;
+          // this.quanshiKuNum = 0;
+          // this.yinhuanKuNum = 0;
+          // setTimeout(()=>{
+            for(var key in data.data.data){
+              if(data.data.data[key].label == '历史灾害点'){
+                this.lishizaihaidian = data.data.data[key].data.count
+              }
+              if(data.data.data[key].label == '尾矿库'){
+                this.weikaungKuNum = data.data.data[key].data.count
+              }
+              if(data.data.data[key].label == '全市矿山'){
+                this.quanshiKuNum = data.data.data[key].data.count
+              }
+              if(data.data.data[key].label == '地质隐患点'){
+                this.yinhuanKuNum = data.data.data[key].data.count
+              }
             }
-            if(data.data.data[key].label == '尾矿库'){
-              this.weikaungKuNum = data.data.data[key].data.count
-            }
-            if(data.data.data[key].label == '全市矿山'){
-              this.quanshiKuNum = data.data.data[key].data.count
-            }
-            if(data.data.data[key].label == '地质隐患点'){
-              this.yinhuanKuNum = data.data.data[key].data.count
-            }
-          }
+          // }, 8)
         }
       }
       // 矿山治理  尾矿库数量     {"data":{"values":[6,16,15,17],"key":["拟闭库","停产","在建","生产"]}}}
@@ -978,9 +995,13 @@ export default {
       }
       // 重大工程数量   13
       if(data.num == 13){
+        this.startGcNum = 0;
+        this.endGcNum = 0;
         if(data.data.code == 200){
-          this.startGcNum = this.endGcNum;
-          this.endGcNum = data.data.data;
+          this.startGcNum = JSON.parse(JSON.stringify(this.endGcNum));
+          // setTimeout(()=>{
+            this.endGcNum = data.data.data;
+          // }, 10)
         }
       }
       // 重大工项目数，投资基金   14
@@ -1017,8 +1038,8 @@ export default {
       // 近三月处理数量
       if(data.num == 17){
         if(data.data.code == 200){
-          this.startLast3monthsData = this.Last3monthsData;
-          this.Last3monthsData = data.data.data
+          this.startLast3monthsData = JSON.parse(JSON.stringify(this.Last3monthsData));
+          this.Last3monthsData = data.data.data;
         }
       }
       // 虫情站统计   18
@@ -1084,5 +1105,5 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style >
 </style>

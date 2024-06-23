@@ -65,6 +65,12 @@
       <P>{{city11[city11.length - 1].tfpPlace}}</P>
       <p>火灾等级：<span class="threeLevel">{{city11[city11.length - 1].checkStatus}}</span></p>
     </div>
+    <!-- 凤城市 -->
+    <div class="tooplie tooplie13" v-if="city12 && city12.length>0">
+      <div class="tooplietitle flexDiv"><img src="../../assets/images/huo2.png" style="width:30px">{{city12[city12.length - 1].tfpTime}}</div>
+      <P>{{city12[city12.length - 1].tfpPlace}}</P>
+      <p>火灾等级：<span class="threeLevel">{{city12[city12.length - 1].checkStatus}}</span></p>
+    </div>
   </div>
 </template>
 <script>
@@ -80,7 +86,8 @@ export default {
     return {
       geoJson: require('./map.json'),
       myChart: null,
-      showCity: ['青城子镇', '刘家河镇', '沙里寨镇', '鸡冠山镇', '赛马镇', '大兴镇', '东汤镇', '石城镇', '四门子镇', '红旗镇', '边门镇', '蓝旗镇'],
+      showCity: ['青城子镇', '刘家河镇', '沙里寨镇', '鸡冠山镇', '赛马镇', '大兴镇', '东汤镇', '石城镇', '四门子镇', '红旗镇', '边门镇', 
+       '蓝旗镇', '凤山区'],
       showEd: [],
        // 草河区、凤山街道、鸡冠山镇、刘家河镇、凤凰城街道、石城镇、赛马镇、石城镇、通远堡镇、沙里寨镇、
       //  边门镇、蓝旗镇、爱阳镇、弟兄山镇、、爱阳镇、草河街道、四门子镇、大堡蒙古族乡、
@@ -153,6 +160,10 @@ export default {
           // 蓝旗镇
           if(str[1] == this.showCity[11]){
             this.city11.push(newValue[key]);
+          }
+          // 凤山区 
+          if(str[1] == this.showCity[12]){
+            this.city12.push(newValue[key]);
           }
         } 
       }

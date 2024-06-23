@@ -13,22 +13,24 @@ export default {
         }
     },
     mounted() {
-        const documentWidth = document.body.offsetWidth;
-        const ratio = documentWidth / 1920;
-        if (documentWidth > 1920) {
-            document.body.style.transform = `scale(${ratio}, ${ratio})`
-        }
-        this.resizeFn = this.$debounce(function () {
-            const documentWidth = document.body.offsetWidth;
-            const ratio = documentWidth / 1920;
-            if (documentWidth > 1920) {
-                document.body.style.transform = `scale(${ratio}, ${ratio})`
-            }
-        }, 200)
-        window.addEventListener('resize',this.resizeFn);
+        console.log(document.body.offsetWidth,'==document.body.offsetWidth====', window.innerWidth)
+        console.log(document.body.offsetHeight,'==document.body.offsetHeight====', window.innerHeight)
+        // const documentWidth = document.body.offsetWidth;
+        // const ratio = documentWidth / 1920;
+        // if (documentWidth > 1920) {
+        //     document.body.style.transform = `scale(${ratio}, ${ratio})`
+        // }
+        // this.resizeFn = this.$debounce(function () {
+        //     const documentWidth = document.body.offsetWidth;
+        //     const ratio = documentWidth / 1920;
+        //     if (documentWidth > 1920) {
+        //         document.body.style.transform = `scale(${ratio}, ${ratio})`
+        //     }
+        // }, 200)
+        // window.addEventListener('resize',this.resizeFn);
     },
     beforeDestroy() {
-        window.removeEventListener('resize', this.resizeFn);
+        // window.removeEventListener('resize', this.resizeFn);
     }
 }
 </script>

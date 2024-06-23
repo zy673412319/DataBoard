@@ -116,8 +116,10 @@ p {
 }
 
 html {
-  width: 6720px;
-  height: 1260px;
+  /* width: 6720px;
+  height: 1260px; */
+  width: 5760px;
+  height: 1080px;
 }
 .allPage {
   height: 100%;
@@ -130,9 +132,9 @@ html {
 }
 .headerCls {
   width: 100%;
-  height: 160px;
+  height: 124px;
   text-align: center;
-  font-size: 36px;
+  font-size: 32px;
   color: white;
   align-items: start; 
   justify-content: center;
@@ -224,12 +226,12 @@ html {
 .rightFloatItem2,
 .rightFloatItem4,
 .rightFloatItem5 {
-  width: 16.5%;
+  width: 16.3%;
   height:100%;
   overflow: hidden;
 }
 .rightFloatItem3 {
-  width: 33%;
+  width: 34%;
   height:100%;
   overflow: hidden;
 }
@@ -524,7 +526,6 @@ html {
   width: 28%;
   height: 88px;
   position: relative;
-  padding-top: 10px;
   justify-content: center;
 }
 @keyframes rotoImgz{
@@ -553,7 +554,7 @@ html {
   width: auto;
   padding: 0 112px;
   height: 80px;
-  margin: 16px auto;;
+  margin: 6px auto;;
   background: url('https://easyv.assets.dtstack.com/data/assets/qyuiytlbo6_1631780962690_vdae52j7sk.png') center center no-repeat;
   background-size: 100% 100% !important;
   color: white;
@@ -701,7 +702,8 @@ html {
   z-index: 1;
 }
 .mapDiv01 img {
-  width: 1600px;
+  width: auto;
+  height: 105%;
   display: block;
   margin: 0 auto;
 }
@@ -746,10 +748,10 @@ html {
 .kfNum {
   width: 25%;
   justify-content: center;
-  margin: 30px 0;
+  margin: 10px 0;
 }
 .kfNum img {
-  width: 90px;
+  width: 84px;
   margin-right: 6px;
 }
 .kfNum p {
@@ -837,16 +839,20 @@ html {
   bottom: 8%;
   left: 10%;
 }
+.tooplie13 {
+  bottom: 40%;
+  left: 40%;
+}
 
 .liangweiData {
-  width: 300px;
-  height: 144px;
+  width: 260px;
+  height: 124px;
   background: url('../images/newImg/dataBg.png') center center no-repeat;
   background-size: 100% 100% !important;
   padding: 0 14px;
 }
 .liangweiData img {
-  width: 110px;
+  width: 100px;
   margin-right: 8px;
 }
 
@@ -859,22 +865,29 @@ html {
   pointer-events: none;
 }
 
-@media (min-width: 12000px) {
+/* @media (min-width: 12000px) {
   html{
     transform: scaleX(1.875) scaleY(1.9) translateZ(0);
   }
-}
+} */
 
 .iframeDiv {
-  position: fixed;
-  background: url('../images/iframeBg2.png') center center no-repeat;
-  background-size: 100% 100% !important;
-  width: 32%;
+  /* position: fixed;
+  width: 1850px;
   height: 85%;
-  z-index: 200;
   bottom: 10px;
   left: 50%;
-  transform: translate(-50%, 0);
+  transform: translate(-50%, 0); */
+  
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  top: 0;
+
+  background: url('../images/iframeBg2.png') center center no-repeat;
+  background-size: 100% 100% !important;
+  z-index: 200;
   align-content: flex-start;
   align-items: flex-start;
   padding: 4px 6px;
@@ -905,4 +918,8 @@ html {
 }
 iframe {
   border: none;
+}
+.numBg01 {
+  background: url("../images/kuaiBg.png") center bottom no-repeat;
+  background-size: 60% auto !important;
 }

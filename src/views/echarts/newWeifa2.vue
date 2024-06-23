@@ -46,6 +46,7 @@ export default {
       if (!this.myChart) this.myChart = this.$echarts.init(this.$el, null, {devicePixelRatio: 3});
       var that = this;
       let option = {
+        animationDuration: 3000,
         tooltip: {
           trigger: 'axis',
           axisPointer: {
@@ -223,7 +224,7 @@ export default {
       };
 
       // 使用刚指定的配置项和数据显示图表。
-      // this.myChart.clear();
+      this.myChart.clear();
       // this.myChart.resize()
       this.myChart.setOption(option);
     }

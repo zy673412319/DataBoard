@@ -7,7 +7,7 @@
 .affairAllPage {
   height: 100%;
   width: 100%;
-  background: #011246 url("../affairImg/bg.png") center center no-repeat;
+  background: #011246 url("../affairImg/bg@2x.jpg") center bottom no-repeat;
   background-size: auto 100% !important;
   margin: 0 auto;
   overflow-y: auto;
@@ -89,42 +89,42 @@
 /* 规章制度 */
 .gzzd {
   width: 100%;
-  height: 30%; 
+  height: 31%; 
   background: url("../affairImg/gzzdBg.png") center center no-repeat;
   background-size: 100% 100% !important;
 }
 /* 教育服务 */
 .jyfw {
   width: 100%;
-  height: 38%; 
+  height: 36%; 
   background: url("../affairImg/jyfwBg.png") center center no-repeat;
   background-size: 100% 100% !important;
 }
 /* 就业服务 jiuyefw */
 .jiuyefw {
   width: 49.4%;
-  height: 32%; 
+  height: 31%; 
   background: url("../affairImg/jiuyefwBg.png") center center no-repeat;
   background-size: 100% 100% !important;
 }
 /* 住房服务 */
 .zfFw {
   width: 49.4%;
-  height: 32%; 
+  height: 31%; 
   background: url("../affairImg/zfFwBg.png") center center no-repeat;
   background-size: 100% 100% !important;
 }
 /* 交通服务 */
 .jtFw {
   width: 100%;
-  height: 28%; 
+  height: 31%; 
   background: url("../affairImg/jtFwBg.png") center center no-repeat;
   background-size: 100% 100% !important;
 }
 
 .affairConCenter {
-  background: url("../affairImg/centerBg.png") center 96% no-repeat;
-  background-size: 48% auto !important;
+  /* background: url("../affairImg/centerBg.png") center 96% no-repeat;
+  background-size: 48% auto !important; */
   padding: 0 100px;
   position: relative;
   justify-content: center;
@@ -134,7 +134,7 @@
 .affairConCenter::after,
 .affairConCenter::before {
   content: '';
-  width: 140px;
+  width: 210px;
   height: 100%;
   position: absolute;
   top: 0;
@@ -149,19 +149,26 @@
   background: url("../affairImg/centerRight.png") center center no-repeat;
   background-size: 100% auto !important;
 }
-
 .centerNumOne {
   width: 100%;
+  margin-top: 20px;
+}
+.centerNumOne .centerNumOneCon {
+  width: auto;
+  padding: 20px 56px 28px 56px;
+  background: url("../affairImg/numConBg.png") center center no-repeat;
+  background-size: 100% 100% !important;
+
 }
 .numTitle {
   font-family: MyFont, PingFangSC, PingFang SC;
   font-weight: 600;
-  font-size: 42px;
+  font-size: 38px;
   color: #FFFFFF;
   padding-bottom: 14px;
   text-align: center;
   margin-bottom: 10px;
-  margin-top: 56px;
+  margin-top: 6px;
 }
 .numTitle01 {
   text-align: center;
@@ -170,16 +177,12 @@
 
 }
 .numTitle02 {
-  text-align: left !important;
-  background: url("../affairImg/numTitleBg.png") left bottom no-repeat;
-  background-size: 280px auto !important;
-  padding-left: 40px;
+  background: url("../affairImg/numTitleBg.png") center bottom no-repeat;
+  background-size: 100% auto !important;
 }
 .numTitle03{
-  text-align: right !important;
-  background: url("../affairImg/numTitleBg.png") right bottom no-repeat;
-  background-size: 280px auto !important;
-  padding-right: 40px;
+  background: url("../affairImg/numTitleBg.png") center bottom no-repeat;
+  background-size: 100% auto !important;
 }
 .numCOn {
   width: 100%;
@@ -202,11 +205,15 @@
 .centerNumTwo {
   width: 80%;
   height: auto;
-  margin-top: 8%;
+  margin-top: 10%;
   justify-content: space-between;
 }
 .centerNumTwo > div {
-  width: 40%;
+  width: auto;
+  height: auto;
+  padding: 28px 66px 36px 66px;
+  background: url("../affairImg/numConBg.png") center center no-repeat;
+  background-size: 100% 100% !important;
 }
 .juCenterLeft {
   justify-content: flex-start;
@@ -218,12 +225,12 @@
 /* 中心概况 */
 .zxgkNumCon {
   width: 46%;
-  padding: 20px 0 20px 30px;
+  padding: 10px 0 10px 30px;
   background: url("../affairImg/bkBg.png") center center no-repeat;
   background-size: 100% 100% !important;
 }
 .zxgkNumCon img {
-  width: 141px;
+  width: 124px;
   margin-right: 20px;
 }
 .zxgkNumCon p {
@@ -278,7 +285,7 @@
 }
 /* 企业动态 */
 .qydtCon {
-  margin-top: 46px;
+  margin-top: 30px;
 }
 .qydtCon .qydtConItem {
   width: 30%;
@@ -387,7 +394,7 @@
 
 /* 人口数量 */
 .gzzdCon {
-  padding: 24px 54px;
+  padding: 8px 54px;
 }
 .rkslCon {
   width: 40%;
@@ -395,11 +402,11 @@
 }
 .rkslCon01 {
   width: 20%;
-  height: 220px;
+  height: 210px;
 }
 .rfwrcCon01 {
   width: 78%;
-  height: 220px;
+  height: 210px;
 }
 .rkslCon01 img {
   width: 36%;
@@ -435,21 +442,25 @@
 /* 教育服务 */
 .zxxNumCon {
   width: 30%;
-  height: 320px;
+}
+.zxxNumCon,
+.jyfwRiDataCon {
+  height: 280px;
+}
+.zxxNumEchart,
+.jyfwRiDataEchart {
+  height: 224px;
 }
 .zxxNumEchart {
   width: 100%;
-  height: 264px;
   background: url('../affairImg/jyPerBg.png') center 86% no-repeat;
   background-size: 48% auto !important;
 }
 .jyfwRiDataCon {
   width: 68%;
-  height: 320px;
 }
 .jyfwRiDataEchart {
   width: 100%;
-  height: 264px;
   background: url('../affairImg/fwrcBg.png') center center no-repeat;
   background-size: 100% 100% !important;
   padding: 2px 12px 12px;
@@ -457,13 +468,13 @@
 
 .imgTextThree {
   padding: 0 30px;
-  margin-top: 5%;
+  margin-top: 3.3%;
 }
 .imgTextThree > div {
   width: 33%;
 }
 .imgTextThree img {
-  width: 112px;
+  width: 98px;
   margin: 4px auto;
   display: block;
   animation:  scalI infinite 3s both ease-in;
@@ -515,7 +526,7 @@
   height: 200px;
 }
 .banzCon img {
-  width: 170px;
+  width: 130px;
 }
 .banZtext .zgNumCls,
 .banZtext .zgTextCls {
@@ -529,7 +540,7 @@
 }
 .jiaotongZCEchart,.jiaotonRfEchart {
   width: 100%;
-  height: 170px;
+  height: 160px;
   background: url('../affairImg/fwrcBg.png') center center no-repeat;
   background-size: 100% 100% !important;
   padding: 2px 12px 12px;

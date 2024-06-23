@@ -58,7 +58,7 @@ export default {
     echartInit() {
       if (!this.myChart) this.myChart = this.$echarts.init(this.$el, null, {devicePixelRatio: 3});
       var that = this;
-      const series = that.getPie3D(this.optionsData, 0.7);
+      const series = that.getPie3D(this.optionsData, 0.78);
       series.push({
         name: 'pie2d',
         type: 'pie',

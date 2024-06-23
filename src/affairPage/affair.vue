@@ -3,7 +3,7 @@
     <div class="headerCls affairHeaderBg flexDiv" @click="closeIframeFun()">
       <img src="../assets/affairImg/headerTitle.png">
     </div>
-    <div style="height: calc(100% - 160px);width:100%;">
+    <div style="height: calc(100% - 130px);width:100%;">
       <div class="flexDiv affairConetntDiv juspace" style="align-items: self-start;">
         <draggable v-model="draggablelist"  handle=".affairDragg"  animation="300" 
               style="width:100%;height:100%;" class="flexDiv juspace">
@@ -58,7 +58,7 @@
                       <p>{{pizhunNum}}</p>
                       <div class="dzBarOneCon"></div>
                     </div>
-                    <p>现实审批</p>
+                    <p>限时审批</p>
                   </div>
                   <div class="qydtConItem">
                     <div class="dzBarThree flexDiv">
@@ -112,17 +112,19 @@
               </div>
             </div>
             <div class="affairConterItem affairConCenter flexDiv" style="" v-if="dl==2" :class="moduleTwo?'daoxu':''">
-              <div class="centerNumOne">
-                <p class="numTitle numTitle01">业务受理数</p>
-                <div class="flexDiv numCOn">
-                  <div v-for="(number, index) in showshouliNum" :key="index">
-                    {{ number }}
+              <div class="centerNumOne flexDiv juCenter">
+                <div class="centerNumOneCon">
+                  <p class="numTitle numTitle01">月业务受理量</p>
+                  <div class="flexDiv numCOn">
+                    <div v-for="(number, index) in showshouliNum" :key="index">
+                      {{ number }}
+                    </div>
                   </div>
                 </div>
               </div>
               <div class="centerNumTwo flexDiv">
-                <div>
-                  <p class="numTitle numTitle02">业务办结量</p>
+                <div style="padding: 28px 28px 36px 28px">
+                  <p class="numTitle numTitle02">月业务办结量</p>
                   <div class="flexDiv numCOn juCenterLeft">
                     <div v-for="(number, index) in showBanjieNum" :key="index">
                       {{ number }}
