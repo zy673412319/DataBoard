@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@jiaminghi/data-view": "^2.10.0",
+    "choices.js": "^10.2.0",
     "compression-webpack-plugin": "^5.0.1",
     "core-js": "^3.8.3",
     "datav": "0.0.1-dev",

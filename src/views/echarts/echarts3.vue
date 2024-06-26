@@ -35,7 +35,8 @@ export default {
         tooltip: {
           trigger: 'axis',
           axisPointer: {            // 坐标轴指示器，坐标轴触发有效
-            type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+            type: 'shadow',        // 默认为直线，可选为：'line' | 'shadow'
+            animation: false, //很重要！
           },
         },
         title: {
@@ -52,6 +53,9 @@ export default {
           show: true,
           tooltip: {
             show: true,
+            axisPointer: {
+              animation: false, //很重要！
+            },
           },
           orient: 'vertical',
           // 乱堆   乱占  乱采  乱建
@@ -164,8 +168,8 @@ export default {
       if (!this.myChart) this.myChart = this.$echarts.init(this.$el, null, {devicePixelRatio: 3});
 
       this.myChart.clear();
-      this.myChart.resize();
-      this.myChart.setOption(option);
+      // this.myChart.resize();
+      this.myChart.setOption(option, { replaceMerge: ["series"] });
     },
   }, 
 }

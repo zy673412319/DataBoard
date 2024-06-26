@@ -50,8 +50,9 @@ export default {
         tooltip: {
           trigger: 'axis',
           axisPointer: {
-            type: 'shadow'
-          }
+            type: 'shadow',
+            animation: false, //很重要！
+          },
         },
         title: {
           show: false,
@@ -225,8 +226,13 @@ export default {
 
       // 使用刚指定的配置项和数据显示图表。
       this.myChart.clear();
+      // clear和dispose是echarts提供的用于解决内存溢出的方法。
+      // echarts.clear()是清空当前实例，会移除实例中所有的组件和图表。
+      // echarts.dispose()是销毁实例，销毁后实例无法再被使用。
+
       // this.myChart.resize()
-      this.myChart.setOption(option);
+      // this.myChart.setOption(option);
+      this.myChart.setOption(option, { replaceMerge: ["series"] });
     }
   },
 

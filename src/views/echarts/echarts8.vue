@@ -41,7 +41,10 @@ export default {
       var centerImg = "https://easyv.assets.dtstack.com/data/assets/ye0x8u2o6e_1630499352687_3ubg4uvuje.png";
       let option = {
         tooltip: {
-          trigger: 'item'
+          trigger: 'item',
+          axisPointer: {
+            animation: false, //很重要！
+          },
         },
         legend: {
           icon: "circle",
@@ -109,6 +112,9 @@ export default {
               },
               tooltip: {
                 show: false,
+                axisPointer: {
+                  animation: false, //很重要！
+                },
               },
               itemStyle: {
                 color: 'rgba(114, 136, 180, 0.8)',
@@ -192,9 +198,9 @@ export default {
 
       if (!this.myChart) this.myChart = this.$echarts.init(this.$el, null, {devicePixelRatio: 3});
 
-      // this.myChart.clear();
+      this.myChart.clear();
       // this.myChart.resize();
-      this.myChart.setOption(option);
+      this.myChart.setOption(option, { replaceMerge: ["series"] });
     },
 
   },

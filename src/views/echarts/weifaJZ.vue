@@ -105,6 +105,9 @@ export default {
         //调整光标移入，展示数据的样式
         tooltip: {
           trigger: "axis",
+          axisPointer: {
+            animation: false, //很重要！
+          },
           // formatter: function (params) {
           //   return params[0].axisValue + "：" +
           //     "<br/>计划：" + that.otherData[params[0].dataIndex] +
@@ -232,6 +235,9 @@ export default {
 
             tooltip: {
               show: false,
+              axisPointer: {
+                animation: false, //很重要！
+              },
             },
           },
           //某个柱形的底部
@@ -251,6 +257,9 @@ export default {
             },
             tooltip: {
               show: false,
+              axisPointer: {
+                animation: false, //很重要！
+              },
             },
           },
           {
@@ -264,6 +273,9 @@ export default {
             symbolSize: [that.barWidth - 4, (10 * (that.barWidth - 4)) / that.barWidth],
             tooltip: {
               show: false,
+              axisPointer: {
+                animation: false, //很重要！
+              },
             },
             itemStyle: {
               normal: {
@@ -287,9 +299,9 @@ export default {
       };
       if (!this.myChart) this.myChart = this.$echarts.init(this.$el, null, {devicePixelRatio: 3});
 
-      // this.myChart.clear();
+      this.myChart.clear();
       // this.myChart.resize()
-      this.myChart.setOption(option);
+      this.myChart.setOption(option, { replaceMerge: ["series"] });
     }
   },
 }

@@ -41,31 +41,26 @@
       <P>{{city7[city7.length - 1].tfpPlace}}</P>
       <p>火灾等级：<span class="threeLevel">{{city7[city7.length - 1].checkStatus}}</span></p>
     </div>
-    <!-- 四门子镇 -->
     <div class="tooplie tooplie09" v-if="city8 && city8.length>0">
       <div class="tooplietitle flexDiv"><img src="../../assets/images/huo2.png" style="width:30px">{{city8[city8.length - 1].tfpTime}}</div>
       <P>{{city8[city8.length - 1].tfpPlace}}</P>
       <p>火灾等级：<span class="threeLevel">{{city8[city8.length - 1].checkStatus}}</span></p>
     </div>
-    <!-- 红旗镇 -->
     <div class="tooplie tooplie10" v-if="city9 && city9.length>0">
       <div class="tooplietitle flexDiv"><img src="../../assets/images/huo2.png" style="width:30px">{{city9[city9.length - 1].tfpTime}}</div>
       <P>{{city9[city9.length - 1].tfpPlace}}</P>
       <p>火灾等级：<span class="threeLevel">{{city9[city9.length - 1].checkStatus}}</span></p>
     </div>
-    <!-- 边门镇 -->
     <div class="tooplie tooplie11" v-if="city10 && city10.length>0">
       <div class="tooplietitle flexDiv"><img src="../../assets/images/huo2.png" style="width:30px">{{city10[city10.length - 1].tfpTime}}</div>
       <P>{{city10[city10.length - 1].tfpPlace}}</P>
       <p>火灾等级：<span class="threeLevel">{{city10[city10.length - 1].checkStatus}}</span></p>
     </div>
-    <!-- 蓝旗镇 -->
-    <div class="tooplie tooplie12" v-if="city11 && city11.length>0">
+   <div class="tooplie tooplie12" v-if="city11 && city11.length>0">
       <div class="tooplietitle flexDiv"><img src="../../assets/images/huo2.png" style="width:30px">{{city11[city11.length - 1].tfpTime}}</div>
       <P>{{city11[city11.length - 1].tfpPlace}}</P>
       <p>火灾等级：<span class="threeLevel">{{city11[city11.length - 1].checkStatus}}</span></p>
     </div>
-    <!-- 凤城市 -->
     <div class="tooplie tooplie13" v-if="city12 && city12.length>0">
       <div class="tooplietitle flexDiv"><img src="../../assets/images/huo2.png" style="width:30px">{{city12[city12.length - 1].tfpTime}}</div>
       <P>{{city12[city12.length - 1].tfpPlace}}</P>
@@ -111,58 +106,86 @@ export default {
   watch: {
     mapFdData(newValue, oldValue) {
       if(newValue && newValue.length > 0){
+        this.city0 = [];
+        this.city1 = [];
+        this.city2 = [];
+        this.city3 = [];
+        this.city4 = [];
+        this.city5 = [];
+        this.city6 = [];
+        this.city7 = [];
+        this.city8 = [];
+        this.city9 = [];
+        this.city10 = [];
+        this.city11 = [];
+        this.city12 = [];
+        var count = 0;
+        var countLanegh = 5;
         for(var key in newValue) {
           var str = newValue[key].tfpAdministrativeName.split('/');
           // 青城子镇
-          if(str[1] == this.showCity[0]){
+          if(str[1] == this.showCity[0] && count < countLanegh && this.city0.length == 0){
+            count++;
             this.city0.push(newValue[key]);
           }
           // 刘家河镇
-          if(str[1] == this.showCity[1]){
+          if(str[1] == this.showCity[1] && count < countLanegh && this.city1.length == 0){
+            count++;
             this.city1.push(newValue[key]);
           }
           // 沙里寨镇
-          if(str[1] == this.showCity[2]){
+          if(str[1] == this.showCity[2] && count < countLanegh && this.city2.length == 0){
+            count++;
             this.city2.push(newValue[key]);
           }
           // 鸡冠山镇
-          if(str[1] == this.showCity[3]){
+          if(str[1] == this.showCity[3] && count < countLanegh && this.city3.length == 0){
+            count++;
             this.city3.push(newValue[key]);
           }
           // 赛马镇
-          if(str[1] == this.showCity[4]){
+          if(str[1] == this.showCity[4] && count < countLanegh && this.city4.length == 0){
+            count++;
             this.city4.push(newValue[key]);
           }
           // 大兴镇
-          if(str[1] == this.showCity[5]){
+          if(str[1] == this.showCity[5] && count < countLanegh && this.city5.length == 0){
+            count++;
             this.city5.push(newValue[key]);
           }
           // 东汤镇
-          if(str[1] == this.showCity[6]){
+          if(str[1] == this.showCity[6] && count < countLanegh && this.city6.length == 0){
+            count++;
             this.city6.push(newValue[key]);
           }
           // 石城镇
-          if(str[1] == this.showCity[7]){
+          if(str[1] == this.showCity[7] && count < countLanegh && this.city7.length == 0){
+            count++;
             this.city7.push(newValue[key]);
           }
           // 四门子镇
-          if(str[1] == this.showCity[8]){
+          if(str[1] == this.showCity[8] && count < countLanegh && this.city8.length == 0){
+            count++;
             this.city8.push(newValue[key]);
           }
           // 红旗镇
-          if(str[1] == this.showCity[9]){
+          if(str[1] == this.showCity[9] && count < countLanegh && this.city9.length == 0){
+            count++;
             this.city9.push(newValue[key]);
           }
           // 边门镇
-          if(str[1] == this.showCity[10]){
+          if(str[1] == this.showCity[10] && count < countLanegh && this.city10.length == 0){
+            count++;
             this.city10.push(newValue[key]);
           }
           // 蓝旗镇
-          if(str[1] == this.showCity[11]){
+          if(str[1] == this.showCity[11] && count < countLanegh && this.city11.length == 0){
+            count++;
             this.city11.push(newValue[key]);
           }
           // 凤山区 
-          if(str[1] == this.showCity[12]){
+          if(str[1] == this.showCity[12] && count < countLanegh && this.city12.length == 0){
+            count++;
             this.city12.push(newValue[key]);
           }
         } 
@@ -176,7 +199,11 @@ export default {
       this.$echarts.registerMap("zigong", this.geoJson);
 
       let option = {
-        tooltip: {},
+        tooltip: {
+          axisPointer: {
+            animation: false, //很重要！
+          },
+        },
         textStyle: {
           color: '#fff', // 高亮时标签颜色变为 白色
           fontSize: 16, // 高亮时标签字体 变大

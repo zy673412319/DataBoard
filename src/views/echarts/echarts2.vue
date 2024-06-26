@@ -154,7 +154,10 @@ export default {
           ]
         },
         tooltip: {
-          show: false
+          show: false,
+          axisPointer: {
+            animation: false, //很重要！
+          },
         },
         legend: {
           show: false,
@@ -184,9 +187,9 @@ export default {
       }
 
       // 使用刚指定的配置项和数据显示图表。
-      // this.myChart.clear();
+      this.myChart.clear();
       // this.myChart.resize()
-      this.myChart.setOption(option);
+      this.myChart.setOption(option, { replaceMerge: ["series"] });
     },
 
     generateRandomNumber() {

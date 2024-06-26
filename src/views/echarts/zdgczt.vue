@@ -4,7 +4,6 @@
  
 <script>
 import * as echarts from 'echarts'
-import 'echarts-gl'
 import { onMounted, toRefs, ref, reactive } from 'vue'
 export default {
   setup() {
@@ -75,6 +74,9 @@ export default {
         legend: {
           tooltip: {
             show: true,
+            axisPointer: {
+              animation: false, //很重要！
+            },
           },
           orient: 'vertical',
           data: ['规划中', '建设中',],
@@ -97,6 +99,9 @@ export default {
         },
         animation: true,
         tooltip: {
+          axisPointer: {
+            animation: false, //很重要！
+          },
           formatter: (params) => {
             if (
               params.seriesName !== 'mouseoutSeries' &&
@@ -184,7 +189,7 @@ export default {
         series: series,
       }
       // 使用刚指定的配置项和数据显示图表。
-      myChart.setOption(option)
+      myChart.setOption(option, { replaceMerge: ["series"] });
     }
 
     function getParametricEquation(startRatio, endRatio, isSelected, isHovered, k, height,) {

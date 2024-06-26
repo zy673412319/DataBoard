@@ -1,33 +1,36 @@
 <template>
-  <div class="allPage">
+  <div class="allPage" ref="mySelect">
     <div class="headerCls indexHeaderBg flexDiv" @click="closeIframeFun()">
-      凤城市数据可视化系统
+      凤城市基层社会治理数字化应用平台
     </div>
-    <div style="height: calc(100% - 130px)">
+    <div style="height: calc(100% - 130px)" id="mySelect">
       <dv-border-box-1>
         <div class="flexDiv numBg01 conetntDiv juspace" style="align-items: self-start;">
           <draggable v-model="draggablelist"  handle=".rightFloatItem"  animation="300" 
                 style="width:100%;height:100%;" class="flexDiv juspace">
             <div class="rightFloatItem " v-for="(dl,index) in draggablelist" :key="index" :class="'rightFloatItem'+dl">
-              <div class="contentLeft flexDiv" style="height: 100%;align-content: space-between;" v-if="dl==1" @click="showIframeFun('31')">
-                <!-- 林草治理 -->
-                <div class="newModule flexDiv modelBg01" style="height: 100%;">
-                  <div class="newModuleTitle newModuleTitle01">
-                    林草治理
-                    <div class="lookIcon">
-                      <img src="../assets/images/lookIcon.png">
-                    </div>
-                  </div>
-                  <draggable v-model="itemDra4"  handle=".dragareaFour"  animation="300" style="width:100%;" class="flexDiv juspace alBetween">
-                    <div class="dragareaFour widAll" v-for="(fourDl,index) in itemDra4" :key="index+'fourDl'">
-                      <div class="three-levelCon widAll" v-if="fourDl==1">
-                        <div class="three-levelTitle flexDiv">
+              <div class="contentLeft flexDiv" style="height: 100%;align-content: space-between;" v-if="dl==1" :class="moduleFive?'daoxu':''">
+                <!-- <draggable v-model="itemDra4"  handle=".dragareaFour"  animation="300" style="width:100%;height:100%" class="flexDiv juspace alBetween"> -->
+                  <!-- <div class="dragareaFour widAll" :class="'ddewd'+fourDl" style="height:" v-for="(fourDl,index) in itemDra4" :key="index+'fourDl'"> -->
+                    <!-- 林草治理  v-if="fourDl==1"-->
+                    <div class="newModule flexDiv modelBg01" style="height:auto" @click="showIframeFun('31')">
+                      <div class="newModuleTitle newModuleTitle01">
+                        林草治理--火点监测
+                        <div class="exchangeIcon" @click.stop="moduleFive = !moduleFive">
+                          <img src="../assets/images/exchange.png">
+                        </div>
+                        <div class="lookIcon">
+                          <img src="../assets/images/lookIcon.png">
+                        </div>
+                      </div>
+                      <div class="three-levelCon widAll">
+                        <div class="three-levelTitle flexDiv" style="margin-top: 0px;">
                           <img src="../assets/images/titleImg/subHuodian.png">
                           疑似火点信息
-                          <dv-decoration-3 style="width:130px;height:20x;" />
+                          <dv-decoration-3 style="width:130px;height:30px;" />
                         </div>
                         <div class="flexDiv">
-                          <div class="flexDiv" style="width: 28%;margin: 14px 0">
+                          <div class="flexDiv" style="width: 28%;margin: 4px 0">
                             <div class="numBig flexDiv" style="">
                               <img src="../assets/images/fire01.png" style="width: 98px">
                               <div>
@@ -44,14 +47,14 @@
                             </div>
                           </div>
                           <div class="" style="width:66%;">
-                            <dv-scroll-board :config="firePointconfig" style="width:100%;height:190px" class="firePointCls" ref="scrollBoard"/>
+                            <dv-scroll-board :config="firePointconfig" style="width:100%;height:180px" class="firePointCls" ref="scrollBoard"/>
                           </div>
                         </div>
                         <div class="flexDiv juspace">
                           <div class="fireInfo" style="" v-for="(fl,index) in fireDetailData" :key="'fl'+index">
                             <div class="fireInfoHead flexDiv">
                               <img src="../assets/images/time.png" style="width:20px;margin-right: 4px">
-                              {{fl.requireFinishTime}}
+                              {{fl.tfpTime}}
                             </div>
                             <div class="flexDiv fireInfoCon">
                               <div style="width: 30%;text-align:right;padding-right: 30px;">
@@ -74,8 +77,10 @@
                                 <div>天气：{{fl.weather | tianqiFliter}}</div>
                               </div>
                               <div class="flexDiv">
-                                <div class="leftDiv">风向：{{fl.weather | direction}}</div>
-                                <div>可信度：{{fl.tfpReliability}}</div>
+                                <!-- <div class="leftDiv">风向：{{fl.weather | direction}}</div> -->
+                                <div>降雨量：{{fl.weather | jiangshuil}}</div>
+                                <!-- <div>可信度：{{fl.tfpReliability}}</div> -->
+                                <div>任务状恋：{{fl.status}}</div>
                               </div>
                             </div>
                             <!-- <dv-decoration-10 style="width:100%;height:5px;" />
@@ -93,14 +98,26 @@
                           </div>
                         </div>
                       </div>
-                      <div class="three-levelCon widAll" v-if="fourDl==2" @click="showIframeFun('33')">
-                        <div class="three-levelTitle flexDiv">
+                    </div>
+                    <!--  v-if="fourDl==2" -->
+                    <div class="newModule flexDiv modelBg01" style="height:auto" @click="showIframeFun('33')">
+                      <div class="newModuleTitle newModuleTitle01">
+                        林草治理--有害生物
+                        <div class="exchangeIcon" @click.stop="moduleFive = !moduleFive">
+                          <img src="../assets/images/exchange.png">
+                        </div>
+                        <div class="lookIcon">
+                          <img src="../assets/images/lookIcon.png">
+                        </div>
+                      </div>
+                      <div class="three-levelCon widAll">
+                        <div class="three-levelTitle flexDiv" style="margin-top: 0px;">
                           <img src="../assets/images/titleImg/subYouhai.png">
                           有害生物检测线索列信息
-                          <dv-decoration-3 style="width:130px;height:20x;" />
+                          <dv-decoration-3 style="width:130px;height:30px;" />
                         </div>
-                        <div style="width:100%;padding: 14px">
-                          <div class="flexDiv text12 colorWhite textCenter jusAround" style="margin-bottom:4px;">
+                        <div style="width:100%;padding: 0 14px">
+                          <div class="flexDiv text12 colorWhite textCenter jusAround" style="margin-bottom:0px;">
                             <div class="shebei">
                               <img src="../assets/images/youhaiIcon.png">
                             </div>
@@ -141,8 +158,8 @@
                         </div>
                       </div>
                     </div>
-                  </draggable>
-                </div>
+                  <!-- </div>
+                </draggable> -->
               </div>
               <div class="contentLeft flexDiv" style="height: 100%;align-content: space-between;" v-if="dl==2" :class="moduleTwo?'daoxu':''">
                 <!-- <draggable v-model="itemDra3"  handle=".dragareaThree"  animation="300" style="width:100%;height:100%;" class="flexDiv juspace alBetween">
@@ -150,8 +167,8 @@
                     <!-- 乱砍盗伐监管图斑  v-if="threeDl==1" -->
                     <div class="newModule modelBg02" @click="showIframeFun('32')">
                       <div class="newModuleTitle newModuleTitle02">
-                        林草治理--乱砍乱伐
-                        <div class="exchangeIcon" @click="moduleTwo = !moduleTwo">
+                        林草治理--乱砍盗伐
+                        <div class="exchangeIcon" @click.stop="moduleTwo = !moduleTwo">
                           <img src="../assets/images/exchange.png">
                         </div>
                         <div class="lookIcon">
@@ -162,7 +179,7 @@
                         <div class="three-levelTitle flexDiv">
                           <img src="../assets/images/titleImg/subLuankan.png">
                           乱砍盗伐监管图斑
-                          <dv-decoration-3 style="width:130px;height:20x;" />
+                          <dv-decoration-3 style="width:130px;height:30px;" />
                         </div>
                         <div style="width:100%;height: 160px">
                           <echarts4 :lkfdDateList="lkfdDateList" :lkfdCountList="lkfdCountList"></echarts4>
@@ -173,7 +190,7 @@
                     <div class="newModule modelBg03" @click="showIframeFun('34')">
                       <div class="newModuleTitle newModuleTitle03">
                         两违治理
-                        <div class="exchangeIcon" @click="moduleTwo = !moduleTwo">
+                        <div class="exchangeIcon" @click.stop="moduleTwo = !moduleTwo">
                           <img src="../assets/images/exchange.png">
                         </div>
                         <div class="lookIcon">
@@ -184,7 +201,7 @@
                         <div class="three-levelTitle flexDiv">
                           <img src="../assets/images/titleImg/subLiangwei.png">
                           两违统计
-                          <dv-decoration-3 style="width:130px;height:20x;" />
+                          <dv-decoration-3 style="width:130px;height:30px;" />
                         </div>
                         <div style="width:100%;height: 140px;margin:6px 0;" class="flexDiv jusAround">
                           <div style="width: 300px;height: 140px;" class="newWeifabg">
@@ -210,7 +227,7 @@
                         <div class="three-levelTitle flexDiv">
                           <img src="../assets/images/titleImg/subWeifa.png">
                           违法区域统计
-                          <dv-decoration-3 style="width:130px;height:20x;" />
+                          <dv-decoration-3 style="width:130px;height:30px;" />
                         </div>
                         <div style="width:100%;height:324px;">
                           <newWeifa2 :liangweiBarData="liangweiBarData"></newWeifa2>
@@ -224,12 +241,11 @@
                 <!-- <mapDitu ref="map_chartsN"></mapDitu> -->
                 <div class="mapDiv">
                   <div class="mapDiv01">
-                    <img src="../assets/images/map.png" />
+                    <img src="../assets/images/map3.png" />
                   </div>
-                   <!-- @click="showIframeFun(dl)" -->
-                  <div class="mapDiv02">
+                  <!-- <div class="mapDiv02">
                     <chinaMap2 ref="map_chartsN" :mapFdData="mapFdData"></chinaMap2>
-                  </div>
+                  </div> -->
                   <div class="lookIconmap">
                     <img src="../assets/images/lookIcon.png">
                   </div>
@@ -275,7 +291,7 @@
                     <div class="newModule modelBg04" @click="showIframeFun('35')">
                       <div class="newModuleTitle newModuleTitle04">
                         河湖治理
-                        <div class="exchangeIcon" @click="moduleThree = !moduleThree">
+                        <div class="exchangeIcon" @click.stop="moduleThree = !moduleThree">
                           <img src="../assets/images/exchange.png">
                         </div>
                         <div class="lookIcon">
@@ -287,7 +303,7 @@
                           <div class="three-levelTitle flexDiv">
                             <img src="../assets/images/titleImg/subSiluan.png">
                             四乱类型分析
-                            <dv-decoration-3 style="width:130px;height:20x;" />
+                            <dv-decoration-3 style="width:130px;height:30px;" />
                           </div>
                           <div style="width:100%;height:140px;margin-top:8px;">
                             <!-- siluanDataSend -->
@@ -298,11 +314,12 @@
                           <div class="three-levelTitle flexDiv" style="">
                             <img src="../assets/images/titleImg/subSiluan02.png">
                             四乱变化监测
-                            <dv-decoration-3 style="width:130px;height:20x;" />
+                            <dv-decoration-3 style="width:130px;height:30px;" />
                           </div>
                           <div style="width:100%;height:150px;margin-top:8px;">
                             <!-- 河湖治理   四乱变化分析（所有使时间按年，月份）  -->
-                            <siluan2 :hehuSLBHDateList="hehuSLBHDateList" :hehuSLBHNumList="hehuSLBHNumList"></siluan2>
+                            <!--  :hehuSLBHDateList="hehuSLBHDateList" :hehuSLBHNumList="hehuSLBHNumList" -->
+                            <siluan2 :hehuData="hehuData"></siluan2>
                           </div>
                         </div>
                       </div>
@@ -310,7 +327,7 @@
                         <div class="three-levelTitle flexDiv" style="">
                           <img src="../assets/images/titleImg/subSiluan03.png">
                           四乱详细分析
-                          <dv-decoration-3 style="width:130px;height:20x;" />
+                          <dv-decoration-3 style="width:130px;height:30px;" />
                         </div>
                         <div style="width:100%;height:130px;">
                           <echarts3 :hehuSiLDetailData="hehuSiLDetailData"></echarts3>
@@ -320,8 +337,8 @@
                     <!--  v-if="oneDl==2" -->
                     <div class="newModule modelBg05" @click="showIframeFun('36')">
                       <div class="newModuleTitle newModuleTitle05">
-                        垃圾治理
-                        <div class="exchangeIcon" @click="moduleThree = !moduleThree">
+                        人居环境治理
+                        <div class="exchangeIcon" @click.stop="moduleThree = !moduleThree">
                           <img src="../assets/images/exchange.png">
                         </div>
                         <div class="lookIcon">
@@ -332,7 +349,7 @@
                         <div class="three-levelTitle flexDiv">
                           <img src="../assets/images/titleImg/subLaji.png">
                           垃圾信息
-                          <dv-decoration-3 style="width:130px;height:20x;" />
+                          <dv-decoration-3 style="width:130px;height:30px;" />
                         </div>
                         <div class="flexDiv jusAround" style="margin: 4px 0 8px 0;">
                           <div class="lajiNum flexDiv">
@@ -363,7 +380,7 @@
                           <div class="three-levelTitle flexDiv" style="">
                             <img src="../assets/images/titleImg/subLaji02.png">
                             垃圾处置信息
-                            <dv-decoration-3 style="width:80px;height:16px;" />
+                            <dv-decoration-3 style="width:130px;height:30px;" />
                           </div>
                           <div style="width:100%;height:144px;margin:4px 0;">
                             <pie :lajipiData="lajipiData"></pie>
@@ -375,22 +392,22 @@
                           <div class="three-levelTitle flexDiv" style="">
                             <img src="../assets/images/titleImg/subJinsanyue.png">
                             近三月垃圾清理数量
-                            <dv-decoration-3 style="width:80px;height:16px;" />
+                            <dv-decoration-3 style="width:130px;height:30px;" />
                           </div>
                           <div class="flexDiv" style="margin: 14px 0;">
-                            <div style="width:32%">
+                            <div style="width:32%" v-if="Last3monthsData[0]">
                               <img src="../assets/images/newImg/oneLevelImg.png" style="width:90px;margin:0 auto;display:block;">
                               <p style="color:white;text-align:center;margin:-12px 0 0;">
                                 <CountTo :startVal='startLast3monthsData[0].tonnage' :endVal='Last3monthsData[0].tonnage' :duration='3000' class="title34"/>
                               </p>
                             </div>
-                            <div style="width:32%">
+                            <div style="width:32%" v-if="Last3monthsData[1]">
                               <img src="../assets/images/newImg/twoLevelImg.png" style="width:90px;margin:0 auto;display:block;">
                               <p style="color:white;text-align:center;margin:-12px 0 0;">
                                 <CountTo :startVal='startLast3monthsData[1].tonnage' :endVal='Last3monthsData[1].tonnage' :duration='3000' class="title34"/>
                               </p>
                             </div>
-                            <div style="width:32%">
+                            <div style="width:32%" v-if="Last3monthsData[2]">
                               <img src="../assets/images/newImg/threeLevelImg.png" style="width:90px;margin:0 auto;display:block;">
                               <p style="color:white;text-align:center;margin:-12px 0 0;">
                                 <CountTo :startVal='startLast3monthsData[2].tonnage' :endVal='Last3monthsData[2].tonnage' :duration='3000' class="title34"/>
@@ -410,7 +427,7 @@
                     <div class="newModule modelBg06" @click="showIframeFun('37')">
                       <div class="newModuleTitle newModuleTitle06">
                         重大工程治理
-                        <div class="exchangeIcon" @click="moduleFour = !moduleFour">
+                        <div class="exchangeIcon" @click.stop="moduleFour = !moduleFour">
                           <img src="../assets/images/exchange.png">
                         </div>
                         <div class="lookIcon">
@@ -429,7 +446,7 @@
                           <div class="three-levelTitle flexDiv" style="">
                             <img src="../assets/images/titleImg/subGongcheng.png">
                             工程类型分析
-                            <dv-decoration-3 style="width:80px;height:16px;" />
+                            <dv-decoration-3 style="width:130px;height:30px;" />
                           </div>
                           <div style="width:100%;padding:14px;">
                             <dv-conical-column-chart :config="MajorConfig" style="width:100%;height:126px;" />
@@ -440,7 +457,7 @@
                     <div class="newModule modelBg07" @click="showIframeFun('38')">
                       <div class="newModuleTitle newModuleTitle07">
                         矿山治理
-                        <div class="exchangeIcon" @click="moduleFour = !moduleFour">
+                        <div class="exchangeIcon" @click.stop="moduleFour = !moduleFour">
                           <img src="../assets/images/exchange.png">
                         </div>
                         <div class="lookIcon">
@@ -482,7 +499,7 @@
                         <div class="three-levelTitle flexDiv">
                           <img src="../assets/images/titleImg/subWeikuang.png">
                           尾矿库类型
-                          <dv-decoration-3 style="width:80px;height:16px;" />
+                          <dv-decoration-3 style="width:130px;height:30px;" />
                         </div>
                         <div class="flexDiv" style="justify-content: flex-start;width:100%;flex-wrap: wrap;">
                           <div class="kuangDiv flexDiv">
@@ -521,7 +538,7 @@
                         <div class="three-levelTitle flexDiv">
                           <img src="../assets/images/titleImg/subWeikuang.png">
                           尾矿库数量
-                          <dv-decoration-3 style="width:80px;height:16px;" />
+                          <dv-decoration-3 style="width:130px;height:30px;" />
                         </div>
                         <div style="width:100%;height:180px;" class="flexDiv">
                           <div style="width: 50%;height:100%">
@@ -586,10 +603,14 @@ export default {
     },
     tianqiFliter(value) {
       return JSON.parse(value).skycon+' / '+JSON.parse(value).temperature
+    },
+    jiangshuil(value){
+      return JSON.parse(value).probability
     }
   },
   data() {
     return {
+      timeSEv: 0,
       webSocket: null,
       showIframe: false,
       iframeSrc: 'https://b2b.baidu.com/',
@@ -620,6 +641,10 @@ export default {
       // 河湖治理   四乱变化分析（所有使时间按年，月份）   hehuSLBHDateList   hehuSLBHNumList
       hehuSLBHDateList: [],
       hehuSLBHNumList: [],
+      hehuData: {
+        dateList: [],
+        numlist: []
+      },
       // 垃圾治理 垃圾站点统计(村庄数量站点数量，容量)
       lajiZhiliData: {
         villageNum: 0,
@@ -758,6 +783,7 @@ export default {
       moduleTwo: false,
       moduleThree: false,
       moduleFour: false,
+      moduleFive: false,
       closeNum: 0,
       firstData: {},
       changeData: {},
@@ -778,7 +804,12 @@ export default {
     },
   },
   mounted() {
-    document.title = '凤城市数据可视化系统';
+    this.timeSEv = new Date().getTime();
+    console.log('timeSEv 新 258')
+    // 初始化Choices
+    this.$nextTick(()=>{
+    },10)
+    document.title = '凤城市基层社会治理数字化应用平台';
     var that = this;
     // const documentWidth = document.body.offsetWidth;
     // const ratio = documentWidth / 1920;
@@ -805,23 +836,31 @@ export default {
     connectWebSocket() {
       // 假设WebSocket服务器地址是ws://localhost:8080
       this.webSocket = new WebSocket('ws://47.101.217.219:8080');
+      // this.webSocket = new WebSocket('ws://192.168.100.119:8080');
  
       this.webSocket.onopen = () => {
-        console.log('WebSocket 连接成功');
+        // console.log('WebSocket 连接成功');
       };
  
       this.webSocket.onmessage = (message) => {
+        // 3600000   1 小时   60*60*1000
+        // var time = 60*60*1000*2;
+        // if((new Date().getTime() - this.timeSEv) > time){
+        //   this.timeSEv = new Date().getTime();
+        //   window.location.reload();
+        // }
+        console.log('收到消息  数据返回的')
         this.setData(message.data);
         // console.log('收到消息:', message.data);
       };
  
       this.webSocket.onerror = (error) => {
         console.error('WebSocket 出错:', error);
-        this.reconnect();
+        // this.reconnect();
       };
  
       this.webSocket.onclose = () => {
-        console.log('WebSocket 连接关闭');
+        // console.log('WebSocket 连接关闭');
         this.reconnect();
       };
     },
@@ -872,8 +911,12 @@ export default {
             countTimeList.push(data.data.data[key].countTime);
             slnumList.push(data.data.data[key].num);
           }
-          this.hehuSLBHDateList = countTimeList;
-          this.hehuSLBHNumList = slnumList;
+          this.hehuData = {
+            dateList: countTimeList,
+            numlist: slnumList
+          }
+          // this.hehuSLBHDateList = countTimeList;
+          // this.hehuSLBHNumList = slnumList;
         }
       }
       // 垃圾治理 垃圾站点统计(村庄数量站点数量，容量)
@@ -926,6 +969,7 @@ export default {
             }
             const { firePointconfig } = this;
             this.firePointconfig.data = data;
+            data = [];
             this.firePointconfig = { ...this.firePointconfig };
 
             this.mapFdData = mapFdData;
@@ -1032,7 +1076,28 @@ export default {
       // 垃圾类型和占比
       if(data.num == 16){
         if(data.data.code == 200){
-          this.lajipiData= data.data.data;
+          if(data.data.data && data.data.data.length > 0){
+            var deh = data.data.data;
+            for(var key in deh){
+              if(deh[key].garbageType == 1){
+                deh[key].garbageName = '工业垃圾';
+                deh[key].name = '工业垃圾';
+              }
+              if(deh[key].garbageType == 2){
+                deh[key].garbageName = '建筑垃圾';
+                deh[key].name = '建筑垃圾';
+              }
+              if(deh[key].garbageType == 3){
+                deh[key].garbageName = '生活垃圾';
+                deh[key].name = '生活垃圾';
+              }
+              if(deh[key].garbageType == 4){
+                deh[key].garbageName = '河道垃圾';
+                deh[key].name = '河道垃圾';
+              }
+            }
+            this.lajipiData= deh;
+          }
         }
       }
       // 近三月处理数量
@@ -1083,7 +1148,7 @@ export default {
     },
     showIframeFun(type){
       if (this.webSocket && this.webSocket.readyState === WebSocket.OPEN) {
-        console.log('showIframeFunshowIframeFun')
+        // console.log('showIframeFunshowIframeFun')
         this.webSocket.send(
           JSON.stringify({num: Number(type)})
         );

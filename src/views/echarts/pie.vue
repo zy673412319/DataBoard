@@ -244,7 +244,7 @@ export default {
         legend: {
           orient: 'vertical',
           // x: 'left',o
-          right: 26,
+          right: 0,
           top: 30,
           align: 'right',
           textStyle: {
@@ -261,6 +261,9 @@ export default {
         },
         animation: true,
         tooltip: {
+          axisPointer: {
+            animation: false, //很重要！
+          },
           formatter: (params) => {
             if (
               params.seriesName !== 'mouseoutSeries' &&
@@ -367,13 +370,13 @@ export default {
       if (!this.myChart) this.myChart = this.$echarts.init(this.$el, null, {devicePixelRatio: 3});
 
       this.myChart.clear();
-      this.myChart.resize(
-        {
-          width: this.$el.offsetWidth,
-          height: this.$el.offsetHeight
-        }
-      )
-      this.myChart.setOption(option);
+      // this.myChart.resize(
+      //   {
+      //     width: this.$el.offsetWidth,
+      //     height: this.$el.offsetHeight
+      //   }
+      // )
+      this.myChart.setOption(option, { replaceMerge: ["series"] });
     },
 
   },

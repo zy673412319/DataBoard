@@ -221,11 +221,12 @@ export default {
           // }
         ]
       };
-
-      // 使用刚指定的配置项和数据显示图表。
+      
       this.myChart.clear();
+      this.myChart.setOption(option, { replaceMerge: ["series"] });
+      // 使用刚指定的配置项和数据显示图表。
       // this.myChart.resize()
-      this.myChart.setOption(option);
+      // this.myChart.setOption(option);
     }
   },
 

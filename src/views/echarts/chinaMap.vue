@@ -443,14 +443,14 @@ export default {
           // }
         ]
       };
-      if (!this.myChart) this.myChart = this.$echarts.init(this.$el, null, {devicePixelRatio: 3});
+      if (!this.myChart) {this.myChart = this.$echarts.init(this.$el, null, {devicePixelRatio: 3});}
       // 初始化echarts图表
 
       var that = this;
       this.$echarts.registerMap('fengcheng', that.geoJson);
       this.myChart.clear();
       // this.myChart.resize()
-      this.myChart.setOption(option);
+      this.myChart.setOption(option, { replaceMerge: ["series"] });
       // setTimeout(()=>{
       //   var map = this.myChart.getModel().getComponent("amap").getAMap()
       //   // 设置显示卫星图

@@ -10,7 +10,8 @@
         charts: '',
         angle: 0,
         value: 55.33,
-        option: {}
+        option: {},
+        myChart: null,
       }
     },
 
@@ -325,7 +326,7 @@
         this.angle = this.angle + 3
         this.myChart.clear();
         // this.myChart.resize()
-        this.myChart.setOption(this.option, true);
+        this.myChart.setOption(this.option, { replaceMerge: ["series"] });
       },
 
     },

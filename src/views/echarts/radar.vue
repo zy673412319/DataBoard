@@ -130,9 +130,9 @@ export default {
         }
       }
       if (!this.myChart) this.myChart = this.$echarts.init(this.$el, null, { devicePixelRatio: 3 });
-
-
-      this.myChart.setOption(options);
+      
+      this.myChart.clear();
+      this.myChart.setOption(options, { replaceMerge: ["series"] });
     }
   },
 }

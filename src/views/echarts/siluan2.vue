@@ -5,7 +5,7 @@
 <script>
 export default {
   name: '',
-  props: ['hehuSLBHDateList', 'hehuSLBHNumList'],
+  props: ['hehuData'],
   data() {
     return {
       myChart: null,
@@ -15,14 +15,9 @@ export default {
     }
   },
   watch: {
-    hehuSLBHDateList(newValue, oldValue) {
-      this.dateList = newValue;
-      this.data1 = this.hehuSLBHNumList;
-      this.setChart();
-    },
-    hehuSLBHNumList(newValue, oldValue) {
-      this.dateList = this.hehuSLBHDateList;
-      this.data1 = this.hehuSLBHNumList;
+    hehuData(newValue, oldValue) {
+      this.dateList = newValue.dateList;
+      this.data1 = newValue.numlist;
       this.setChart();
     },
   },
@@ -41,7 +36,10 @@ export default {
           right: 30,
         },
         tooltip: {
-          trigger: 'axis'
+          trigger: 'axis',
+          axisPointer: {
+            animation: false, //很重要！
+          },
         },
         legend: {
           right: "8%",
@@ -159,7 +157,7 @@ export default {
 
       this.myChart.clear();
       // this.myChart.resize()
-      this.myChart.setOption(option);
+      this.myChart.setOption(option, { replaceMerge: ["series"] });
     },
   },
 }

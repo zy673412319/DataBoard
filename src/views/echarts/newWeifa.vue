@@ -114,6 +114,9 @@ export default {
         legend: {
           tooltip: {
             show: true,
+            axisPointer: {
+              animation: false, //很重要！
+            },
           },
           orient: 'vertical',
           data: ['耕地', '林地'],
@@ -205,8 +208,9 @@ export default {
         series: series,
       }
       // 使用刚指定的配置项和数据显示图表。
-      // this.myChart.resize()
-      this.myChart.setOption(option);
+      this.myChart.clear();
+      // this.myChart.resize();
+      this.myChart.setOption(option, { replaceMerge: ["series"] });
     },
 
     getParametricEquation(startRatio, endRatio, isSelected, isHovered, k, height,) {

@@ -46,7 +46,10 @@ export default {
           right: 80,
         },
         tooltip: {
-          trigger: 'axis'
+          trigger: 'axis',
+          axisPointer: {
+            animation: false, //很重要！
+          },
         },
         legend: {
           right: "8%",
@@ -161,7 +164,7 @@ export default {
             },
           },
           {
-            name: '投资基金（百W）',
+            name: '投资基金（百万）',
             type: 'line',
             smooth: true,
             // showSymbol: false, 
@@ -198,8 +201,8 @@ export default {
       if (!this.myChart) this.myChart = this.$echarts.init(this.$el, null, {devicePixelRatio: 3});
 
       this.myChart.clear();
-      this.myChart.resize()
-      this.myChart.setOption(option);
+      // this.myChart.resize()
+      this.myChart.setOption(option, { replaceMerge: ["series"] });
     },
     generateRandomArray(min, max) {
       // 生成一个5位的随机数组

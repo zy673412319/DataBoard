@@ -58,6 +58,9 @@ export default {
       let mapOption = {
         tooltip: {
           show: true,
+          axisPointer: {
+            animation: false, //很重要！
+          },
           transitionDuration:0,
           formatter: function (params) {
             if (params.data) {
