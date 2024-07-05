@@ -28,6 +28,7 @@ export default {
     setChart() {
       var that = this;
       let option = {
+        animation: false, // 关闭动画
         tooltip: {
           trigger: 'axis',
           axisPointer: {
@@ -135,9 +136,8 @@ export default {
       };
       if (!this.myChart) this.myChart = this.$echarts.init(this.$el, null, {devicePixelRatio: 3});
 
-      // this.myChart.clear();
-      // this.myChart.resize()
-      this.myChart.setOption(option);
+      this.myChart.clear();
+      this.myChart.setOption(option, { replaceMerge: ["series"] });
     },
   },
 }

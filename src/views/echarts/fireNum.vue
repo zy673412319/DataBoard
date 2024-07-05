@@ -328,7 +328,6 @@
         // this.myChart.resize()
         this.myChart.setOption(this.option, { replaceMerge: ["series"] });
       },
-
     },
   }
 </script>

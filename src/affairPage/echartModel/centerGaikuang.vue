@@ -106,6 +106,7 @@ export default {
       })
       // 准备待返回的配置项，把准备好的 legendData、series 传入。
       let option = {
+        animation: false, // 关闭动画
         legend: {
           show: false,
           tooltip: {
@@ -212,9 +213,9 @@ export default {
         },
         series: series,
       }
-      // 使用刚指定的配置项和数据显示图表。
-      // this.myChart.resize()
-      this.myChart.setOption(option);
+      
+      this.myChart.clear();
+      this.myChart.setOption(option, { replaceMerge: ["series"] });
     },
 
     getParametricEquation(startRatio, endRatio, isSelected, isHovered, k, height,) {

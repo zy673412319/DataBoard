@@ -71,8 +71,16 @@ export default {
           },
           // 指示器名称
           indicator: that.resData.map(item => ({
-            name: item.name
+            name: item.name,
+            max: 20
           })),
+          // indicator: [
+          //   { text: 'Indicator1',max: 200 },
+          //   { text: 'Indicator2',max: 200 },
+          //   { text: 'Indicator3',max: 200 },
+          //   { text: 'Indicator4',max: 200 },
+          //   { text: 'Indicator5',max: 200 }
+          // ],
           splitArea: {
             show: false
           }

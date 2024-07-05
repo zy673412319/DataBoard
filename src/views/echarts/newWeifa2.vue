@@ -23,10 +23,10 @@ export default {
       for(var key in newValue){
         lwBarDateList.push(key);
         for(var i =0; i<newValue[key].length; i++){
-          if(newValue[key][i].type == '违法建筑'){
+          if(newValue[key][i].type == '林地'){
             lwBarJianzhuList.push(newValue[key][i].count);
           }
-          if(newValue[key][i].type == '违法占地'){
+          if(newValue[key][i].type == '耕地'){
             lwBarZhandiList.push(newValue[key][i].count);
           }
         }
@@ -152,7 +152,7 @@ export default {
         },
         series: [
           {
-            name: '违法建筑',
+            name: '林地',
             type: "bar", // 设置图表类型为柱状
             stack: '总量',
             data: that.lwBarJianzhuList,
@@ -188,7 +188,7 @@ export default {
             },
           },
           {
-            name: '违法占地',
+            name: '耕地',
             type: "bar", // 设置图表类型为柱状
             stack: '总量',
             data: that.lwBarZhandiList,
@@ -231,7 +231,6 @@ export default {
       // echarts.dispose()是销毁实例，销毁后实例无法再被使用。
 
       // this.myChart.resize()
-      // this.myChart.setOption(option);
       this.myChart.setOption(option, { replaceMerge: ["series"] });
     }
   },

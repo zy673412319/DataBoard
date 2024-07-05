@@ -26,13 +26,20 @@ body {
   color: #fff;
   min-height: 400px;
   min-width: 1200px;
+  padding: 0;
+  margin: 0;
 }
 p {
   font-size: 16px;
   color: #fff;
+  /* color: transparent; */
 }
 .widAll {
   width: 100%;
+}
+.anim {
+  transition: all 1s;
+  margin-top: -30px;
 }
 .three-levelCon {
   padding: 0 24px;
@@ -120,6 +127,25 @@ html {
   height: 1260px; */
   width: 5760px;
   height: 1080px;
+  /* overflow: hidden; */
+}
+
+/*一行溢出...显示*/
+.oneLine {
+  word-break: keep-all;
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+}
+/*最多2行，溢出。。。显示*/
+.twoLine {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: normal !important;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 .allPage {
   height: 100%;
@@ -395,45 +421,6 @@ html {
 .mainColor {
   color: #97F9FF;
 }
-.huodianNum {
-  width: 100%;
-  height: 60px;
-  color: white;
-  padding-top: 0px;
-  font-size: 20px;
-  justify-content: center;
-  position: relative;
-  color: #ffe000;
-  perspective: 200px; /* 设置透视 */
-}
-.huodianNum p{
-  position: relative;
-  width: 70px;
-  height: 70px;
-  text-align: center;
-  line-height: 70px;
-}
-
-.huodianNum p::after{
-  position: absolute;
-  top: -5px;
-  left: -5px;
-  width: 80px;
-  height: 80px;
-  content: '';
-  background: url('https://easyv.assets.dtstack.com/data/assets/twn4qe8zpq_1631783459961_ufhwaoyctm.png') center center no-repeat;
-  background-size: 100% 100%  !important;
-  animation: rotoImg 6s linear infinite;
-  transform-origin: center; /* 设置旋转中心 */
-}
-@keyframes rotoImg{
-  from{
-    transform: rotate(0deg);
-  }
-  to{
-    transform: rotate(360deg);
-  } 
-}
 .three-levelTitle {
   width: 100%;
   margin-top: 12px;
@@ -499,7 +486,7 @@ html {
 .numBig img {
   margin-top: 14px;;
   margin-right: 2px;
-  animation: numAfter 2s linear both infinite;
+  /* animation: numAfter 2s linear both infinite; */
   
 }
 @keyframes numAfter{
@@ -545,7 +532,7 @@ html {
 .lajiNum img {
   width: 110px;
   margin-right: 6px;
-  animation: numAfter 4s linear infinite;
+  /* animation: numAfter 4s linear infinite; */
 }
 .lajiNum p {
   color: white;
@@ -608,13 +595,15 @@ html {
 }
 .fireInfoCon {
   padding: 8px 14px;
+  border-bottom: 1px solid #6586ec;
+  margin-bottom: 10px;
 }
 .fireInfoCon p {
   margin: 6px 0;
   font-size: 14px;
 }
 .fireInfoQh {
-  padding: 0 14px;
+  padding: 0 4px;
   font-size: 14px;
 }
 .fireInfoQh .flexDiv {
@@ -622,6 +611,10 @@ html {
 }
 .fireInfoQh .flexDiv > div{
   width: 50%;
+  word-break: keep-all;
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
 }
 .oneLevel {
   color: #f76a4e;
@@ -778,7 +771,7 @@ html {
   padding: 14px;
   border-radius: 6px;
   color: white;
-  animation: tooplie01D 2s ease both infinite;
+  /* animation: tooplie01D 2s ease both infinite; */
 }
 .tooplietitle {
   width: 100%;

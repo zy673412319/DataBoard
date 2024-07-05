@@ -250,6 +250,35 @@
 }
 
 /* 入驻事项 */
+.rzPointClsTitle {
+  font-family: MyFont;
+  font-size: 16px;
+  color: #FFFFFF !important;
+  background-image: none !important;
+  background-color: transparent !important;
+  position: relative;
+  div {
+    font-size: 16px;
+    /* color: white; */
+  }
+}
+.rzPointClsTitle::after {
+  content: '';
+  width: 100%;
+  height: 1px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-image: rgba(151,249,255,0.3);
+}
+.rzPointClsCont {
+  height: 84%;
+  overflow: hidden;
+  width: 100%;
+}
+.rzPointClsCont li {
+  color: white;
+}
 .rzPointCls {
   font-size: 14px;
 }

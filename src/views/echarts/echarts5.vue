@@ -179,7 +179,6 @@
         this.myChart.setOption(option, { replaceMerge: ["series"] });
       }
     },
-
   }
 </script>
 <style scoped>

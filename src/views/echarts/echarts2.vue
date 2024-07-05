@@ -31,7 +31,6 @@ export default {
     this.init()
     this.uodateData()
   },
-
   methods: {
     init() {
       var that = this;

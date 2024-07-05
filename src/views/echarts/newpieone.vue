@@ -11,23 +11,36 @@
 
 <script>
 export default {
-  props: ['siluanDataSend'],
+  props: ['liangweiParData'],
   name: '',
   data() {
     return {
       myChart: null,
-      siluanData: [],
-      // [
-      //   { value: 65, name: '乱堆', },
-      //   { value: 48, name: '乱占' },
-      //   { value: 98, name: '乱采' },
-      //   { value: 32, name: '乱建' }
-      // ]
+      optionsData: [],
     }
   },
   watch: {
-    siluanDataSend(newValue, oldValue) {
-      this.siluanData = newValue;
+    liangweiParData(newValue, oldValue) {
+      var cropsNum = 0;
+      var woodlandNum = 0;
+      for(var i = 0; i<newValue.length; i++){
+        if(newValue[i].name == 'crops'){
+          cropsNum = newValue[i].count;
+        }
+        if(newValue[i].name == 'woodland'){
+          woodlandNum = newValue[i].count;
+        }
+      }
+      this.optionsData = [
+        {
+          name: '耕地',
+          value: cropsNum,
+        },
+        {
+          name: '林地',
+          value: woodlandNum,
+        },
+      ];
       this.setChart();
     },
   },
@@ -38,7 +51,6 @@ export default {
     // 渠道分析
     setChart() {
       var that = this;
-      var centerImg = "https://easyv.assets.dtstack.com/data/assets/ye0x8u2o6e_1630499352687_3ubg4uvuje.png";
       let option = {
         tooltip: {
           trigger: 'item',
@@ -47,9 +59,9 @@ export default {
           },
         },
         legend: {
+          show: false,
           icon: "circle",
           orient: 'vertical',
-          // x: 'left',o
           right: 40,
           top: 30,
           align: 'right',
@@ -65,74 +77,16 @@ export default {
             fontFamily: 'MyFont',
           }
         },
-        //中心图片配置(关键代码)
-        // graphic: [
-        //   {
-        //     z: 4,
-        //     type: "image",
-        //     id: "logo",
-        //     left: "29%", //调整图片位置
-        //     top: "24%", //调整图片位置
-        //     z: -10,
-        //     bounding: "raw",
-        //     rotation: 0, //旋转
-        //     origin: [64.5, 32.5], //中心点
-        //     scale: [1.0, 1.0], //缩放
-        //     //设置图片样式
-        //     style: {
-        //       image: centerImg,
-        //       width: 136,
-        //       height: 136,
-        //       opacity: 1,
-        //     },
-        //   },
-        // ],
         series: [
           {
-            name: 'border',
+            name: '占地类型统计',
             type: 'pie',
-            clockWise: false,
-            radius: ['50%', '80%'],
-            center: ['50%', '50%'],
-            animation: false,
-            data: [{
-              value: 0,
-              color: '#fff',
-              label: {
-                show: false,
-              },
-              labelLine: {
-                show: false,
-              },
-              emphasis: {
-                disabled: true,
-              },
-              select: {
-                disabled: true,
-              },
-              tooltip: {
-                show: false,
-                axisPointer: {
-                  animation: false, //很重要！
-                },
-              },
-              itemStyle: {
-                color: 'rgba(114, 136, 180, 0.8)',
-                shadowColor: 'rgba(0, 0, 0, 0.2)',
-                shadowBlur: 15,
-                shadowOffsetX: 2,
-                shadowOffsetY: 2,
-              },
-            },],
-          },
-          {
-            name: '四乱类型',
-            type: 'pie',
-            radius: ['40%', '84%'],
+            // roseType: 'radius',
+            radius: ['20%', '84%'],
             center: ['50%', '50%'],
             itemStyle: {
               borderRadius: 4,
-              borderColor: '#fff',
+              borderColor: 'transparent',
               borderWidth: 1
             },
             emphasis: {
@@ -190,16 +144,14 @@ export default {
                 }
               }
             },
-            color: ['#00F0FF', '#00FFD8', '#00FF78', '#0083FE', '#00BFFF'],// 色块填充颜色
-            data: that.siluanData,
+            color: ['#FEAF3C', '#0275CB'],// 色块填充颜色
+            data: that.optionsData,
           }
         ]
       }
 
       if (!this.myChart) this.myChart = this.$echarts.init(this.$el, null, {devicePixelRatio: 3});
-
       this.myChart.clear();
-      // this.myChart.resize();
       this.myChart.setOption(option, { replaceMerge: ["series"] });
     },
   },

@@ -48,7 +48,6 @@ export default {
   mounted() {
     this.echartInit()
   },
-  
   methods: {
     echartInit() {
       if (!this.myChart) this.myChart = this.$echarts.init(this.$el, null, {devicePixelRatio: 3});

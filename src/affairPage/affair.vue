@@ -10,7 +10,7 @@
           <div class="affairDragg " v-for="(dl,index) in draggablelist" :key="index" :class="'affairDragg'+dl">
             <div class="affairConterItem affairConLeft flexDiv" style="" v-if="dl==1" @click="showIframeFun(dl)">
               <!-- 中心概况 -->
-              <div class="zxgk">
+              <div class="zxgk" v-if="fanren">
                 <div class="affairConHead flexDiv">
                   <img src="../assets/affairImg/zxgkIcon.png">
                   中心概况
@@ -23,14 +23,14 @@
                   </div>
                   <div class="zxgkNumCon">
                     <div class="flexDiv">
-                      <img src="../assets/affairImg/rzbmNumIcon.png">
+                      <img src="../assets/affairImg/rzbmNumIcon.png" v-if="fanren">
                       <div>
                         <p class="zgNumCls">{{centerGaikuangData.rzbmNum}}</p>
                         <p class="zgTextCls">入驻部门数量</p>
                       </div>
                     </div>
                     <div class="flexDiv" style="margin-top:10px;">
-                      <img src="../assets/affairImg/kbckNumIcon.png">
+                      <img src="../assets/affairImg/kbckNumIcon.png" v-if="fanren">
                       <div>
                         <p class="zgNumCls">{{centerGaikuangData.kbckNum}}</p>
                         <p class="zgTextCls">开办窗口数量</p>
@@ -40,7 +40,7 @@
                 </div>
               </div>
               <!-- 企业动态 -->
-              <div class="qydt">
+              <div class="qydt" v-if="fanren">
                 <div class="affairConHead flexDiv">
                   <img src="../assets/affairImg/qydtIcon.png">
                   企业动态
@@ -70,7 +70,7 @@
                 </div>
               </div>
               <!-- 入驻事项 -->
-              <div class="rzsx">
+              <div class="rzsx" v-if="fanren">
                 <div class="affairConHead flexDiv">
                   <img src="../assets/affairImg/rzsxIcon.png">
                   入驻事项
@@ -80,7 +80,7 @@
                 </div>
               </div>
               <!-- 规章制度 -->
-              <div class="gzzd">
+              <div class="gzzd" v-if="fanren">
                 <div class="affairConHead flexDiv">
                   <img src="../assets/affairImg/gzzdIcon.png">
                   规章制度
@@ -111,7 +111,7 @@
                 </div>
               </div>
             </div>
-            <div class="affairConterItem affairConCenter flexDiv" style="" v-if="dl==2" :class="moduleTwo?'daoxu':''">
+            <div class="affairConterItem affairConCenter flexDiv" style="" v-if="dl==2 && fanren" :class="moduleTwo?'daoxu':''">
               <div class="centerNumOne flexDiv juCenter">
                 <div class="centerNumOneCon">
                   <p class="numTitle numTitle01">月业务受理量</p>
@@ -142,7 +142,7 @@
                 </div>
               </div>
             </div>
-            <div class="affairConterItem affairConRight flexDiv" style="height: 100%;position: relative;" v-if="dl==3">
+            <div class="affairConterItem affairConRight flexDiv" style="height: 100%;position: relative;" v-if="dl==3 && fanren">
               <!-- 教育服务 -->
               <div class="jyfw">
                 <div class="affairConHead flexDiv">
@@ -279,6 +279,7 @@ export default {
   },
   data() {
     return {
+      fanren: false,
       // 中心概况
       centerGaikuangData: {
         rzbmNum: 33,

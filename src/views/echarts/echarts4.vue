@@ -140,7 +140,7 @@ export default {
         },
         series: [
           {
-            name: '乱坎盗伐',
+            name: '乱砍盗伐',
             type: "line", // 设置图表类型为柱状
             data: that.lineVal,
             smooth: true,
@@ -189,7 +189,7 @@ export default {
             },
           },
           // {
-          //   name: '乱坎盗伐',
+          //   name: '乱砍盗伐',
           //   type: "bar", // 设置图表类型为柱状
           //   data: that.barVal,
           //   barWidth: "12",
